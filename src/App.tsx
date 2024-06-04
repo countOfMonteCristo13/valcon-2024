@@ -8,7 +8,7 @@ function App() {
     <>
       <InputFormField label='Username' id='username' inputType='text' placeholder='petar@gmail.com' onChange={()=>{}} value=''/>
       <InputFormField label='Password' id='password' inputType='password' onChange={()=>{}} value=''/>
-      <Button title='Click Me' onClick={() => {console.log('hello')}}/>
+      <Button title='Click Me' onClick={() => {}}/>
     </>
   )
 }
