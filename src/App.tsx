@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <InputFormField label='Username' id='username' inputType='text' placeholder='petar@gmail.com' onChange={()=>{}} value=''/>
-      <InputFormField label='Password' id='password' inputType='password' onChange={(e) => {console.log(e.target.value)}} value='sada'/>
+      <InputFormField label='Password' id='password' inputType='password' onChange={() => {}} value='sada'/>
     </>
   )
 }
