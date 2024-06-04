@@ -1,13 +1,14 @@
 type ButtonProps = {
     title:string;
+    type?: "submit" | "reset" | "button" | undefined;
     onClick: () => void;
     className?: string;
+    disabled?: boolean
 }
 
-
-const Button = ({title, onClick,className}:ButtonProps) => {
+const Button = ({title, type, onClick,className='', disabled=false}:ButtonProps) => {
   return (
-    <button className={`${className} button`} onClick={onClick}>
+    <button className={`button ${className}`} type={type} onClick={onClick} disabled={disabled}>
       {title}
     </button>
   )
