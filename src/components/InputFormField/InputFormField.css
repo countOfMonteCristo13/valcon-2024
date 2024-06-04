@@ -6,11 +6,11 @@
     gap: 0.3rem;
 }
 
-.input-form-field label{
+.input-form-field__label{
     color:#284280;
 }
 
-.input-form-field input{
+.input-form-field__input{
     padding: 0.5rem;
     border-radius: 10px;
     border: 1px solid black;
