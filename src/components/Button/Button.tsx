@@ -1,7 +1,7 @@
 type ButtonProps = {
     title:string;
     type?: "submit" | "reset" | "button" | undefined;
-    onClick: () => void;
+    onClick?: () => void;
     className?: string;
     disabled?: boolean
 }
