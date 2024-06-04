@@ -2,7 +2,7 @@ import { ChangeEvent, HTMLInputTypeAttribute } from 'react';
 import './InputFormField.css'
 
 type InputFormFieldProps = {
-    id: string
+    id?: string
     label?: string;
     inputType?: HTMLInputTypeAttribute;
     placeholder?: string;
