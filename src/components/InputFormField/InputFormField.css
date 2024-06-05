@@ -12,3 +12,8 @@
     border: none;
     border-bottom: 1px solid black;
 }
+
+.red-border-bottom{
+    border-bottom: 1px solid red;
+  }
+

@@ -8,10 +8,13 @@ type InputFormFieldProps = {
     placeholder?: string;
     value:string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
+    className?:string;
 }
 
 
-const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange}: InputFormFieldProps) => {
+const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur}: InputFormFieldProps) => {
   return (
     <div className='input-form-field'>
       {
@@ -20,7 +23,7 @@ const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange}
             {label}
         </label>
       }
-        <input className='input-form-field__input' id={id} type={inputType} name={id} placeholder={placeholder} value={value} onChange={onChange}/>
+        <input className={`input-form-field__input ${className}`} id={id} type={inputType} name={id} placeholder={placeholder} value={value} onChange={onChange} onFocus={onFocus} onBlur={onBlur}/>
     </div>
   )
 }
