@@ -7,16 +7,8 @@ import './LoginForm.css'
 const LoginForm = () => {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [backendError, setBackendError] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>(false);
-
-    const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setUsername(e.target.value);
-    }
-
-    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    }
+    const [hasBackendError, setHasBackendError] = useState<boolean>(false);
+    const [hasError, setHasError] = useState<boolean>(false);
 
     const validateInputFields = (username:string, password: string) => {
       if (!username || !password) {
@@ -31,24 +23,24 @@ const LoginForm = () => {
       if(validateInputFields(username, password)){
         setUsername('');
         setPassword('');
-        setError(false);
+        setHasError(false);
       }else{
-        setError(true);
+        setHasError(true);
       }
     }
 
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <InputFormField label="Username" placeholder="username@mail.com" id="username" inputType="email" value={username} onChange={handleUsernameChange}/>
-      <InputFormField label="Password" id="password" value={password} inputType="password" onChange={handlePasswordChange}/>
+      <InputFormField label="Username" placeholder="username@mail.com" id="username" inputType="email" value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}/>
+      <InputFormField label="Password" id="password" value={password} inputType="password" onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
       {
-        error && 
-        <p>All fields are required</p>
+        hasError && 
+        <p className="login-form__error">All fields are required</p>
       }
       {
-        backendError && 
-        <p>Wrong credentials</p>
+        hasBackendError && 
+        <p className="login-form__error">Wrong credentials</p>
       }
       <Button title="Login" type="submit"/>
     </form>
