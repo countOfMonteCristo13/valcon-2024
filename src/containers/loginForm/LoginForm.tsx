@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react"
-import InputFormField from "../inputFormField/InputFormField";
-import Button from "../Button/Button";
 import './LoginForm.css'
+import InputFormField from "../../components/inputFormField/InputFormField";
+import Button from "../../components/button/Button";
 
 
 const LoginForm = () => {
@@ -32,8 +32,10 @@ const LoginForm = () => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <InputFormField label="Username" placeholder="username@mail.com" id="username" inputType="email" value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}/>
-      <InputFormField label="Password" id="password" value={password} inputType="password" onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
+      <h1 className="login-form__title">Login</h1>
+      <div className="login-form__inputs">
+      <InputFormField label="Username" placeholder="username@mail.com" id="username" inputType="email" value={username} onChange={(e) => setUsername(e.target.value)}/>
+      <InputFormField label="Password" placeholder="*********" id="password" value={password} inputType="password" onChange={(e) => setPassword(e.target.value)}/>
       {
         hasError && 
         <p className="login-form__error">All fields are required</p>
@@ -42,7 +44,8 @@ const LoginForm = () => {
         hasBackendError && 
         <p className="login-form__error">Wrong credentials</p>
       }
-      <Button title="Login" type="submit"/>
+      </div>
+      <Button title="Login" type="submit" className="login-form__button"/>
     </form>
   )
 }

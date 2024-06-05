@@ -1,0 +1,41 @@
+.login-form{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    border-radius: 0.5rem;
+    background: white;
+}
+
+.login-form__title{
+    font-size: 2rem;
+}
+
+.login-form__inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.login-form__error{
+    color: red;
+}
+
+.login-form__button{
+    background: linear-gradient(89deg, violet, #00d1ff);
+    color: white;
+    transition: all 0.1s ease-in;
+    width: 100%;
+}
+
+
+@media screen and (min-width:1024px){
+    .login-form{
+        min-width: 350px;
+        align-items: center;
+    }
+
+}
