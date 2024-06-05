@@ -1,0 +1,24 @@
+.login-page{
+    flex: 1;
+    background: linear-gradient(89deg, violet, #00d1ff);
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page__heading{
+    font-family: "Dancing Script", cursive;
+    font-size: 3.5rem;
+    text-align: center;
+    background: -webkit-linear-gradient(right,violet, #00d1ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media screen and (min-width:1024px) {
+    .login-page__heading{
+        font-size: 7rem;
+    }
+}

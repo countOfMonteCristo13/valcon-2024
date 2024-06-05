@@ -1,12 +1,12 @@
 import './App.css'
-import LoginForm from './components/loginForm/LoginForm'
+import LoginPage from './pages/loginPage/LoginPage'
 
 function App() {
 
   return (
-    <>
-      <LoginForm/>
-    </>
+    <main className='props-app'>
+      <LoginPage/>
+    </main>
   )
 }
 

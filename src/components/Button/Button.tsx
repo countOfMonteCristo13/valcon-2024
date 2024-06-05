@@ -1,3 +1,5 @@
+import './Button.css'
+
 type ButtonProps = {
     title:string;
     type?: "submit" | "reset" | "button" | undefined;
