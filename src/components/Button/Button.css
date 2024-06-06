@@ -1,9 +1,12 @@
 .button{
     padding: 0.5rem 1rem;
     font-size: 1rem;
+<<<<<<< HEAD
     font-weight: 500;
     font-family: inherit;
     border-radius: 0.5rem;
     border-style: none;
+=======
+>>>>>>> 2e6b99e (button component created)
     cursor: pointer;
 }

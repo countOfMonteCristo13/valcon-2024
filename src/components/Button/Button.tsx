@@ -3,7 +3,11 @@ import './Button.css'
 type ButtonProps = {
     title:string;
     type?: "submit" | "reset" | "button" | undefined;
+<<<<<<< HEAD
     onClick?: () => void;
+=======
+    onClick: () => void;
+>>>>>>> 2e6b99e (button component created)
     className?: string;
     disabled?: boolean
 }
