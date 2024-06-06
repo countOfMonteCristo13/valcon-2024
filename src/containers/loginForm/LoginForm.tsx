@@ -2,6 +2,7 @@ import { useState } from "react"
 import './LoginForm.css'
 import InputFormField from "../../components/inputFormField/InputFormField";
 import Button from "../../components/button/Button";
+import { handleLogin } from "../../services/authService";
 
 
 const LoginForm = () => {
@@ -38,6 +39,11 @@ const LoginForm = () => {
         setPassword('');
         setHasPasswordError(false);
         setHasUsernameError(false);
+        try {
+          handleLogin({username,password});
+        } catch (error) {
+          setHasBackendError(true);
+        }
       }else{
         setHasPasswordError(true);
         setHasUsernameError(true);
