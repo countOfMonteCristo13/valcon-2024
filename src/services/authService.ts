@@ -3,6 +3,7 @@ import { LoginFormData } from "../models/LoginFormData";
 import { AuthRequestModel } from "../models/AuthModels";
 import { LoginResponseData } from "../models/LocalStorageData";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
 const authEndpoint = '/auth/token'
 
 export const login = async (formData: LoginFormData) => {
@@ -12,7 +13,7 @@ export const login = async (formData: LoginFormData) => {
         rememberMe: true
     }
 
-    return axios.post<LoginResponseData>(`${import.meta.env.VITE_BASE_URL + authEndpoint}`,requestBody).then((response) => {
+    return axios.post<LoginResponseData>(`${baseUrl + authEndpoint}`,requestBody).then((response) => {
         return response.data;
     });
 
