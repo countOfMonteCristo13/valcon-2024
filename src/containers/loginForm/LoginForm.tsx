@@ -1,43 +1,65 @@
 import { useState } from "react"
-import './LoginForm.css'
+import { useNavigate } from "react-router-dom";
+import { addDataToLocalStorage } from "../../services/LocalStorageService";
+import { login } from "../../services/AuthService";
+import { LoginFormData } from "../../models/LoginFormData";
 import InputFormField from "../../components/inputFormField/InputFormField";
 import Button from "../../components/button/Button";
+import './LoginForm.css'
 
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [hasBackendError, setHasBackendError] = useState<boolean>(false);
+    const [hasIncorrectCredentials, setHasIncorrectCredentials] = useState<boolean>(false);
     const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
     const [hasUsernameError, setHasUsernameError] = useState<boolean>(false);
 
-    const validateInputFields = (username:string, password: string) => {
-      if (!username || !password) {
+    const validateInputFields = (formData:LoginFormData) => {
+      if (!formData.username || !formData.password) {
         return false;
       }
       return true;
     }
 
     const handleUsernameOnBlur = () => {
-      if(!username){
+      if(!username.trim()){
         setHasUsernameError(true)
       }
     }
 
     const handlePasswordOnBlur = () => {
-      if(!password){
+      if(!password.trim()){
         setHasPasswordError(true)
       }
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      const formData: LoginFormData = {
+        username,
+        password
+      }
 
       e.preventDefault();
-      if(validateInputFields(username, password)){
-        setUsername('');
-        setPassword('');
-        setHasPasswordError(false);
-        setHasUsernameError(false);
+      if(validateInputFields(formData)){
+
+        login(formData).then(({accessToken, refreshToken}) => {
+          setUsername('');
+          setPassword('');
+          setHasPasswordError(false);
+          setHasUsernameError(false);
+          setHasIncorrectCredentials(false);
+
+          addDataToLocalStorage('accessToken', accessToken);
+          addDataToLocalStorage('refreshToken', refreshToken);
+
+          navigate('/');
+
+        }).catch(() => {
+          setHasIncorrectCredentials(true)
+        });
+
       }else{
         setHasPasswordError(true);
         setHasUsernameError(true);
@@ -51,7 +73,7 @@ const LoginForm = () => {
       <div className="login-form__inputs">
         <InputFormField 
           label="Username" 
-          className={hasUsernameError || hasBackendError ? 'red-border-bottom' : ''} 
+          hasError={hasUsernameError || hasIncorrectCredentials} 
           placeholder="username@mail.com" 
           id="username" 
           inputType="email" 
@@ -62,7 +84,7 @@ const LoginForm = () => {
         />
         <InputFormField 
           label="Password" 
-          className={hasPasswordError || hasBackendError ? 'red-border-bottom' : ''} 
+          hasError={hasPasswordError || hasIncorrectCredentials} 
           placeholder="*********" 
           id="password" 
           value={password} 
@@ -76,7 +98,7 @@ const LoginForm = () => {
           <p className="login-form__error">All fields are required</p>
         }
         {
-          hasBackendError && 
+          hasIncorrectCredentials && 
           <p className="login-form__error">Wrong credentials</p>
         }
       </div>
