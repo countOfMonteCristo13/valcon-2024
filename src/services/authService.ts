@@ -2,7 +2,7 @@ import axios from "axios";
 import { LoginFormData } from "../models/LoginFormData";
 import { AuthRequestData } from "../models/AuthData";
 import { TokenResponseData } from "../models/LocalStorageData";
-import { getDataFromLocalStorage } from "./localStorageService";
+import { getDataFromLocalStorage } from "./LocalStorageService";
 
 const authUrl = '/auth/token'
 const refreshTokenUrl = '/auth/refresh-token'
