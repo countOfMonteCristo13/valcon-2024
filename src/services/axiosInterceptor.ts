@@ -1,6 +1,6 @@
 import axios from "axios";
 import { refreshToken } from "./AuthService";
-import { addTokensToLocalStorage } from "./LocalStorageService";
+import { addTokensToLocalStorage, getDataFromLocalStorage } from "./LocalStorageService";
 
 
 export const axiosInterceptor = axios.create({
@@ -27,6 +27,20 @@ axiosInterceptor.interceptors.response.use((response) => {
     }
 
     return Promise.reject(error);
-}
+})
 
-)
+axiosInterceptor.interceptors.request.use((request) => {
+    const accessToken = getDataFromLocalStorage('accessToken');
+
+    if(accessToken){
+        request.headers[
+            'Authorization'
+        ] = `Bearer ${accessToken}`
+    }
+
+    return request;
+
+    },(error) => {
+        Promise.reject(error);
+    }
+);
