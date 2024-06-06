@@ -11,7 +11,6 @@ axiosInterceptor.interceptors.response.use((response) => {
     return response
 },async (error) => {
     const originalRequest = error.config;
-    console.log(originalRequest)
     if(error.response.status === 403 && !originalRequest._retry){
         originalRequest._retry = true;
         try {
