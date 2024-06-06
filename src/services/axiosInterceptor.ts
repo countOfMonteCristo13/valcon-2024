@@ -1,6 +1,6 @@
 import axios from "axios";
-import { refreshToken } from "./authService";
-import { addTokensToLocalStorage } from "./localStorageService";
+import { refreshToken } from "./AuthService";
+import { addTokensToLocalStorage } from "./LocalStorageService";
 
 
 export const axiosInterceptor = axios.create({
