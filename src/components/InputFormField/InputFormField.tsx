@@ -24,7 +24,14 @@ const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,
             {label}
         </label>
       }
-        <input className={`input-form-field__input ${hasError && 'red-border-bottom'} ${className}`} id={id} type={inputType} name={id} placeholder={placeholder} value={value} onChange={onChange} onFocus={onFocus} onBlur={onBlur}/>
+        <input 
+          className={`input-form-field__input ${hasError && 'red-border-bottom'} ${className}`} 
+          id={id} type={inputType} name={id} 
+          placeholder={placeholder} 
+          value={value} 
+          onChange={onChange} 
+          onFocus={onFocus} 
+          onBlur={onBlur}/>
     </div>
   )
 }
