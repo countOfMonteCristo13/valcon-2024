@@ -12,7 +12,7 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [hasBackendValidationError, setHasBackendValidationError] = useState<boolean>(false);
+    const [hasIncorrectCredentials, setHasIncorrectCredentials] = useState<boolean>(false);
     const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
     const [hasUsernameError, setHasUsernameError] = useState<boolean>(false);
 
@@ -49,7 +49,7 @@ const LoginForm = () => {
           setPassword('');
           setHasPasswordError(false);
           setHasUsernameError(false);
-          setHasBackendValidationError(false);
+          setHasIncorrectCredentials(false);
 
           addDataToLocalStorage('accessToken', accessToken);
           addDataToLocalStorage('refreshToken', refreshToken);
@@ -57,7 +57,7 @@ const LoginForm = () => {
           navigate('/');
 
         }).catch(() => {
-          setHasBackendValidationError(true)
+          setHasIncorrectCredentials(true)
         });
 
       }else{
@@ -73,7 +73,7 @@ const LoginForm = () => {
       <div className="login-form__inputs">
         <InputFormField 
           label="Username" 
-          hasError={hasUsernameError || hasBackendValidationError} 
+          hasError={hasUsernameError || hasIncorrectCredentials} 
           placeholder="username@mail.com" 
           id="username" 
           inputType="email" 
@@ -84,7 +84,7 @@ const LoginForm = () => {
         />
         <InputFormField 
           label="Password" 
-          hasError={hasPasswordError || hasBackendValidationError} 
+          hasError={hasPasswordError || hasIncorrectCredentials} 
           placeholder="*********" 
           id="password" 
           value={password} 
@@ -98,7 +98,7 @@ const LoginForm = () => {
           <p className="login-form__error">All fields are required</p>
         }
         {
-          hasBackendValidationError && 
+          hasIncorrectCredentials && 
           <p className="login-form__error">Wrong credentials</p>
         }
       </div>
