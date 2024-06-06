@@ -2,48 +2,64 @@ import { useState } from "react"
 import './LoginForm.css'
 import InputFormField from "../../components/inputFormField/InputFormField";
 import Button from "../../components/button/Button";
-import { handleLogin } from "../../services/authService";
+import { login } from "../../services/authService";
+import { LoginFormData } from "../../models/LoginFormData";
+import { useNavigate } from "react-router-dom";
+import { addDataToLocalStorage } from "../../services/localStorageService";
 
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [hasBackendError, setHasBackendError] = useState<boolean>(false);
     const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
     const [hasUsernameError, setHasUsernameError] = useState<boolean>(false);
 
-    const validateInputFields = (username:string, password: string) => {
-      if (!username || !password) {
+    const validateInputFields = (formData:LoginFormData) => {
+      if (!formData.username || !formData.password) {
         return false;
       }
       return true;
     }
 
     const handleUsernameOnBlur = () => {
-      if(!username){
+      if(!username.trim()){
         setHasUsernameError(true)
       }
     }
 
     const handlePasswordOnBlur = () => {
-      if(!password){
+      if(!password.trim()){
         setHasPasswordError(true)
       }
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      const formData: LoginFormData = {
+        username,
+        password
+      }
 
       e.preventDefault();
-      if(validateInputFields(username, password)){
-        setUsername('');
-        setPassword('');
-        setHasPasswordError(false);
-        setHasUsernameError(false);
-        try {
-          handleLogin({username,password});
-        } catch (error) {
-          setHasBackendError(true);
-        }
+      if(validateInputFields(formData)){
+
+        login(formData).then(({accessToken, refreshToken}) => {
+          setUsername('');
+          setPassword('');
+          setHasPasswordError(false);
+          setHasUsernameError(false);
+          setHasBackendError(false);
+
+          addDataToLocalStorage('accessToken', accessToken);
+          addDataToLocalStorage('refreshToken', refreshToken);
+
+          navigate('/');
+
+        }).catch(() => {
+          setHasBackendError(true)
+        });
+
       }else{
         setHasPasswordError(true);
         setHasUsernameError(true);
@@ -57,7 +73,7 @@ const LoginForm = () => {
       <div className="login-form__inputs">
         <InputFormField 
           label="Username" 
-          className={hasUsernameError || hasBackendError ? 'red-border-bottom' : ''} 
+          hasError={hasUsernameError || hasBackendError} 
           placeholder="username@mail.com" 
           id="username" 
           inputType="email" 
@@ -68,7 +84,7 @@ const LoginForm = () => {
         />
         <InputFormField 
           label="Password" 
-          className={hasPasswordError || hasBackendError ? 'red-border-bottom' : ''} 
+          hasError={hasPasswordError || hasBackendError} 
           placeholder="*********" 
           id="password" 
           value={password} 
