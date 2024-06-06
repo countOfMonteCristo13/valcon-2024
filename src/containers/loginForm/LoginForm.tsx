@@ -1,18 +1,18 @@
 import { useState } from "react"
-import './LoginForm.css'
+import { useNavigate } from "react-router-dom";
+import { addDataToLocalStorage } from "../../services/LocalStorageService";
+import { login } from "../../services/AuthService";
+import { LoginFormData } from "../../models/LoginFormData";
 import InputFormField from "../../components/inputFormField/InputFormField";
 import Button from "../../components/button/Button";
-import { login } from "../../services/authService";
-import { LoginFormData } from "../../models/LoginFormData";
-import { useNavigate } from "react-router-dom";
-import { addDataToLocalStorage } from "../../services/localStorageService";
+import './LoginForm.css'
 
 
 const LoginForm = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [hasBackendError, setHasBackendError] = useState<boolean>(false);
+    const [hasBackendValidationError, setHasBackendValidationError] = useState<boolean>(false);
     const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
     const [hasUsernameError, setHasUsernameError] = useState<boolean>(false);
 
@@ -49,7 +49,7 @@ const LoginForm = () => {
           setPassword('');
           setHasPasswordError(false);
           setHasUsernameError(false);
-          setHasBackendError(false);
+          setHasBackendValidationError(false);
 
           addDataToLocalStorage('accessToken', accessToken);
           addDataToLocalStorage('refreshToken', refreshToken);
@@ -57,7 +57,7 @@ const LoginForm = () => {
           navigate('/');
 
         }).catch(() => {
-          setHasBackendError(true)
+          setHasBackendValidationError(true)
         });
 
       }else{
@@ -73,7 +73,7 @@ const LoginForm = () => {
       <div className="login-form__inputs">
         <InputFormField 
           label="Username" 
-          hasError={hasUsernameError || hasBackendError} 
+          hasError={hasUsernameError || hasBackendValidationError} 
           placeholder="username@mail.com" 
           id="username" 
           inputType="email" 
@@ -84,7 +84,7 @@ const LoginForm = () => {
         />
         <InputFormField 
           label="Password" 
-          hasError={hasPasswordError || hasBackendError} 
+          hasError={hasPasswordError || hasBackendValidationError} 
           placeholder="*********" 
           id="password" 
           value={password} 
@@ -98,7 +98,7 @@ const LoginForm = () => {
           <p className="login-form__error">All fields are required</p>
         }
         {
-          hasBackendError && 
+          hasBackendValidationError && 
           <p className="login-form__error">Wrong credentials</p>
         }
       </div>
