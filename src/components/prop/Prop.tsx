@@ -13,7 +13,7 @@ const Prop = ({ prop } : PropPostProps) => {
         <p>Points: {prop.propPoints}</p>
       </div>
       <div className="prop__message__wrapper">
-        <h3 className="prop__message__title">Message:</h3>
+        <h4 className="prop__message__title">Message:</h4>
         <p>{prop.message}</p>
       </div>
     </div>

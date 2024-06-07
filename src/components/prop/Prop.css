@@ -1,5 +1,5 @@
 .prop{
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,6 @@
 }
 
 .prop__to-user__name{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
 }
