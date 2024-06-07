@@ -8,7 +8,7 @@ type ButtonProps = {
     disabled?: boolean
 }
 
-const Button = ({title, type, onClick,className='', disabled=false}:ButtonProps) => {
+const Button = ({title, type = 'button', onClick,className='', disabled=false}:ButtonProps) => {
   return (
     <button className={`button ${className}`} type={type} onClick={onClick} disabled={disabled}>
       {title}
