@@ -6,6 +6,7 @@ import { PropModel } from '../models/PropsData';
 const useProps = (page: number, size: number, sort: string) => {
   const [propsList, setPropsList] = useState<PropModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [totalElements, setTotalElements] = useState<number>(0);
   const [hasError, setHasError] = useState(null);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const useProps = (page: number, size: number, sort: string) => {
       try {
         const response: GetPropsResponse = await fetchProps({page, size, sort});
         setPropsList(response.content);
+        setTotalElements(response.totalElements);
       } catch (error:any) {
         setHasError(error);
       } finally {
@@ -24,7 +26,7 @@ const useProps = (page: number, size: number, sort: string) => {
 
   }, [page, sort, size]); 
 
-  return { propsList, isLoading, hasError };
+  return { propsList, isLoading, hasError, totalElements };
 };
 
 export default useProps;
