@@ -1,5 +1,7 @@
 .landing-page{
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
 }
 
@@ -7,15 +9,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 1rem;
 }
 
-.landing-page__props__pagination{
-    display: flex;
-    gap: 3rem;
-}
-
-.landing-page__props__pagination__button{
-    background: -webkit-linear-gradient(right,violet, #00d1ff);
+.infinite-scroll-component__outerdiv{
+    width: 100%;
 }
