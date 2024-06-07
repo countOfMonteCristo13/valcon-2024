@@ -46,5 +46,9 @@ input:focus-visible{
   outline: none;
 }
 
+.full-width{
+  width: 100%;
+}
+
 
 
