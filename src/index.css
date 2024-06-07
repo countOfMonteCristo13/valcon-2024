@@ -10,6 +10,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100%;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -30,6 +34,7 @@ body {
   display: flex;
   place-items: center;
   min-height: 100vh;
+  background: #212121;
 }
 
 h1 {
@@ -40,7 +45,6 @@ input:focus,
 input:focus-visible{
   outline: none;
 }
-
 
 
 
