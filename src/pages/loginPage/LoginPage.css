@@ -1,6 +1,5 @@
 .login-page{
-    flex: 1;
-    background: linear-gradient(89deg, violet, #00d1ff);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 5rem;

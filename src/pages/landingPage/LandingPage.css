@@ -1,0 +1,19 @@
+.landing-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.landing-page__props{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 1rem;
+}
+
+.infinite-scroll-component__outerdiv{
+    width: 100%;
+}
