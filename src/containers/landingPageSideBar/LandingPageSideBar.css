@@ -1,0 +1,34 @@
+.side-bar{
+    display: none;
+}
+
+@media screen and (min-width:769px) {
+    .side-bar{
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        max-width: 250px;
+        width: 100%;
+        height: 100vh;
+        border-left: 2px solid #ffffff;
+        padding: 1rem;
+    }
+
+}
+
+@media screen and (min-width:1025px) {
+    .side-bar{
+        max-width: 350px;
+    }
+
+}
+
+@media screen and (min-width:1441px) {
+    .side-bar{
+        max-width: 500px;
+    }
+
+}
