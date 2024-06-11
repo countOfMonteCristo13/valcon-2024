@@ -10,9 +10,9 @@
     width: 100%;
     padding: 0.5rem;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #000000;
 }
 
 .red-border-bottom{
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #ff0000;
   }
