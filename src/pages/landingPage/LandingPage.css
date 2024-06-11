@@ -6,25 +6,6 @@
     height: 100%;
 }
 
-.landing-page__heading{
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
-    font-size: 2rem;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.landing-page__heading__logo{
-    aspect-ratio: 1/1;
-    width: 3rem;
-}
-
-.landing-page__heading__title{
-    color: #ffae00;
-    font-size: 1.5rem;
-}
-
 .landing-page__layout{
     display: flex;
     width: 100%;
@@ -43,8 +24,14 @@
     width: 100%;
 }
 
-@media screen and (min-width: 769px) {
-    .landing-page__heading{
-        display: none;
-    }
+.landing-page__header__actions__button{
+    color: #ffae00;
+}
+
+.landing-page__header__actions__points-icon__wrapper{
+    display: flex;
+    align-items: center;
+    color: #ffae00;
+    font-size: 1rem;
+    gap: 0.2rem;
 }

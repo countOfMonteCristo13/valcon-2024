@@ -3,7 +3,8 @@ import PropList from '../../components/propList/PropList'
 import useProps from '../../hooks/useProps';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import MenuBar from '../../containers/menuBar/MenuBar';
-import logo from '../../assets/propsLogo1.png'
+import LandingPageSideBar from '../../containers/landingPageSideBar/LandingPageSideBar';
+import LandingPageHeader from '../../containers/landingPageHeader/LandingPageHeader';
 import './LandingPage.css'
 
 const LandingPage = () => {
@@ -16,10 +17,7 @@ const LandingPage = () => {
 
   return (
     <div className='landing-page'>
-            <div className='landing-page__heading'>
-              <img className='landing-page__heading__logo' src={logo} alt="logo" />
-              <h2 className='landing-page__heading__title'>Props</h2>
-            </div>
+            <LandingPageHeader/>
             <div className='landing-page__layout'>
               <MenuBar/>
               <InfiniteScroll
@@ -47,6 +45,7 @@ const LandingPage = () => {
               >
                   <PropList propList={propsList}/>
               </InfiniteScroll>
+              <LandingPageSideBar/>
             </div>
         </div>
   )
