@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { addDataToLocalStorage } from "../../services/LocalStorageService";
-import { login } from "../../services/AuthService";
-import { LoginFormData } from "../../models/LoginFormData";
-import InputFormField from "../../components/inputFormField/InputFormField";
-import Button from "../../components/button/Button";
+import { addDataToLocalStorage } from "../../../services/LocalStorageService";
+import { login } from "../../../services/AuthService";
+import { LoginFormData } from "../../../models/LoginFormData";
+import InputFormField from "../../../components/inputFormField/InputFormField";
+import Button from "../../../components/button/Button";
 import './LoginForm.css'
 
 

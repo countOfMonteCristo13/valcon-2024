@@ -5,7 +5,7 @@
     align-items: center;
     gap: 3rem;
     border-radius: 0.5rem;
-    background: white;
+    background: #ffffff;
 }
 
 .login-form__title{
@@ -21,12 +21,12 @@
 }
 
 .login-form__error{
-    color: red;
+    color: #ff0000;
 }
 
 .login-form__button{
-    background: linear-gradient(89deg, violet, #00d1ff);
-    color: white;
+    background: linear-gradient(89deg, #ee82ee, #00d1ff);
+    color: #ffffff;
     transition: all 0.1s ease-in;
     width: 100%;
 }

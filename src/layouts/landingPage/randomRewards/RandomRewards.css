@@ -1,0 +1,22 @@
+.random-rewards{
+    width: 100%;
+    height: 300px;
+    border: 2px solid #ffae00;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.random-rewards p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    
+.reward-1 { grid-area: 1 / 1 / 2 / 2; }
+.reward-2 { grid-area: 1 / 2 / 2 / 3; }
+.reward-3 { grid-area: 2 / 1 / 3 / 2; }
+.reward-4 { grid-area: 2 / 2 / 3 / 3; }

@@ -6,7 +6,7 @@ import { PropModel } from '../models/PropsData';
 const useProps = (page: number, size: number, sort: string) => {
   const [propsList, setPropsList] = useState<PropModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [totalElements, setTotalElements] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>(0);
   const [hasError, setHasError] = useState(null);
 
   useEffect(() => {
@@ -14,8 +14,12 @@ const useProps = (page: number, size: number, sort: string) => {
       setIsLoading(true);
       try {
         const response: GetPropsResponse = await fetchProps({page, size, sort});
-        setPropsList(response.content);
-        setTotalElements(response.totalElements);
+        if(page === 0){
+          setPropsList(response.content);
+        }else{
+          setPropsList((prevList) => [...prevList,...response.content]);
+        }
+        setTotalPages(response.totalPages);
       } catch (error:any) {
         setHasError(error);
       } finally {
@@ -26,7 +30,7 @@ const useProps = (page: number, size: number, sort: string) => {
 
   }, [page, sort, size]); 
 
-  return { propsList, isLoading, hasError, totalElements };
+  return { propsList, isLoading, hasError, totalPages };
 };
 
 export default useProps;
