@@ -6,7 +6,7 @@ type InputFormFieldProps = {
     label?: string;
     inputType?: HTMLInputTypeAttribute;
     placeholder?: string;
-    value:string;
+    value:string | number;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onFocus?: () => void;
     onBlur?: () => void;
