@@ -10,9 +10,11 @@ type MenuBarLinkProps = {
     linkTitleClassName:string;
 }
 
+export const ACTIVE_COLOR = '#ffae00';
+
 const isActiveLink = (isActive:boolean) => {
     return {
-        color: isActive ? '#ffae00' : '',
+        color: isActive ? ACTIVE_COLOR : '',
     }
 }
 
