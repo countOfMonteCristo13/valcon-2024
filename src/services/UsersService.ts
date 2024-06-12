@@ -3,13 +3,13 @@ import { GetUsersRequestQuery } from "../models/request/GetUsersRequest";
 import { Response } from "../models/response/Response";
 import { axiosInterceptor } from "./AxiosInterceptor";
 
-export const fetchUsers = async ({page,size,sort,active,search}: GetUsersRequestQuery): Promise<Response<PropsUser>> => {
+export const fetchActiveUsers = async ({page,size,sort,search}: GetUsersRequestQuery): Promise<Response<PropsUser>> => {
     const response = await axiosInterceptor.get<Response<PropsUser>>('/users', {
         params:{
         page,
         size,
         sort,
-        active,
+        active: 'ACTIVE',
         search
         }
       });
