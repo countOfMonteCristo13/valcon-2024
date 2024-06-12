@@ -48,7 +48,7 @@ export type PropModel = {
     id: number;
     fromUser: PropsUser;
     toUser:PropsUser;
-    hashtags: Hashtag;
+    hashtags: Hashtag[];
     message: string;
     gifUrl: string;
     propPoints: number;
