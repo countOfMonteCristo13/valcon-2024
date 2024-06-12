@@ -1,11 +1,12 @@
-import { GetPropsRequestBody } from "../models/request/GetPropsRequest";
+import { PropModel } from "../models/PropsData";
+import { GetPropsRequestQuery } from "../models/request/GetPropsRequest";
 import { PostPropRequest } from "../models/request/PostPropRequest";
-import { GetPropsResponse } from "../models/response/GetPropsResponse";
 import { PostPropResponse } from "../models/response/PostPropResponse";
+import { Response } from "../models/response/Response";
 import { axiosInterceptor } from "./AxiosInterceptor";
 
-export const fetchProps = async ({page,size,sort}: GetPropsRequestBody): Promise<GetPropsResponse> => {
-  const response = await axiosInterceptor.get<GetPropsResponse>('/props', {
+export const fetchProps = async ({page,size,sort}: GetPropsRequestQuery): Promise<Response<PropModel>> => {
+  const response = await axiosInterceptor.get<Response<PropModel>>('/props', {
     params:{
     page,
     size,
