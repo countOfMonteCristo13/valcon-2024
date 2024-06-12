@@ -6,9 +6,11 @@ import MenuBar from '../../layouts/menuBar/MenuBar';
 import LandingPageSideBar from '../../layouts/landingPage/landingPageSideBar/LandingPageSideBar';
 import LandingPageHeader from '../../layouts/landingPage/landingPageHeader/LandingPageHeader';
 import './LandingPage.css'
+import Modal from '../../components/modal/Modal';
+import AddPropForm from '../../layouts/addPropForm/AddPropForm';
 
 const LandingPage = () => {
-
+    const[showModal,setShowModal] = useState<boolean>(false);
     const [size,setSize] = useState(10);
     const [page,setPage] = useState(0)
     const sort = 'asc'
@@ -16,8 +18,11 @@ const LandingPage = () => {
     const {propsList, isLoading, hasError, totalPages} = useProps(page,size,sort);
 
   return (
-    <div className='landing-page'>
-            <LandingPageHeader/>
+        <div className='landing-page'>
+          {
+            showModal && <Modal><AddPropForm/></Modal>
+          }
+            <LandingPageHeader setShowModal={setShowModal}/>
             <div className='landing-page__layout'>
               <MenuBar/>
               <InfiniteScroll
