@@ -1,0 +1,1 @@
+export const LAPTOP_WIDTH_SIZE = 1024;

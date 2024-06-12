@@ -4,20 +4,18 @@ import { BiGift, BiHome } from 'react-icons/bi';
 import { FaArrowRight } from 'react-icons/fa';
 import { RxAvatar } from 'react-icons/rx';
 import logo from '../../../assets/propsLogo1.png'
+import { LAPTOP_WIDTH_SIZE } from '../../../utils/constants';
 import './SideMenuBar.css'
 
 const SideMenuBar = () => {
 
-    const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(false);
-    const [showToggleExpandButton, setShowToggleExpandButton] = useState<boolean>(false);
+    const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(window.innerWidth > LAPTOP_WIDTH_SIZE);
+    const [showToggleExpandButton, setShowToggleExpandButton] = useState<boolean>(window.innerWidth <= LAPTOP_WIDTH_SIZE);
 
     useEffect(() => {
-        if(window.innerWidth > 1025){
-            setIsMenuBarExpanded(true);
-            setShowToggleExpandButton(false);
-        }
+
         const handleResize = () => {
-            if(window.innerWidth > 1025){
+            if(window.innerWidth > LAPTOP_WIDTH_SIZE){
                 setIsMenuBarExpanded(true);
                 setShowToggleExpandButton(false);
             }else{
