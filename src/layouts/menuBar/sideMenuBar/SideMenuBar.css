@@ -11,11 +11,7 @@
     width: 3rem;
 }
 
-.side-menu-bar__logo__title{
-    display: none;
-    color: #ffae00;
-    font-size: 1.5rem;
-}
+
 
 @media screen and (min-width:769px) {
 
@@ -24,6 +20,7 @@
         position: sticky;
         top: 0;
         height: 100vh;
+        max-width: fit-content;
         flex-direction: column;
         border-right: 2px solid #ffffff;
         justify-content: space-between;
@@ -100,4 +97,10 @@
     .side-menu-bar__links__link__title{
         display: block;
     }
+}
+
+.side-menu-bar__logo__title{
+    display: none;
+    color: #ffae00;
+    font-size: 1.5rem;
 }

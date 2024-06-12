@@ -1,4 +1,4 @@
-import MenuBar from '../../containers/menuBar/MenuBar'
+import MenuBar from '../../layouts/menuBar/MenuBar'
 import './RewardsPage.css'
 
 const RewardsPage = () => {

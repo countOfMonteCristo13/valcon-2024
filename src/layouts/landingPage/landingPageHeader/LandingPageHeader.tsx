@@ -1,7 +1,7 @@
-import useScrollDown from '../../hooks/useScrollDown'
+import useScrollDown from '../../../hooks/useScrollDown'
 import { BiCoin } from 'react-icons/bi'
 import { LuPlusCircle } from 'react-icons/lu'
-import logo from '../../assets/propsLogo1.png'
+import logo from '../../../assets/propsLogo1.png'
 import'./LandingPageHeader.css'
 
 const LandingPageHeader = () => {

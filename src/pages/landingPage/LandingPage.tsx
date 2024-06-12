@@ -2,9 +2,9 @@ import { useState } from 'react'
 import PropList from '../../components/propList/PropList'
 import useProps from '../../hooks/useProps';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import MenuBar from '../../containers/menuBar/MenuBar';
-import LandingPageSideBar from '../../containers/landingPageSideBar/LandingPageSideBar';
-import LandingPageHeader from '../../containers/landingPageHeader/LandingPageHeader';
+import MenuBar from '../../layouts/menuBar/MenuBar';
+import LandingPageSideBar from '../../layouts/landingPage/landingPageSideBar/LandingPageSideBar';
+import LandingPageHeader from '../../layouts/landingPage/landingPageHeader/LandingPageHeader';
 import './LandingPage.css'
 
 const LandingPage = () => {
