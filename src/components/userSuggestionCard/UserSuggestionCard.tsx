@@ -1,10 +1,9 @@
 import { PropsUser } from "../../models/PropsData"
+import { IMAGE_BASE_URL } from "../../utils/constants";
 
 type UserSuggestionCardProps = {
     user:PropsUser;
 }
-
-const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 const UserSuggestionCard = ({user}:UserSuggestionCardProps) => {
   return (
