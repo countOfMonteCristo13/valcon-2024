@@ -1,3 +1,4 @@
+import Button from '../../../components/button/Button'
 import RandomRewards from '../randomRewards/RandomRewards'
 import TrandingHashtags from '../trandingHashtags/TrandingHashtags'
 import TrandingReceivers from '../trandingReceivers/TrandingReceivers'
@@ -7,6 +8,7 @@ import './LandingPageSideBar.css'
 const LandingPageSideBar = () => {
   return (
     <section className='side-bar'>
+        <Button title='Add Prop' className='side-bar__add-prop-button'/>
         <UserPoints/>
         <RandomRewards/>
         <TrandingHashtags/>
