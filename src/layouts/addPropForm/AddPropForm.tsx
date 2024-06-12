@@ -36,9 +36,9 @@ const AddPropForm = () => {
   
   return (
     <form className='add-prop-form' onSubmit={handleSubmit}>
-        <InputFormField label='To:' id='toUserId' value={toUser} onChange={handleInputsOnChange}/>
-        <InputFormField label='Message' id='message' value={formData.message} onChange={handleInputsOnChange}/>
-        <InputFormField label='Points' id='points' value={formData.points} onChange={(e) => handleInputsOnChange(e)}/>
+        <InputFormField label='To:' name='toUser' value={toUser} onChange={(e)=> setToUser(e.target.value)}/>
+        <InputFormField label='Message' name='message' value={formData.message} onChange={handleInputsOnChange}/>
+        <InputFormField label='Points' name='points' value={formData.points} onChange={handleInputsOnChange}/>
         <Button type='submit' title='Add'/>
     </form>
   )
