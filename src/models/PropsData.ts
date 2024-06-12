@@ -50,8 +50,9 @@ export type PropModel = {
     toUser:PropsUser;
     hashtags: Hashtag;
     message: string;
-    gitUrl: string;
+    gifUrl: string;
     propPoints: number;
+    totalPoints:number;
     userPoints: UserPoints[];
     totalCommentsCount: number;
     userComments: User[];
