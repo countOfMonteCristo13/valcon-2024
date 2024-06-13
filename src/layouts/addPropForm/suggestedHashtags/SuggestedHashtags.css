@@ -1,0 +1,28 @@
+.suggested-hashtags{
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.suggested-hashtags__card{
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: 0.1rem;
+    padding: 0.3rem 0.6rem;
+    border: 2px solid #212121;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    color: #ffffff;
+}
+
+.suggested-hashtags__card:hover{
+    background: #212121;
+}
+
+.suggested-hashtags__card__hashtag-sign{
+    color: #ffae00;
+    font-size: 1.2rem;
+}
