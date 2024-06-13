@@ -1,6 +1,235 @@
-.add-prop-form{
-    padding: 2rem;
+.add-prop-form {
+    position: relative;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: #3a3a3a;
+    color: #ffffff;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .add-prop-form__header{
+    background: #ffae00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .add-prop-form__header__giveable-points{
+    padding: 0.3rem 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2;
+    color: #212121;
+  }
+  
+  .add-prop-form__body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
+    padding: 0 1rem;
+  }
+  
+  .add-prop-form__body__container-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .add-prop-form__body__container-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .add-prop-form__body__to-user {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: #ffae00;
+  }
+
+  .add-prop-form__body__to-user__input{
+        color: #ffae00;
+  }
+
+  .add-prop-form__body__to-user__input:checked{
+    color: #ffae00;
+    background: #212121;
+  }
+  
+  .add-prop-form__body__to-user__user-sugestions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .add-prop-form__body__points {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .add-prop-form__body__points__input {
+    width: 70px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2rem;
+    background: #ffae00;
+    border: none;
+  }
+  
+  .add-prop-form__body__message {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: #ffae00;
+  }
+  
+  .add-prop-form__body__message__textarea {
+    width: 100%;
+    max-width: 100%;
+    max-height: 200px;
+    padding: 0.5rem;
+    border: none;
+    border: 3px solid #212121;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: #ffae00;
+    font-size: 1rem;
+  }
+
+  .add-prop-form__body__message__textarea__error {
+    border-color: #ff0000;
+  }
+  
+  .add-prop-form__body__hashtags__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    color: #ffae00;
+  }
+
+  .add-prop-form__body__hashtags__label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .add-prop-form__body__hashtags__label__count{
+    color:#ffae00;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .add-prop-form__body__hashtags {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+  }
+  
+  .add-prop-form__body__hashtags .input-form-field {
+    width: 100%;
+  }
+  
+  .add-prop-form__body__hashtags__hashtag-sign {
+    color: #ffae00;
+    line-height: 0.8;
+    padding: 0.4rem;
+    height: 2.5rem;
+    font-size: 2rem;
+  }
+  
+  .add-prop-form__body__selected__hashtags {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .add-prop-form__body__hashtags__input {
+    height: 2.5rem;
+    color: #ffffff;
+  }
+  
+  .add-prop-form__body__hashtags__add-button {
+    border-radius: 0;
+    background: #ffae00;
+    font-weight: 600;
+    color: #212121;
+    height: 100%;
+    border-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+  }
+  
+  .add-prop-form__footer__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .add-prop-form__buttons__footer__button {
+    color: #ffffff;
+    background: #3a3a3a;
+    border: 2px solid #ffae00;
+    transition: all 0.2s ease;
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+  }
+  
+  .add-prop-form__buttons__footer__button:hover {
+    background: #212121;
+    color: #ffae00;
+  }
+  
+  @media screen and (min-width: 769px) {
+    .add-prop-form {
+      justify-content: space-between;
+      gap: 2rem;
+      margin: 1rem;
+      height: fit-content;
+      width: fit-content;
+      border-radius: 1rem;
+    }
+
+    .add-prop-form__header{
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+  
+    .add-prop-form__body {
+      flex: 1;
+      flex-direction: row;
+      height: 100%;
+      gap: 3rem;
+    }
+  
+    .add-prop-form__body__container-1 {
+      justify-content: space-between;
+      width: 300px;
+    }
+
+    .add-prop-form__giveable-points{
+      border-bottom-right-radius: 1rem;
+    }
+
+    .add-prop-form__footer__buttons {
+      flex-direction: row;
+    }
+  }
