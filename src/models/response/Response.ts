@@ -1,7 +1,7 @@
 import { Pageable } from "../Pageable";
 import { Sort } from "../Sort";
 
-export interface Response<T>{
+export interface PageableResponse<T>{
     totalPages: number;
     totalElements: number;
     last: boolean;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Response } from '../models/response/Response';
+import { PageableResponse } from '../models/response/Response';
 import { fetchProps } from '../services/PropsService';
 import { PropModel } from '../models/PropsData';
 
@@ -13,7 +13,7 @@ const useProps = (page: number, size: number, sort: string) => {
     const fetchList = async () => {
       setIsLoading(true);
       try {
-        const response: Response<PropModel> = await fetchProps({page, size, sort});
+        const response: PageableResponse<PropModel> = await fetchProps({page, size, sort});
         if(page === 0){
           setPropsList(response.content);
         }else{
