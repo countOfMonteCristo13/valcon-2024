@@ -1,7 +1,3 @@
-const addZeroes = (value: number): string => {
-    return value < 10 ? `0${value}` : String(value);
-}
-
 export const dateFormat = (date:Date): string => {
     const dateTime = new Date(date).toDateString();
     const hourTime = new Date(date).toLocaleTimeString([], {
