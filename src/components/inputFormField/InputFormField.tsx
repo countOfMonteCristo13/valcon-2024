@@ -32,7 +32,10 @@ const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,
           value={value} 
           onChange={onChange} 
           onFocus={onFocus} 
-          onBlur={onBlur}/>
+          onBlur={onBlur}
+          autoComplete='off'
+          />
+          
     </div>
   )
 }
