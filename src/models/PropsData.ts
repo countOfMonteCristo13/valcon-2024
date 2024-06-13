@@ -41,7 +41,7 @@ export type Hashtag = {
     description: string;
     custom: boolean;
     status: ActivationStatus;
-    creationTime: string;
+    creationTime: Date;
 }
 
 export type PropModel = {
