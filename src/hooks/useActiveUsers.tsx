@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Response } from '../models/response/Response';
+import { PageableResponse } from '../models/response/Response';
 import { PropsUser } from '../models/PropsData';
 import { fetchActiveUsers } from '../services/UsersService';
 
@@ -13,12 +13,8 @@ const useActiveUsers = (page: number, size: number, sort: string, search:string)
     const fetchList = async () => {
       setIsLoading(true);
       try {
-        const response: Response<PropsUser> = await fetchActiveUsers({page, size, sort, search});
-        if(page === 0){
-          setUsersList(response.content);
-        }else{
-          setUsersList((prevList) => [...prevList,...response.content]);
-        }
+        const response: PageableResponse<PropsUser> = await fetchActiveUsers({page, size, sort, search});
+          setUsersList((prevList) => page === 0 ? response.content : [...prevList,...response.content]);
         setTotalPages(response.totalPages);
       } catch (error:any) {
         setHasError(error);
@@ -26,9 +22,14 @@ const useActiveUsers = (page: number, size: number, sort: string, search:string)
         setIsLoading(false);
       }
     };
-    fetchList();
-
-  }, [page, sort, size]); 
+    
+    if (search.length > 1) {
+      fetchList();
+    } else {
+      setUsersList([]);
+    }
+    
+  }, [page, sort, size, search]); 
 
   return { usersList, isLoading, hasError, totalPages };
 };
