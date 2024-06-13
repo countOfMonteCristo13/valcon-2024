@@ -28,7 +28,7 @@ const PropBody = ({prop}: PropBodyProps) => {
             <div className="prop__body__hashtags">
                 {
                 prop.hashtags.map((hashtag) => (
-                    <p className="prop__body__hashtags__title"><span>#</span>{hashtag.name}</p>
+                    <p key={hashtag.name} className="prop__body__hashtags__title"><span>#</span>{hashtag.name}</p>
                 ))
                 }
             </div>
