@@ -3,5 +3,5 @@ export type PostPropRequest = {
     hashtags: string[];
     points:number;
     message:string;
-    gifUrl:string;
+    gifUrl?:string;
 }
