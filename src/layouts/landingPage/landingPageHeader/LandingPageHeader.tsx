@@ -5,10 +5,10 @@ import logo from '../../../assets/propsLogo1.png'
 import'./LandingPageHeader.css'
 
 type LandingPageHeaderProps = {
-  setShowModal: (toggle:boolean) => void
+  onClick: (toggle:boolean) => void
 }
 
-const LandingPageHeader = ({setShowModal}: LandingPageHeaderProps) => {
+const LandingPageHeader = ({onClick}: LandingPageHeaderProps) => {
 
   const {isShown} = useScrollDown();
 
@@ -23,7 +23,7 @@ const LandingPageHeader = ({setShowModal}: LandingPageHeaderProps) => {
         <h2>100</h2>
         <BiCoin size={24} color='#ffae00' className='landing-page__header__actions__points-icon'/>
       </div>
-      <LuPlusCircle size={40} className='landing-page__header__actions__button' onClick={() => setShowModal(true)}/>
+      <LuPlusCircle size={40} className='landing-page__header__actions__button' onClick={() => onClick(true)}/>
     </div>
   </div>
   )
