@@ -1,6 +1,6 @@
 import { BiCoin } from 'react-icons/bi'
 import { RxAvatar } from 'react-icons/rx'
-import { ACTIVE_COLOR, IMAGE_BASE_URL } from '../../utils/constants'
+import { PRIMARY_COLOR, IMAGE_BASE_URL } from '../../utils/constants'
 import { PropModel } from '../../models/PropsData'
 
 type PropHeaderProps = {
@@ -21,7 +21,7 @@ const PropHeader = ({prop}: PropHeaderProps) => {
         </div>
         <div className="prop__header__points">
           <h3 className="prop__header__points__number">{prop.propPoints}</h3>
-          <BiCoin size={24} color={ACTIVE_COLOR}/>
+          <BiCoin size={24} color={PRIMARY_COLOR}/>
         </div>
       </div>
     )
