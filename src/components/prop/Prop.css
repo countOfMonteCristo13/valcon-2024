@@ -79,6 +79,9 @@
 .prop__body__hashtags__title{
     display: flex;
     gap: 0.1rem;
+    background: #212121;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.6rem;
 }
 
 .prop__body__hashtags span{
