@@ -6,7 +6,8 @@ type InputFormFieldProps = {
     label?: string;
     inputType?: HTMLInputTypeAttribute;
     placeholder?: string;
-    value:string;
+    value:string | number;
+    name: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onFocus?: () => void;
     onBlur?: () => void;
@@ -15,7 +16,7 @@ type InputFormFieldProps = {
 }
 
 
-const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur, hasError = false}: InputFormFieldProps) => {
+const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur,name, hasError = false}: InputFormFieldProps) => {
   return (
     <div className='input-form-field'>
       {
@@ -26,12 +27,15 @@ const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,
       }
         <input 
           className={`input-form-field__input ${hasError && 'red-border-bottom'} ${className}`} 
-          id={id} type={inputType} name={id} 
+          id={id} type={inputType} name={name} 
           placeholder={placeholder} 
           value={value} 
           onChange={onChange} 
           onFocus={onFocus} 
-          onBlur={onBlur}/>
+          onBlur={onBlur}
+          autoComplete='off'
+          />
+          
     </div>
   )
 }

@@ -1,4 +1,8 @@
 import { PropModel } from "../../models/PropsData"
+import { dateFormat } from "../../services/DateFormat"
+import PropHeader from "./PropHeader"
+import PropBody from "./PropBody"
+import PropFooter from "./PropFooter"
 import './Prop.css'
 
 type PropPostProps = {
@@ -6,16 +10,14 @@ type PropPostProps = {
 }
 
 const Prop = ({ prop } : PropPostProps) => {
+
+  const dateOfCreation = dateFormat(prop.creationTime);
+
   return (
     <div className="prop">
-      <div className="prop__to-user__wrapper">
-        <h1 className="prop__to-user__name">From: {prop.toUser.firstName}</h1>
-        <p>Points: {prop.propPoints}</p>
-      </div>
-      <div className="prop__message__wrapper">
-        <h4 className="prop__message__title">Message:</h4>
-        <p>{prop.message}</p>
-      </div>
+      <PropHeader prop={prop}/>
+      <PropBody prop={prop}/>
+      <PropFooter dateOfCreation={dateOfCreation}/>
     </div>
   )
 }

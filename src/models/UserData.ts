@@ -1,3 +1,5 @@
+import { PropsUser } from "./PropsData";
+
 export type User = {
     id: number;
     firstName:string;
@@ -7,4 +9,12 @@ export type User = {
 export type UserPoints = {
     user: User,
     points: number;
+}
+
+export type UserStats = {
+    user:PropsUser
+    giveablePoints:number;
+    totalGiveablePoints:number;
+    totalRedeemablePoints:number;
+    totalGiveableUnusedPoints:number;
 }
