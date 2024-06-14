@@ -1,4 +1,4 @@
-import { ActivationStatus, Country } from "./PropsData";
+import { ActivationStatus, Country, PropsUser } from "./PropsData";
 
 export type RandomReward = {
   imageReference: string;
@@ -18,3 +18,13 @@ export type Reward = {
   status: ActivationStatus;
   creationTime: Date;
 };
+
+export type MyReward = {
+  id:number;
+  reward:Reward;
+  user:PropsUser;
+  creationTime:Date;
+  deliveryTime:Date;
+  cancellationTime:Date;
+  status:ActivationStatus;
+}
