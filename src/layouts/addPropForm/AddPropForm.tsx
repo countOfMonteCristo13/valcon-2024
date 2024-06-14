@@ -51,18 +51,8 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
   const [errors, setErrors] = useState<AddPropFormErrors>(initialAddPropFormErrosState);
   const [error,setError] = useState('');
 
-  const { 
-    usersList, 
-    isLoading: isUsersLoading, 
-    hasError:hasUsersError, 
-    totalPages: usersTotalPages 
-  } = useActiveUsers(0,3,"asc",toUser);
-  const { 
-    activeHashtagsList, 
-    isLoading:isHashtagsLoading, 
-    hasError: hasHashtagsError, 
-    totalPages: hashtagsTotalPages 
-  } = useActiveHashtags(0,5,"asc",hashtag);
+  const { usersList } = useActiveUsers(0,3,"asc",toUser);
+  const { activeHashtagsList } = useActiveHashtags(0,5,"asc",hashtag);
 
   const handleInputsOnChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -73,7 +63,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
     if(parseInt(e.target.value) > giveablePoints){
         setFormData(prevFormData => ({ ...prevFormData, points:  giveablePoints }));
       }else{
-
         setFormData(prevFormData => ({ ...prevFormData, points:  parseInt(e.target.value) }));
       }
   }
@@ -194,7 +183,7 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
         setToUser("");
         hideModal(true);
       }).catch((err) => {
-        setError(err.response.data[0]?.message || err.response.data?.message);
+        setError(err.response.data[0]?.message || err.response.data?.message || 'Something went wrong');
       })
 
     }
