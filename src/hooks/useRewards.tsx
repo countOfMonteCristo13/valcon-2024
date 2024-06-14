@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { RandomReward } from "../models/RewardsData";
+import { Reward } from "../models/RewardsData";
 import { getRewards } from "../services/RewardsService";
 import { GetRewardsResponse } from "../models/response/GetRewardsResponse";
 
 const UseRewards = (sort:string[]) => {
-  const [rewards, setRewards] = useState<RandomReward[]>([]);
+  const [rewards, setRewards] = useState<Reward[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
 
