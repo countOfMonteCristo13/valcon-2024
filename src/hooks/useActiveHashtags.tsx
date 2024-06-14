@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PageableResponse } from '../models/response/Response';
+import { PageableResponse } from '../models/response/PageableResponse';
 import { Hashtag } from '../models/PropsData';
 import { fetchActiveHashtags } from '../services/HashtagsService';
 
