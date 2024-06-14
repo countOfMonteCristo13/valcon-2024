@@ -1,6 +1,6 @@
-import { RandomReward, Reward } from "../models/RewardsData";
+import { MyReward, RandomReward, Reward } from "../models/RewardsData";
 import { GetRequestQuery } from "../models/request/GetRequestQuery";
-import { GetRewardsResponse } from "../models/response/GetRewardsResponse";
+import { PageableResponse } from "../models/response/PageableResponse";
 import { axiosInterceptor } from "./AxiosInterceptor";
 
 export const getRandomRewards = async (): Promise<RandomReward[]> => {
@@ -11,24 +11,31 @@ export const getRandomRewards = async (): Promise<RandomReward[]> => {
   return response.data;
 };
 
-export const getRewards = async (sort:string[]): Promise<GetRewardsResponse> => {
-  const response = await axiosInterceptor.get<GetRewardsResponse>("/rewards",
+export const getRewards = async (sort:string[]): Promise<PageableResponse<Reward>> => {
+  const spreadedSort = sort.join(',');
+
+  const response = await axiosInterceptor.get<PageableResponse<Reward>>("/rewards",
     {
       params:{
-        sort,
-        active: 'ACTIVE'
+        sort:spreadedSort,
+        status: 'ACTIVE'
       }
     }
   );
-
   return response.data;
 };
 
 
-export const getMyRewards = async (params: GetRequestQuery): Promise<Reward> => {
-  const response = await axiosInterceptor.get<Reward>('/my-rewards',{
+export const getMyRewards = async (params: GetRequestQuery): Promise<PageableResponse<MyReward>> => {
+  const response = await axiosInterceptor.get<PageableResponse<MyReward>>('/my-rewards',{
     params
   })
+
+  return response.data;
+}
+
+export const reedemReward = async (id:number): Promise<MyReward> => {
+  const response = await axiosInterceptor.post<MyReward>(`/user-rewards/${id}/reedem`);
 
   return response.data;
 }

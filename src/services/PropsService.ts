@@ -2,7 +2,7 @@ import { PropModel } from "../models/PropsData";
 import { GetPropsRequestQuery } from "../models/request/GetPropsRequest";
 import { PostPropRequest } from "../models/request/PostPropRequest";
 import { PostPropResponse } from "../models/response/PostPropResponse";
-import { PageableResponse } from "../models/response/Response";
+import { PageableResponse } from "../models/response/PageableResponse";
 import { axiosInterceptor } from "./AxiosInterceptor";
 
 export const fetchProps = async (params: GetPropsRequestQuery): Promise<PageableResponse<PropModel>> => {
