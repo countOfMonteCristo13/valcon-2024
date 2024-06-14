@@ -4,7 +4,11 @@ import { LuPlusCircle } from 'react-icons/lu'
 import logo from '../../../assets/propsLogo1.png'
 import'./LandingPageHeader.css'
 
-const LandingPageHeader = () => {
+type LandingPageHeaderProps = {
+  onClick: (toggle:boolean) => void
+}
+
+const LandingPageHeader = ({onClick}: LandingPageHeaderProps) => {
 
   const {isShown} = useScrollDown();
 
@@ -19,7 +23,7 @@ const LandingPageHeader = () => {
         <h2>100</h2>
         <BiCoin size={24} color='#ffae00' className='landing-page__header__actions__points-icon'/>
       </div>
-      <LuPlusCircle size={40} className='landing-page__header__actions__button'/>
+      <LuPlusCircle size={40} className='landing-page__header__actions__button' onClick={() => onClick(true)}/>
     </div>
   </div>
   )

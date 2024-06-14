@@ -41,17 +41,18 @@ export type Hashtag = {
     description: string;
     custom: boolean;
     status: ActivationStatus;
-    creationTime: string;
+    creationTime: Date;
 }
 
 export type PropModel = {
     id: number;
     fromUser: PropsUser;
     toUser:PropsUser;
-    hashtags: Hashtag;
+    hashtags: Hashtag[];
     message: string;
-    gitUrl: string;
+    gifUrl: string;
     propPoints: number;
+    totalPoints:number;
     userPoints: UserPoints[];
     totalCommentsCount: number;
     userComments: User[];

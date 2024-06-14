@@ -1,8 +1,7 @@
 import { Pageable } from "../Pageable";
-import { PropModel } from "../PropsData";
 import { Sort } from "../Sort";
 
-export type GetPropsResponse = {
+export interface PageableResponse<T>{
     totalPages: number;
     totalElements: number;
     last: boolean;
@@ -10,8 +9,8 @@ export type GetPropsResponse = {
     numberOfElements: number;
     first: boolean;
     size: number;
-    content: PropModel[];
     number: number;
     sort: Sort;
     empty:boolean;
+    content:T[];
 }

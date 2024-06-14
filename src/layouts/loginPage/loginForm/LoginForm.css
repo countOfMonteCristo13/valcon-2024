@@ -25,7 +25,7 @@
 }
 
 .login-form__button{
-    background: linear-gradient(89deg, #ee82ee, #00d1ff);
+    background: #ffae00;
     color: #ffffff;
     transition: all 0.1s ease-in;
     width: 100%;

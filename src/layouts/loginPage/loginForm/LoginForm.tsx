@@ -75,7 +75,8 @@ const LoginForm = () => {
           label="Username" 
           hasError={hasUsernameError || hasIncorrectCredentials} 
           placeholder="username@mail.com" 
-          id="username" 
+          id="username"
+          name='username'
           inputType="email" 
           value={username} 
           onChange={(e) => setUsername(e.target.value)} 
@@ -87,6 +88,7 @@ const LoginForm = () => {
           hasError={hasPasswordError || hasIncorrectCredentials} 
           placeholder="*********" 
           id="password" 
+          name="password"
           value={password} 
           inputType="password" 
           onChange={(e) => setPassword(e.target.value)} 
