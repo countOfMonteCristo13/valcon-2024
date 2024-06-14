@@ -11,7 +11,7 @@ export const getRandomRewards = async (): Promise<RandomReward[]> => {
   return response.data;
 };
 
-export const getRewards = async (sort:string): Promise<GetRewardsResponse> => {
+export const getRewards = async (sort:string[]): Promise<GetRewardsResponse> => {
   const response = await axiosInterceptor.get<GetRewardsResponse>("/rewards",
     {
       params:{
