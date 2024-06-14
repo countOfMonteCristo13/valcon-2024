@@ -1,0 +1,22 @@
+.rewards-page__layout {
+    display: flex;
+  }
+  
+  .rewards-page {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-row-gap: 1rem;
+  }
+  
+  .rewards-page__all-rewards {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+  .rewards-page__my-rewards {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+  .rewards-page__some-rewards {
+    grid-area: 2 / 3 / 3 / 4;
+  }
+  
