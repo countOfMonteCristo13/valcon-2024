@@ -16,7 +16,7 @@ const UseMyRewards = () => {
         setIsLoading(true);
         const response: PageableResponse<MyReward> = await getMyRewards({});
         setMyRewards(response.content);
-      } catch (error) {
+      } catch (_) {
         setHasError(true);
       } finally {
         setIsLoading(false);

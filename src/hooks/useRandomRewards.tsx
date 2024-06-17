@@ -13,7 +13,7 @@ const UseRandomRewards = () => {
         setIsLoading(true);
         const response: RandomReward[] = await getRandomRewards();
         setRandomRewards(response);
-      } catch (error) {
+      } catch (_) {
         setHasError(true);
       } finally {
         setIsLoading(false);

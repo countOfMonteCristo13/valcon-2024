@@ -13,7 +13,7 @@ const useUserStats = () => {
         try {
           const response:UserStats = await getUsersStats();
           setUserStats(response);
-        } catch (error) {
+        } catch (_) {
             setHasError(true);
         }finally{
             setIsLoading(false);

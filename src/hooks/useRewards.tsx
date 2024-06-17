@@ -14,7 +14,7 @@ const UseRewards = (sort:string[]) => {
         setIsLoading(true);
         const response: GetRewardsResponse = await getRewards(sort);
         setRewards(response.content);
-      } catch (error) {
+      } catch (_) {
         setHasError(true);
       } finally {
         setIsLoading(false);

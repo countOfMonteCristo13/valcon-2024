@@ -7,7 +7,7 @@ const useActiveHashtags = (page: number, size: number, sort: string, search:stri
   const [activeHashtagsList, setActiveHashtagsList] = useState<Hashtag[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [hasError, setHasError] = useState(null);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchList = async () => {
@@ -20,8 +20,8 @@ const useActiveHashtags = (page: number, size: number, sort: string, search:stri
           setActiveHashtagsList((prevList) => [...prevList,...response.content]);
         }
         setTotalPages(response.totalPages);
-      } catch (error:any) {
-        setHasError(error);
+      } catch (_) {
+        setHasError(true);
       } finally {
         setIsLoading(false);
       }

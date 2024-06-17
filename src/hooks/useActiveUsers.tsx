@@ -7,7 +7,7 @@ const useActiveUsers = (page: number, size: number, sort: string, search:string)
   const [usersList, setUsersList] = useState<PropsUser[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [hasError, setHasError] = useState(null);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchList = async () => {
@@ -16,8 +16,8 @@ const useActiveUsers = (page: number, size: number, sort: string, search:string)
         const response: PageableResponse<PropsUser> = await fetchActiveUsers({page, size, sort, search});
         setUsersList((prevList) => page === 0 ? response.content : [...prevList,...response.content]);
         setTotalPages(response.totalPages);
-      } catch (error:any) {
-        setHasError(error);
+      } catch (_) {
+        setHasError(true);
       } finally {
         setIsLoading(false);
       }
