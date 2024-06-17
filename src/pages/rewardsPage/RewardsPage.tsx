@@ -10,9 +10,10 @@ import { redeemReward } from "../../services/RewardsService";
 import { BiCoin } from "react-icons/bi";
 import { LuGift, LuX } from "react-icons/lu";
 import { PRIMARY_COLOR, TABLET_WIDTH_SIZE } from "../../utils/constants";
-import "./RewardsPage.css";
 import Loader from "../../components/loader/Loader";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { ToastType, handleToast } from "../../services/ToastService";
+import "./RewardsPage.css";
 
 const RewardsPage = () => {
   const { rewards, isLoading: areRewardsLoading } = UseRewards(["points"]);
@@ -35,16 +36,13 @@ const RewardsPage = () => {
     };
 }, []);
 
-  const showErrorRedeemToast = () => toast.error('Something went wrong! Try again later.', {duration:2000,className:'toast__layout'});
-  const showSuccessRedeemToast = () => toast.success('Reward successfully redeemed!',{duration:2000,className:'toast__layout'})
-
   const handleRedeem = async (id:number) => {
     try {
       await redeemReward(id);
-      showSuccessRedeemToast();
+      handleToast(ToastType.Success,'Reward successfully redeemed!',15000)
       setFetchAgain(prevState => !prevState)
     } catch (error) {
-      showErrorRedeemToast();
+      handleToast(ToastType.Error,'Something went wrong! Try again later.',2000)
     }
   };
 
