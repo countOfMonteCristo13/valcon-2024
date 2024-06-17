@@ -2,8 +2,8 @@ import { BiCoin } from "react-icons/bi";
 import { Reward } from "../../../models/RewardsData";
 import Button from "../../../components/button/Button";
 import ElementContainer from "../../../components/elementContainer/ElementContainer";
-import { LuGift } from "react-icons/lu";
 import "./RewardCard.css";
+import { buildRewardImageURL } from "../../../utils/imageBuilder";
 
 type RewardCardProps = {
   reward: Reward;
@@ -11,21 +11,12 @@ type RewardCardProps = {
   redeemReward: (id:number) => void;
 };
 
-const REWARD_IMAGE_BASE_URL = import.meta.env.VITE_REWARD_IMAGE_BASE_URL;
-
 const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps) => {
-  const imgUrl = REWARD_IMAGE_BASE_URL + reward.imageReference;
 
   return (
     <ElementContainer className="reward-card">
       <div className="reward-card__img__container">
-        {reward.imageReference ? (
-          <img src={imgUrl} alt="reward-image" className="reward-card__img" />
-        ) : (
-          <LuGift
-            className="reward-card__img-not-found"
-          />
-        )}
+      <img src={buildRewardImageURL(reward.imageReference)} alt="reward-image" className="reward-card__img" />
       </div>
 
       <div className="reward-card__description">

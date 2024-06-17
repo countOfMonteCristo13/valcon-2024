@@ -22,19 +22,19 @@ const RewardsPage = () => {
   const [showMyRewardsOnMobile, setShowMyRewardsOnMobile] =
     useState<boolean>(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-        if(window.innerWidth > TABLET_WIDTH_SIZE){
-            setShowMyRewardsOnMobile(false)
-        }
-    };
+//   useEffect(() => {
+//     const handleResize = () => {
+//         if(window.innerWidth > TABLET_WIDTH_SIZE){
+//             setShowMyRewardsOnMobile(false)
+//         }
+//     };
 
-    window.addEventListener('resize', handleResize);
+//     window.addEventListener('resize', handleResize);
 
-    return () => {
-        window.removeEventListener('resize', handleResize);
-    };
-}, []);
+//     return () => {
+//         window.removeEventListener('resize', handleResize);
+//     };
+// }, []);
 
   const handleRedeem = async (id:number) => {
     try {

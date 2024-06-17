@@ -1,6 +1,5 @@
-import { RxAvatar } from 'react-icons/rx'
-import { IMAGE_BASE_URL } from '../../utils/constants'
 import { PropModel } from '../../models/PropsData'
+import { buildImageURL } from '../../utils/imageBuilder';
 
 type PropBodyProps = {
     prop: PropModel;
@@ -13,12 +12,7 @@ const PropBody = ({prop}: PropBodyProps) => {
             <div className="prop__body__message">
                 <div className="prop__body__message__title">
                     <span>From: </span>
-                    {
-                    prop.fromUser.profileImageReference ? 
-                    <img src={`${IMAGE_BASE_URL}${prop.fromUser.profileImageReference}`} alt="profile-image" className="prop__body__message__img prop__img"/>
-                    :
-                    <RxAvatar size={32}/>
-                    }
+                    <img src={buildImageURL(prop.fromUser.profileImageReference)} alt="profile-image" className='prop__body__message__img prop__img' />
                     <span className="prop__body__message__sender__name">{prop.fromUser.firstName} {prop.fromUser.lastName}</span>
                 </div>
                 <p className="prop__body__message__description">
