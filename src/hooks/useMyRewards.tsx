@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { MyReward, Reward } from "../models/RewardsData";
+import { MyReward } from "../models/RewardsData";
 import { getMyRewards } from "../services/RewardsService";
 import { PageableResponse } from "../models/response/PageableResponse";
 
 const UseMyRewards = () => {
-  const [myRewardsResponse, setMyRewardsResponse] = useState<MyReward[]>([])
-  const [myRewards, setMyRewards] = useState<Reward[]>([]);
+  const [myRewards, setMyRewards] = useState<MyReward[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
 
@@ -13,9 +12,8 @@ const UseMyRewards = () => {
     const fetchRewards = async () => {
       try {
         setIsLoading(true);
-        const response: PageableResponse<MyReward>  = await getMyRewards({});
-        setMyRewardsResponse(response.content);
-        setMyRewards(myRewardsResponse.map(reward => reward.reward));
+        const response: PageableResponse<MyReward> = await getMyRewards({});
+        setMyRewards(response.content);
       } catch (error) {
         setHasError(true);
       } finally {
