@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import MenuBarLink from '../../../components/menuBarLink/MenuBarLink';
-import { BiGift, BiHome } from 'react-icons/bi';
-import { FaArrowRight } from 'react-icons/fa';
-import { RxAvatar } from 'react-icons/rx';
 import logo from '../../../assets/propsLogo1.png'
 import { LAPTOP_WIDTH_SIZE } from '../../../utils/constants';
+import { LuArrowRight, LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu';
 import './SideMenuBar.css'
 
 const SideMenuBar = () => {
 
     const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(window.innerWidth > LAPTOP_WIDTH_SIZE);
-    const [showToggleExpandButton, setShowToggleExpandButton] = useState<boolean>(window.innerWidth <= LAPTOP_WIDTH_SIZE);
+    const [showToggleExpandButton, setShowToggleExpandButton] = useState<boolean>(window.innerWidth < LAPTOP_WIDTH_SIZE);
+
 
     useEffect(() => {
 
@@ -41,30 +40,37 @@ const SideMenuBar = () => {
                 <MenuBarLink 
                     to='/' 
                     linkClassName='side-menu-bar__links__link' 
-                    iconSize={32} icon={BiHome} 
+                    iconSize={32} icon={LuHome} 
                     linkTitleClassName='side-menu-bar__links__link__title' 
                     {...(isMenuBarExpanded && { linkTitle: 'Home' })}
                 />
                 <MenuBarLink 
                     to='/rewards' 
                     linkClassName='side-menu-bar__links__link' 
-                    iconSize={32} icon={BiGift} 
+                    iconSize={32} icon={LuGift} 
                     linkTitleClassName='side-menu-bar__links__link__title'
                     {...(isMenuBarExpanded && { linkTitle: 'Rewards' })}
                 />
-            </div>
-            <div className='side-menu-bar__profile'>
-                {
-                    showToggleExpandButton && 
-                        <div onClick={() => setIsMenuBarExpanded(!isMenuBarExpanded)}>
-                            <FaArrowRight size={32}/>
-                        </div>
-                }
                 <MenuBarLink 
                     to='/profile' 
                     linkClassName='side-menu-bar__links__link' 
-                    iconSize={32} icon={RxAvatar} 
+                    iconSize={32} icon={LuUserCircle2} 
                     {...(isMenuBarExpanded && { linkTitle: 'Profile' })}
+                    linkTitleClassName='side-menu-bar__links__link__title' 
+                />
+            </div>
+            <div className='side-menu-bar__logout'>
+                {
+                    showToggleExpandButton && 
+                        <div onClick={() => setIsMenuBarExpanded(!isMenuBarExpanded)}>
+                            <LuArrowRight size={32}/>
+                        </div>
+                }
+                <MenuBarLink 
+                    to='/logout' 
+                    linkClassName='side-menu-bar__links__link' 
+                    iconSize={32} icon={LuLogOut} 
+                    {...(isMenuBarExpanded && { linkTitle: 'Logout' })}
                     linkTitleClassName='side-menu-bar__links__link__title' 
                 />
             </div>
