@@ -11,18 +11,18 @@ import { BiCoin } from "react-icons/bi";
 import { LuGift, LuX } from "react-icons/lu";
 import { PRIMARY_COLOR, TABLET_WIDTH_SIZE } from "../../utils/constants";
 import "./RewardsPage.css";
+import Loader from "../../components/loader/Loader";
 
 const RewardsPage = () => {
-  const { rewards } = UseRewards(["points"]);
+  const { rewards, isLoading: areRewardsLoading } = UseRewards(["points"]);
   const { userStats } = useUserStats();
-  const { myRewards } = UseMyRewards();
+  const { myRewards,isLoading: areMyRewardsLoading, setFetchAgain } = UseMyRewards();
   const [showMyRewardsOnMobile, setShowMyRewardsOnMobile] =
     useState<boolean>(false);
   const [redeemError, setRedeemError] = useState<boolean>(false);
   
 
   useEffect(() => {
-
     const handleResize = () => {
         if(window.innerWidth > TABLET_WIDTH_SIZE){
             setShowMyRewardsOnMobile(false)
@@ -39,6 +39,7 @@ const RewardsPage = () => {
   const handleRedeem = async (id:number) => {
     try {
       await redeemReward(id);
+      setFetchAgain(prevState => !prevState)
     } catch (error) {
       setRedeemError(true);
     }
@@ -59,10 +60,15 @@ const RewardsPage = () => {
             <LuX size={32} color={PRIMARY_COLOR} />
           </ElementContainer>
         </Header>
-        <MyRewardsList
-          list={myRewards}
-          className="rewards-page__my-rewards__list__mobile"
-        />
+        {
+          areMyRewardsLoading ? 
+          <Loader/>
+          :
+          <MyRewardsList
+            list={myRewards}
+            className="rewards-page__my-rewards__list__mobile"
+          />
+        }
       </div>
     );
   }
@@ -90,21 +96,32 @@ const RewardsPage = () => {
               </ElementContainer>
             </div>
           </Header>
-          <RewardsList
-            list={rewards}
-            className="rewards-page__all-rewards__list"
-            rewardCardRedeemReward={handleRedeem}
-          />
+          {
+            areRewardsLoading ? 
+            <Loader/>
+            :
+            <RewardsList
+              list={rewards}
+              className="rewards-page__all-rewards__list"
+              rewardCardRedeemReward={handleRedeem}
+              redeemablePoints={userStats?.redeemablePoints}
+            />
+          }
         </div>
       )}
       <div className="rewards-page__my-rewards">
         <ElementContainer className="rewards-page__my-rewards__header">
           <h2>My Rewards</h2>
         </ElementContainer>
-        <MyRewardsList
-          list={myRewards}
-          className="rewards-page__my-rewards__list"
-        />
+        {
+          areMyRewardsLoading ? 
+          <Loader/>
+          :
+          <MyRewardsList
+            list={myRewards}
+            className="rewards-page__my-rewards__list"
+          />
+        }
       </div>
     </div>
   );

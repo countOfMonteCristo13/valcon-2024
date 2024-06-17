@@ -12,7 +12,8 @@ type RewardsListProps = {
 const RewardsList = ({
   list,
   className,
-  redeemablePoints,rewardCardRedeemReward
+  redeemablePoints,
+  rewardCardRedeemReward
 }: RewardsListProps) => {
   return (
     <div className={className}>
@@ -22,7 +23,6 @@ const RewardsList = ({
           key={card.id}
           reedmeablePoints={redeemablePoints}
           redeemReward={rewardCardRedeemReward}
-          
         />
       ))}
     </div>
