@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MyReward } from "../../../models/RewardsData";
 import { LuInfo } from "react-icons/lu";
 import Modal from "../../../components/modal/Modal";
-import MyRewardModal from "../myRewardModal/MyRewardModal";
+import MyRewardInfoCard from "../myRewardInfoCard/MyRewardInfoCard";
 import { buildRewardImageURL } from "../../../utils/imageBuilder";
 import "./MyRewardCard.css";
 
@@ -26,7 +26,7 @@ const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
       {
         showMyRewardModal && 
         <Modal closeModal={closeModal}>
-          <MyRewardModal reward={myReward}/>
+          <MyRewardInfoCard reward={myReward}/>
         </Modal>
       }
       <img src={buildRewardImageURL(myReward.reward.imageReference)} alt="reward-img" className="my-reward-card__img"/>

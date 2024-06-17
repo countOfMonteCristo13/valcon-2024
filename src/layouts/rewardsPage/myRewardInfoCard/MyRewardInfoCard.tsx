@@ -1,15 +1,15 @@
 import { BiCoin } from 'react-icons/bi';
 import { LuGift } from 'react-icons/lu';
 import { MyReward } from '../../../models/RewardsData'
-import './MyRewardModal.css'
+import './MyRewardInfoCard.css'
 
-type MyRewardModalProps = {
+type MyRewardInfoCard = {
   reward: MyReward;
 }
 
 const MY_REWARD_IMAGE_BASE_URL = import.meta.env.VITE_REWARD_IMAGE_BASE_URL;
 
-const MyRewardModal = ({reward} : MyRewardModalProps) => {
+const MyRewardInfoCard = ({reward} : MyRewardInfoCard) => {
   const imgUrl = MY_REWARD_IMAGE_BASE_URL + reward.reward.imageReference;
 
   return (
@@ -40,7 +40,7 @@ const MyRewardModal = ({reward} : MyRewardModalProps) => {
             <BiCoin size={32} />
           </div>
           <div>
-            {reward.reward.status}
+            {reward.status}
           </div>
         </div>
       </div>
@@ -48,4 +48,4 @@ const MyRewardModal = ({reward} : MyRewardModalProps) => {
   )
 }
 
-export default MyRewardModal
+export default MyRewardInfoCard
