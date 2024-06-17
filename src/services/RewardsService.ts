@@ -34,8 +34,8 @@ export const getMyRewards = async (params: GetRequestQuery): Promise<PageableRes
   return response.data;
 }
 
-export const reedemReward = async (id:number): Promise<MyReward> => {
-  const response = await axiosInterceptor.post<MyReward>(`/user-rewards/${id}/reedem`);
-
+export const redeemReward = async (id:number): Promise<MyReward> => {
+  const response = await axiosInterceptor.post<MyReward>(`/user-rewards/${id}/redeem`);
+  console.log(response.data);
   return response.data;
 }
