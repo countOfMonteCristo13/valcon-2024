@@ -12,6 +12,7 @@ import { LuGift, LuX } from "react-icons/lu";
 import { PRIMARY_COLOR, TABLET_WIDTH_SIZE } from "../../utils/constants";
 import "./RewardsPage.css";
 import Loader from "../../components/loader/Loader";
+import toast, { Toaster } from "react-hot-toast";
 
 const RewardsPage = () => {
   const { rewards, isLoading: areRewardsLoading } = UseRewards(["points"]);
@@ -19,8 +20,6 @@ const RewardsPage = () => {
   const { myRewards,isLoading: areMyRewardsLoading, setFetchAgain } = UseMyRewards();
   const [showMyRewardsOnMobile, setShowMyRewardsOnMobile] =
     useState<boolean>(false);
-  const [redeemError, setRedeemError] = useState<boolean>(false);
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,12 +35,16 @@ const RewardsPage = () => {
     };
 }, []);
 
+  const showErrorRedeemToast = () => toast.error('Something went wrong! Try again later.', {duration:2000,className:'toast__layout'});
+  const showSuccessRedeemToast = () => toast.success('Reward successfully redeemed!',{duration:2000,className:'toast__layout'})
+
   const handleRedeem = async (id:number) => {
     try {
       await redeemReward(id);
+      showSuccessRedeemToast();
       setFetchAgain(prevState => !prevState)
     } catch (error) {
-      setRedeemError(true);
+      showErrorRedeemToast();
     }
   };
 
@@ -75,6 +78,7 @@ const RewardsPage = () => {
 
   return (
     <div className="rewards-page">
+      <Toaster position="bottom-right" reverseOrder={false} />
       {rewards && (
         <div className="rewards-page__all-rewards">
           <Header className="rewards-page__all-rewards__header">

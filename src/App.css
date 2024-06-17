@@ -2,3 +2,9 @@
   height: 100%;
   width: 100%;
 }
+
+.toast__layout{
+  background: #3a3a3a !important;
+  border: 2px solid #ffae00 !important;
+  color: #ffae00 !important;
+}
