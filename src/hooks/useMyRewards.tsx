@@ -7,6 +7,8 @@ const UseMyRewards = () => {
   const [myRewards, setMyRewards] = useState<MyReward[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
+  const [fetchAgain,setFetchAgain] = useState<boolean>(false);
+
 
   useEffect(() => {
     const fetchRewards = async () => {
@@ -22,9 +24,9 @@ const UseMyRewards = () => {
     };
 
     fetchRewards();
-  }, []);
+  }, [fetchAgain]);
 
-  return { myRewards, isLoading, hasError };
+  return { myRewards, isLoading, hasError, setFetchAgain};
 };
 
 export default UseMyRewards;
