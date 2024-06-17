@@ -1,6 +1,5 @@
 import { IconType } from "react-icons";
 import { NavLink } from "react-router-dom";
-import { PRIMARY_COLOR } from "../../utils/constants";
 
 type MenuBarLinkProps = {
     to: string;
@@ -11,15 +10,9 @@ type MenuBarLinkProps = {
     linkTitleClassName:string;
 }
 
-const isActiveLink = (isActive:boolean) => {
-    return {
-        color: isActive ? PRIMARY_COLOR : '',
-    }
-}
-
 const MenuBarLink = ({to, linkClassName,icon:IconComponent,iconSize=24,linkTitle,linkTitleClassName}: MenuBarLinkProps) => {
   return (
-    <NavLink to={to} className={linkClassName} style={({isActive}) => isActiveLink(isActive)}>
+    <NavLink to={to} className={linkClassName}>
         <IconComponent size={iconSize}/>
         {
           linkTitle &&
