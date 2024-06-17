@@ -5,7 +5,6 @@ import { PostPropRequest } from "../../models/request/PostPropRequest";
 import useActiveUsers from "../../hooks/useActiveUsers";
 import UserSuggestionCard from "../../components/userSuggestionCard/UserSuggestionCard";
 import { LuMinusCircle, LuPlusCircle, LuX } from "react-icons/lu";
-import { PRIMARY_COLOR, SECONDARY_COLOR } from "../../utils/constants";
 import HashtagCard from "./hashtagCard/HashtagCard";
 import useActiveHashtags from "../../hooks/useActiveHashtags";
 import SuggestedHashtags from "./suggestedHashtags/SuggestedHashtags";
@@ -195,9 +194,9 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
       <div className="add-prop-form__header">
         <div className="add-prop-form__header__giveable-points">
           <p>{giveablePoints}</p>
-          <BiCoin size={40} color={SECONDARY_COLOR}/>
+          <BiCoin size={40}/>
         </div>
-        <LuX size={48} color={SECONDARY_COLOR} className="add-prop-form__header__close-button" onClick={() => hideModal(true)}/>
+        <LuX size={48} className="add-prop-form__header__close-button" onClick={() => hideModal(true)}/>
       </div>
       <div className="add-prop-form__body">
         <div className="add-prop-form__body__container-1">
@@ -281,7 +280,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
           <div className="add-prop-form__body__points">
             <LuMinusCircle
               size={32}
-              color={PRIMARY_COLOR}
               onClick={handleDecreasePoints}
             />
             <InputFormField
@@ -294,7 +292,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
             />
             <LuPlusCircle
               size={32}
-              color={PRIMARY_COLOR}
               onClick={handleIncreasePoints}
             />
           </div>

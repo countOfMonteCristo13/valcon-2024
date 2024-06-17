@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MyReward } from "../../../models/RewardsData";
-import { PRIMARY_COLOR } from "../../../utils/constants";
 import { LuGift, LuInfo } from "react-icons/lu";
 import Modal from "../../../components/modal/Modal";
 import MyRewardModal from "../myRewardModal/MyRewardModal";
@@ -38,13 +37,12 @@ const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
           <div className="my-reward-card__img-not-found__wrapper">
             <LuGift
               className="my-reward-card__img-not-found"
-              color={PRIMARY_COLOR}
             />
           </div>
         )
       }
       <div className="my-reward-card__overlay">
-        <LuInfo size={48} color={PRIMARY_COLOR}/>
+        <LuInfo size={48}/>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import { BiCoin } from "react-icons/bi";
 import { Reward } from "../../../models/RewardsData";
-import { PRIMARY_COLOR, TERTIARY_COLOR } from "../../../utils/constants";
 import Button from "../../../components/button/Button";
 import ElementContainer from "../../../components/elementContainer/ElementContainer";
 import { LuGift } from "react-icons/lu";
@@ -25,7 +24,6 @@ const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps)
         ) : (
           <LuGift
             className="reward-card__img-not-found"
-            color={TERTIARY_COLOR}
           />
         )}
       </div>
@@ -42,7 +40,7 @@ const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps)
             <h2 className="reward-card__description__footer__points__number">
               {reward.points}
             </h2>
-            <BiCoin size={32} color={PRIMARY_COLOR} className="reward-card__description__footer__points__icon"/>
+            <BiCoin size={32} className="reward-card__description__footer__points__icon"/>
           </div>
           <Button
             title="Redeem"

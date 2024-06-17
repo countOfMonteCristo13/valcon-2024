@@ -9,7 +9,7 @@ import useUserStats from "../../hooks/useUserStats";
 import { redeemReward } from "../../services/RewardsService";
 import { BiCoin } from "react-icons/bi";
 import { LuGift, LuX } from "react-icons/lu";
-import { PRIMARY_COLOR, TABLET_WIDTH_SIZE } from "../../utils/constants";
+import { TABLET_WIDTH_SIZE } from "../../utils/constants";
 import Loader from "../../components/loader/Loader";
 import { Toaster } from "react-hot-toast";
 import { ToastType, handleToast } from "../../services/ToastService";
@@ -58,7 +58,7 @@ const RewardsPage = () => {
             className="rewards-page__my-rewards__mobile__header__close-button"
             onClick={() => setShowMyRewardsOnMobile(false)}
           >
-            <LuX size={32} color={PRIMARY_COLOR} />
+            <LuX size={32} />
           </ElementContainer>
         </Header>
         {
@@ -88,13 +88,13 @@ const RewardsPage = () => {
                 className="rewards-page__all-rewards__header__container__my-rewards-button"
                 onClick={() => setShowMyRewardsOnMobile(true)}
               >
-                <LuGift size={32} color={PRIMARY_COLOR} />
+                <LuGift size={32}/>
               </ElementContainer>
               <ElementContainer className="rewards-page__all-rewards__header__container__redeem-points">
                 <h2 className="rewards-page__all-rewards__header__container__redeem-points__count">
                   {userStats?.redeemablePoints}
                 </h2>
-                <BiCoin size={32} color={PRIMARY_COLOR} />
+                <BiCoin size={32} />
               </ElementContainer>
             </div>
           </Header>

@@ -27,6 +27,7 @@
   position: absolute;
   top: 0.3rem;
   right: 0.3rem;
+  color: #ffae00;
 }
 
 @media screen and (min-width:768px) {

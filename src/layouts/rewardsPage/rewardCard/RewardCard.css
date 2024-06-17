@@ -24,6 +24,7 @@
   color: #ffae00;
   border-radius: 0.5rem;
   background: #3a3a3a;
+  color: #2b2b2b;
 }
 
 .reward-card__description {
@@ -66,6 +67,7 @@
   background: #3a3a3a;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  color: #ffae00;
 }
 
 .reward-card__description__footer__points__number{

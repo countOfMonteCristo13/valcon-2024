@@ -1,7 +1,6 @@
 import { BiCoin } from 'react-icons/bi';
 import { LuGift } from 'react-icons/lu';
 import { MyReward } from '../../../models/RewardsData'
-import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../../utils/constants';
 import './MyRewardModal.css'
 
 type MyRewardModalProps = {
@@ -22,7 +21,6 @@ const MyRewardModal = ({reward} : MyRewardModalProps) => {
           <LuGift
             size={250}
             className="my-reward-modal__img-not-found"
-            color={TERTIARY_COLOR}
           />
         )}
       </div>
@@ -39,7 +37,7 @@ const MyRewardModal = ({reward} : MyRewardModalProps) => {
             <h2 className="my-reward-modal__description__footer__points__number">
               {reward.reward.points}
             </h2>
-            <BiCoin size={32} color={PRIMARY_COLOR} />
+            <BiCoin size={32} />
           </div>
           <div>
             {reward.reward.status}
