@@ -78,7 +78,7 @@ const RewardsPage = () => {
 
   return (
     <div className="rewards-page">
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       {rewards && (
         <div className="rewards-page__all-rewards">
           <Header className="rewards-page__all-rewards__header">
