@@ -1,0 +1,48 @@
+.my-reward-card {
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
+  width: calc(50% - 0.5rem);
+}
+
+.my-reward-card__img {
+  aspect-ratio: 1/1;
+  border-radius: 0.5rem;
+  width: 100%;
+  background: #3a3a3a;
+  object-fit: contain;
+}
+
+.my-reward-card__overlay{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #3a3a3abe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease;
+  color: #ffae00;
+}
+
+.my-reward-card__overlay:hover{
+  opacity: 1;
+}
+
+
+@media screen and (min-width:768px){
+  .my-reward-card {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .my-reward-card {
+    width: calc(50% - 1rem);
+  }
+}
+
+
+

@@ -1,0 +1,15 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #3a3a3a;
+  transition: all 0.2s ease;
+  z-index: 900;
+}
+
+.header-glass-bg {
+  background: #ffffff30;
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  color: #3a3a3a;
+}

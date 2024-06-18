@@ -5,7 +5,6 @@ import { PostPropRequest } from "../../models/request/PostPropRequest";
 import useActiveUsers from "../../hooks/useActiveUsers";
 import UserSuggestionCard from "../../components/userSuggestionCard/UserSuggestionCard";
 import { LuMinusCircle, LuPlusCircle, LuX } from "react-icons/lu";
-import { PRIMARY_COLOR, SECONDARY_COLOR } from "../../utils/constants";
 import HashtagCard from "./hashtagCard/HashtagCard";
 import useActiveHashtags from "../../hooks/useActiveHashtags";
 import SuggestedHashtags from "./suggestedHashtags/SuggestedHashtags";
@@ -51,18 +50,8 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
   const [errors, setErrors] = useState<AddPropFormErrors>(initialAddPropFormErrosState);
   const [error,setError] = useState('');
 
-  const { 
-    usersList, 
-    isLoading: isUsersLoading, 
-    hasError:hasUsersError, 
-    totalPages: usersTotalPages 
-  } = useActiveUsers(0,3,"asc",toUser);
-  const { 
-    activeHashtagsList, 
-    isLoading:isHashtagsLoading, 
-    hasError: hasHashtagsError, 
-    totalPages: hashtagsTotalPages 
-  } = useActiveHashtags(0,5,"asc",hashtag);
+  const { usersList } = useActiveUsers(0,3,"asc",toUser);
+  const { activeHashtagsList } = useActiveHashtags(0,5,"asc",hashtag);
 
   const handleInputsOnChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -73,7 +62,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
     if(parseInt(e.target.value) > giveablePoints){
         setFormData(prevFormData => ({ ...prevFormData, points:  giveablePoints }));
       }else{
-
         setFormData(prevFormData => ({ ...prevFormData, points:  parseInt(e.target.value) }));
       }
   }
@@ -194,7 +182,7 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
         setToUser("");
         hideModal(true);
       }).catch((err) => {
-        setError(err.response.data[0]?.message || err.response.data?.message);
+        setError(err.response.data[0]?.message || err.response.data?.message || 'Something went wrong');
       })
 
     }
@@ -206,9 +194,9 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
       <div className="add-prop-form__header">
         <div className="add-prop-form__header__giveable-points">
           <p>{giveablePoints}</p>
-          <BiCoin size={40} color={SECONDARY_COLOR}/>
+          <BiCoin size={40}/>
         </div>
-        <LuX size={48} color={SECONDARY_COLOR} className="add-prop-form__header__close-button" onClick={() => hideModal(true)}/>
+        <LuX size={48} className="add-prop-form__header__close-button" onClick={() => hideModal(true)}/>
       </div>
       <div className="add-prop-form__body">
         <div className="add-prop-form__body__container-1">
@@ -292,7 +280,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
           <div className="add-prop-form__body__points">
             <LuMinusCircle
               size={32}
-              color={PRIMARY_COLOR}
               onClick={handleDecreasePoints}
             />
             <InputFormField
@@ -305,7 +292,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
             />
             <LuPlusCircle
               size={32}
-              color={PRIMARY_COLOR}
               onClick={handleIncreasePoints}
             />
           </div>

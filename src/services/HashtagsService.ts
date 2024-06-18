@@ -1,6 +1,6 @@
 import { Hashtag } from "../models/PropsData";
 import { GetHashtagsRequestQuery } from "../models/request/GetHashtagsRequest";
-import { PageableResponse } from "../models/response/Response";
+import { PageableResponse } from "../models/response/PageableResponse";
 import { axiosInterceptor } from "./AxiosInterceptor";
 
 export const fetchActiveHashtags = async ({page,size,sort,search}: GetHashtagsRequestQuery): Promise<PageableResponse<Hashtag>> => {

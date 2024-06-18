@@ -12,9 +12,11 @@ export type UserPoints = {
 }
 
 export type UserStats = {
-    user:PropsUser
-    giveablePoints:number;
-    totalGiveablePoints:number;
-    totalRedeemablePoints:number;
-    totalGiveableUnusedPoints:number;
-}
+    user: PropsUser;
+    giveablePoints: number;
+    redeemablePoints: number;
+    totalGiveablePoints: number;
+    totalRedeemablePoints: number;
+    totalGiveableUnusedPoints: number;
+  };
+

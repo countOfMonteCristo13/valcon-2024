@@ -1,7 +1,6 @@
-import { BiGift, BiHome } from 'react-icons/bi'
 import MenuBarLink from '../../../components/menuBarLink/MenuBarLink'
-import { RxAvatar } from 'react-icons/rx'
 import useScrollDown from '../../../hooks/useScrollDown'
+import { LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu'
 import './BottomMenuBar.css'
 
 const BottomMenuBar = () => {
@@ -13,21 +12,28 @@ return (
             <MenuBarLink 
                 to='/' 
                 linkClassName='bottom-menu-bar__small__links__link' 
-                iconSize={32} icon={BiHome} linkTitle='Home' 
+                iconSize={32} icon={LuHome} linkTitle='Home' 
                 linkTitleClassName='bottom-menu-bar__small__links__link__title'
             />
             <MenuBarLink 
                 to='/rewards' 
                 linkClassName='bottom-menu-bar__small__links__link' 
-                iconSize={32} icon={BiGift} 
+                iconSize={32} icon={LuGift} 
                 linkTitle='Rewards' 
                 linkTitleClassName='bottom-menu-bar__small__links__link__title'
             />
             <MenuBarLink 
                 to='/profile' 
                 linkClassName='bottom-menu-bar__small__links__link' 
-                iconSize={32} icon={RxAvatar} 
+                iconSize={32} icon={LuUserCircle2} 
                 linkTitle='Profile' 
+                linkTitleClassName='bottom-menu-bar__small__links__link__title'
+            />
+            <MenuBarLink 
+                to='/logout' 
+                linkClassName='bottom-menu-bar__small__links__link' 
+                iconSize={32} icon={LuLogOut} 
+                linkTitle='Logout' 
                 linkTitleClassName='bottom-menu-bar__small__links__link__title'
             />
         </div>
