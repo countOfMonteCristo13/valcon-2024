@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { LuX } from 'react-icons/lu';
-import './Modal.css'
+import { flexCenter } from '../../styles/index.css';
+import { modalBodyStyle, modalCloseButton, modalStyle } from './ModalStyle.css';
 
 type ModalProps = {
     children?: ReactNode;
@@ -15,9 +16,9 @@ const Modal = ({ children, closeModal }: ModalProps) => {
   };
 
   return (
-    <div className='modal' onClick={handleCloseModal}>
-      <div className='modal__body' onClick={(e) => e.stopPropagation()}>
-          <div className='modal__body__close-button' onClick={handleCloseModal}>
+    <div className={`${flexCenter} ${modalStyle}`} onClick={handleCloseModal}>
+      <div className={`${modalBodyStyle}`} onClick={(e) => e.stopPropagation()}>
+          <div className={`${modalCloseButton}`} onClick={handleCloseModal}>
             <LuX size={40}/>
           </div>
           {children}
