@@ -5,11 +5,11 @@ import LandingPage from "./pages/landingPage/LandingPage";
 import RewardsPage from "./pages/rewardsPage/RewardsPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import PropsAppLayout from "./layouts/propsAppLayout/PropsAppLayout";
-import "./App.css";
 
 function App() {
+
   return (
-    <main className="props-app">
+    <main>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<LandingPage />} />
