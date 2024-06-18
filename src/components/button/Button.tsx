@@ -1,4 +1,4 @@
-import './Button.css'
+import { buttonStyle } from './ButtonStyle.css'
 
 type ButtonProps = {
     title:string;
@@ -10,7 +10,7 @@ type ButtonProps = {
 
 const Button = ({title, type = 'button', onClick,className='', disabled=false}:ButtonProps) => {
   return (
-    <button className={`button ${className}`} type={type} onClick={onClick} disabled={disabled}>
+    <button className={`${buttonStyle} ${className}`} type={type} onClick={onClick} disabled={disabled}>
       {title}
     </button>
   )
