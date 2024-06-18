@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import "./Header.css";
 import useScrollDown from "../../hooks/useScrollDown";
+import { headerStyle } from "./HeaderStyle.css";
 
 type HeaderProps = {
   children: ReactNode;
@@ -11,7 +11,7 @@ const Header = ({ children, className }: HeaderProps) => {
   const { isScrollOnTop } = useScrollDown();
   return (
     <div
-      className={`header ${className} ${!isScrollOnTop && "header-glass-bg"}`}
+      className={`${headerStyle} ${className} ${!isScrollOnTop && "header-glass-bg"}`}
     >
       {children}
     </div>
