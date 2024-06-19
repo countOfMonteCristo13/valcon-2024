@@ -17,6 +17,10 @@ export const backgroundTertiary = style({
     background: vars.colors.tertiary
 })
 
+export const fullWidth = style({
+    width:'100%'
+})
+
 export const flexCenter = style({
     display:'flex',
     justifyContent:'center',
@@ -34,12 +38,24 @@ export const flexColumn = style({
     flexDirection:'column'
 })
 
+export const directionColumn = style({
+    flexDirection:'column'
+})
+
+export const directionRow = style({
+    flexDirection:'row'
+})
+
 export const flexWrap = style({
     flexWrap: 'wrap'
 })
 
 export const gap0_5 = style({
     gap:'0.5rem'
+})
+
+export const gap1= style({
+    gap:'1rem'
 })
 
 export const borderPrimary = style({
