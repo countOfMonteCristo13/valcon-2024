@@ -21,6 +21,15 @@ export const fullWidth = style({
     width:'100%'
 })
 
+export const fullHeight = style({
+    height:'100%'
+})
+
+export const fullSize = style({
+    width:'100%',
+    height:'100%'
+})
+
 export const flex = style({
     display:'flex'
 })
