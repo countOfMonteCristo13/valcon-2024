@@ -4,7 +4,6 @@ export const buttonStyle = style({
     padding: '0.5rem 1rem',
     fontSize: '1rem',
     fontWeight: 500,
-    borderRadius: '0.5rem',
     borderStyle: 'none',
     cursor: 'pointer',
     ':disabled':{
