@@ -3,7 +3,7 @@ import { vars } from '../../styles/vars.css'
 
 export const inputFormFieldInputStyle = style({
     border:'none',
-    borderBottom: `3px solid ${vars.colors.secondary}`,
+    borderBottom: `3px solid ${vars.colors.primary}`,
     background:'transparent',
     fontSize: '1rem'
 })
