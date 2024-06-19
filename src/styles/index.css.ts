@@ -67,6 +67,10 @@ export const justifyAround = style({
     justifyContent:'space-around'
 })
 
+export const justifyBetween = style({
+    justifyContent: 'space-between'
+})
+
 export const gap0_5 = style({
     gap:'0.5rem'
 })

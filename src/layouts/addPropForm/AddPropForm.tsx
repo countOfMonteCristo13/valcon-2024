@@ -4,14 +4,15 @@ import InputFormField from "../../components/inputFormField/InputFormField";
 import { PostPropRequest } from "../../models/request/PostPropRequest";
 import useActiveUsers from "../../hooks/useActiveUsers";
 import UserSuggestionCard from "../../components/userSuggestionCard/UserSuggestionCard";
-import { LuMinusCircle, LuPlusCircle, LuX } from "react-icons/lu";
+import { LuMinusCircle, LuPlusCircle } from "react-icons/lu";
 import HashtagCard from "./hashtagCard/HashtagCard";
 import useActiveHashtags from "../../hooks/useActiveHashtags";
 import SuggestedHashtags from "./suggestedHashtags/SuggestedHashtags";
 import { addProp } from "../../services/PropsService";
-import { BiCoin } from "react-icons/bi";
-import "./AddPropForm.css";
 import ErrorMessage from "./errorMessage/ErrorMessage";
+import { addPropFormBodyStyle, addPropFormHashtagSign, addPropFormHashtags, addPropFormHashtagsCount, addPropFormMessageTextarea, addPropFormStyle, addPropFormUpperBodyStyle, errorAddPropFormMessageTextarea } from "./AddPropFormStyle.css";
+import { borderRadius0_5, flexAlignCenter, flexColumn, fullWidth, gap0_5, justifyBetween, padding0_5, textColor } from "../../styles/index.css";
+import "./AddPropForms.css";
 
 type AddPropFormProps = {
   hideModal: (toggle: boolean) => void;
@@ -190,28 +191,21 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
 
 
   return (
-    <form className="add-prop-form" onSubmit={handleSubmit}>
-      <div className="add-prop-form__header">
-        <div className="add-prop-form__header__giveable-points">
-          <p>{giveablePoints}</p>
-          <BiCoin size={40}/>
-        </div>
-        <LuX size={48} className="add-prop-form__header__close-button" onClick={() => hideModal(true)}/>
-      </div>
-      <div className="add-prop-form__body">
-        <div className="add-prop-form__body__container-1">
-          <div className="add-prop-form__body__to-user">
+    <form className={addPropFormStyle} onSubmit={handleSubmit}>
+      <div className={addPropFormBodyStyle}>
+        <div className={addPropFormUpperBodyStyle}>
+          <div className={`${flexColumn} ${textColor} ${gap0_5}`}>
             <InputFormField
               label="To:"
               id="toUserId"
               name="toUserId"
               value={toUser}
               onChange={handleUserSearchChange}
-              className="add-prop-form__body__to-user__input"
+              className={textColor}
               hasError={errors.toUserIdError !== ''}
             />
             {usersList.length > 0 && !isUserSelected && (
-              <div className="add-prop-form__body__to-user__user-sugestions">
+              <div className={`${flexColumn} ${gap0_5}`}>
                 {usersList.map((user) => (
                   <UserSuggestionCard
                     key={user.id}
@@ -226,10 +220,10 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
               <ErrorMessage name={errors.toUserIdError}/>
             }
           </div>
-          <div className="add-prop-form__body__message">
+          <div className={`${flexColumn} ${textColor} ${gap0_5}`}>
             <label htmlFor="message">Message:</label>
             <textarea
-              className={`add-prop-form__body__message__textarea ${errors.messageError && 'add-prop-form__body__message__textarea__error'}`}
+              className={`${fullWidth} ${padding0_5} ${borderRadius0_5} ${textColor} ${addPropFormMessageTextarea} ${errors.messageError && errorAddPropFormMessageTextarea}`}
               name="message"
               value={formData.message}
               maxLength={150}
@@ -240,13 +234,13 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
               <ErrorMessage name={errors.messageError}/>
             }
           </div>
-          <div className="add-prop-form__body__hashtags__container">
-              <div className="add-prop-form__body__hashtags__label">
-                <p className="add-prop-form__body__hashtags__label__title">Hashtags (1 to 5):</p>
-                <p className="add-prop-form__body__hashtags__label__count">{hashtagsCount}</p>
+          <div className={`${flexColumn} ${fullWidth} ${gap0_5} ${textColor}`}>
+              <div className={`${flexAlignCenter} ${justifyBetween}`}>
+                <p>Hashtags ( 1 to 5 ):</p>
+                <p className={`${textColor} ${addPropFormHashtagsCount}`}>{hashtagsCount}</p>
               </div>
-            <div className="add-prop-form__body__hashtags">
-              <p className="add-prop-form__body__hashtags__hashtag-sign">#</p>
+            <div className={`${flexAlignCenter} ${addPropFormHashtags}`}>
+              <p className={`${textColor} ${addPropFormHashtagSign}`}>#</p>
               <InputFormField
                 name="hashtag"
                 value={hashtag}
