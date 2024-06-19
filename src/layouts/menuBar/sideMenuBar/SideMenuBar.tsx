@@ -3,18 +3,19 @@ import MenuBarLink from '../../../components/menuBarLink/MenuBarLink';
 import logo from '../../../assets/propsLogo1.png'
 import { LAPTOP_WIDTH_SIZE } from '../../../utils/constants';
 import { LuArrowRight, LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu';
-import './SideMenuBar.css'
+import { logoImageStyle, logoTitleStyle, showLogoTitle, sideMenuBarActiveLinkStyle, sideMenuBarLinkStyle, sideMenuBarStyle } from './SideMenuBarStyle.css';
+import { flexCenter, flexColumn, gap0_5 } from '../../../styles/index.css';
 
 const SideMenuBar = () => {
 
-    const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(window.innerWidth > LAPTOP_WIDTH_SIZE);
+    const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(window.innerWidth >= LAPTOP_WIDTH_SIZE);
     const [showToggleExpandButton, setShowToggleExpandButton] = useState<boolean>(window.innerWidth < LAPTOP_WIDTH_SIZE);
 
 
     useEffect(() => {
 
         const handleResize = () => {
-            if(window.innerWidth > LAPTOP_WIDTH_SIZE){
+            if(window.innerWidth >= LAPTOP_WIDTH_SIZE){
                 setIsMenuBarExpanded(true);
                 setShowToggleExpandButton(false);
             }else{
@@ -31,32 +32,32 @@ const SideMenuBar = () => {
     }, []);
 
     return (
-        <div className={`side-menu-bar ${isMenuBarExpanded && 'side-menu-bar-expanded'}`}>
-            <div className='side-menu-bar__logo'>
-                <img className='side-menu-bar__logo__image' src={logo} alt="logo" />
-                <h2 className={`side-menu-bar__logo__title ${isMenuBarExpanded && 'show'}`}>Props</h2>
+        <div className={`${sideMenuBarStyle}`}>
+            <div className={`${flexCenter} ${gap0_5}`}>
+                <img className={logoImageStyle} src={logo} alt="logo" />
+                <h2 className={`${logoTitleStyle} ${isMenuBarExpanded && showLogoTitle}`}>Props</h2>
             </div>
-            <div className='side-menu-bar__links'>
+            <div className={`${flexColumn} ${gap0_5}`}>
                 <MenuBarLink 
                     to='/' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle}
+                    activeLinkClassName={sideMenuBarActiveLinkStyle}
                     iconSize={32} icon={LuHome} 
-                    linkTitleClassName='side-menu-bar__links__link__title' 
                     {...(isMenuBarExpanded && { linkTitle: 'Home' })}
                 />
                 <MenuBarLink 
                     to='/rewards' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle}
+                    activeLinkClassName={sideMenuBarActiveLinkStyle}
                     iconSize={32} icon={LuGift} 
-                    linkTitleClassName='side-menu-bar__links__link__title'
                     {...(isMenuBarExpanded && { linkTitle: 'Rewards' })}
                 />
                 <MenuBarLink 
                     to='/profile' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle}
+                    activeLinkClassName={sideMenuBarActiveLinkStyle}
                     iconSize={32} icon={LuUserCircle2} 
                     {...(isMenuBarExpanded && { linkTitle: 'Profile' })}
-                    linkTitleClassName='side-menu-bar__links__link__title' 
                 />
             </div>
             <div className='side-menu-bar__logout'>
@@ -68,10 +69,9 @@ const SideMenuBar = () => {
                 }
                 <MenuBarLink 
                     to='/logout' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle} 
                     iconSize={32} icon={LuLogOut} 
                     {...(isMenuBarExpanded && { linkTitle: 'Logout' })}
-                    linkTitleClassName='side-menu-bar__links__link__title' 
                 />
             </div>
         </div>
