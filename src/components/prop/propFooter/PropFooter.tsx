@@ -1,11 +1,13 @@
+import { propFooterStyle } from "./PropFooterStyle.css";
+
 type PropFooterProps = {
     dateOfCreation: string;
 }
 
 const PropFooter = ({dateOfCreation}: PropFooterProps) => {
   return (
-    <div className="prop__footer">
-        <h3 className="prop__footer__date-of-creation">{dateOfCreation}</h3>
+    <div className={propFooterStyle}>
+        <p>{dateOfCreation}</p>
     </div>
   )
 }
