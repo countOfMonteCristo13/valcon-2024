@@ -1,11 +1,11 @@
 import BottomMenuBar from './bottomMenuBar/BottomMenuBar';
 import SideMenuBar from './sideMenuBar/SideMenuBar';
-import './MenuBar.css'
+import { zIndex950 } from '../../styles/index.css';
 
 const MenuBar = () => {
 
   return (
-    <nav className='menu-bar'>
+    <nav className={zIndex950}>
         <BottomMenuBar/>
         <SideMenuBar/>
     </nav>

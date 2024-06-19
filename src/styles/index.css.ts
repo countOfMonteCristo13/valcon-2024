@@ -94,3 +94,15 @@ export const padding1 = style({
 export const padding2 = style({
     padding:'2rem'
 })
+
+export const zIndex800 = style({
+    zIndex:800
+})
+
+export const zIndex900 = style({
+    zIndex:900
+})
+
+export const zIndex950 = style({
+    zIndex:950
+})
