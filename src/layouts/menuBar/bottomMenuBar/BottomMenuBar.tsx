@@ -1,40 +1,40 @@
 import MenuBarLink from '../../../components/menuBarLink/MenuBarLink'
 import useScrollDown from '../../../hooks/useScrollDown'
 import { LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu'
-import './BottomMenuBar.css'
+import { bottomMenuBarActiveLinkStyle, bottomMenuBarLinkStyle, bottomMenuBarStyle, hideBottomMenuBar } from './BottomMenuBar.css'
+import { flexAlignCenter, fullWidth, justifyAround } from '../../../styles/index.css'
 
 const BottomMenuBar = () => {
     const {isShown} = useScrollDown();
 
 return (
-    <div className={`bottom-menu-bar__small ${!isShown && 'hidden'} `}>
-        <div className='bottom-menu-bar__small__links'>
+    <div className={`${bottomMenuBarStyle} ${!isShown && hideBottomMenuBar} `}>
+        <div className={`${flexAlignCenter} ${justifyAround} ${fullWidth}`}>
             <MenuBarLink 
                 to='/' 
-                linkClassName='bottom-menu-bar__small__links__link' 
-                iconSize={32} icon={LuHome} linkTitle='Home' 
-                linkTitleClassName='bottom-menu-bar__small__links__link__title'
+                linkClassName={bottomMenuBarLinkStyle} 
+                iconSize={32} icon={LuHome} linkTitle='Home'
+                activeLinkClassName={bottomMenuBarActiveLinkStyle} 
             />
             <MenuBarLink 
                 to='/rewards' 
-                linkClassName='bottom-menu-bar__small__links__link' 
+                linkClassName={bottomMenuBarLinkStyle}
+                activeLinkClassName={bottomMenuBarActiveLinkStyle}  
                 iconSize={32} icon={LuGift} 
                 linkTitle='Rewards' 
-                linkTitleClassName='bottom-menu-bar__small__links__link__title'
             />
             <MenuBarLink 
                 to='/profile' 
-                linkClassName='bottom-menu-bar__small__links__link' 
+                linkClassName={bottomMenuBarLinkStyle}
+                activeLinkClassName={bottomMenuBarActiveLinkStyle} 
                 iconSize={32} icon={LuUserCircle2} 
                 linkTitle='Profile' 
-                linkTitleClassName='bottom-menu-bar__small__links__link__title'
             />
             <MenuBarLink 
                 to='/logout' 
-                linkClassName='bottom-menu-bar__small__links__link' 
+                linkClassName={bottomMenuBarLinkStyle}
                 iconSize={32} icon={LuLogOut} 
                 linkTitle='Logout' 
-                linkTitleClassName='bottom-menu-bar__small__links__link__title'
             />
         </div>
     </div>

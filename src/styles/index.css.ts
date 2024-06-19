@@ -63,6 +63,10 @@ export const flexWrap = style({
     flexWrap: 'wrap'
 })
 
+export const justifyAround = style({
+    justifyContent:'space-around'
+})
+
 export const gap0_5 = style({
     gap:'0.5rem'
 })
@@ -106,3 +110,7 @@ export const zIndex900 = style({
 export const zIndex950 = style({
     zIndex:950
 })
+
+export const opacity0 = style({
+    opacity:0
+}) 
