@@ -17,6 +17,6 @@ globalStyle('body', {
 globalStyle('a', {
   color: '#ffffff',
   textDecoration: 'none',
-  fontWeight:500,
+  fontWeight:400,
 });
 
