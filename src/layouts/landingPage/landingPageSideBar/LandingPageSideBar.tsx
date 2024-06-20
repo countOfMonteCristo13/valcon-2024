@@ -1,5 +1,4 @@
 import { backgroundTertiary } from '../../../styles/index.css'
-import './LandingPageSideBar.css'
 
 const LandingPageSideBar = () => {
   return (
