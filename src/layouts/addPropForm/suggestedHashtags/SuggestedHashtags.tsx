@@ -1,5 +1,6 @@
 import { Hashtag } from "../../../models/PropsData";
-import './SuggestedHashtags.css'
+import { borderRadius0_5, cursorPointer, flex, flexAlignCenter, flexWrap, fullWidth, gap0_5 } from "../../../styles/index.css";
+import { suggestedHashtagCardStyle } from "./SuggestedHashtagsStyle.css";
 
 type SuggestedHashtagCardProps = {
     list: Hashtag[];
@@ -8,12 +9,12 @@ type SuggestedHashtagCardProps = {
 
 const SuggestedHashtags = ({list, onClick}: SuggestedHashtagCardProps) => {
   return (
-    <div className='suggested-hashtags'>
+    <div className={`${flex} ${flexWrap} ${gap0_5} ${borderRadius0_5} ${fullWidth}`}>
       {
         list.map(item => (
-          <div key={item.id} className="suggested-hashtags__card" onClick={() => onClick(item.name)}>
-            <p className="suggested-hashtags__card__hashtag-sign">#</p>
-            <p className="suggested-hashtags__card__name">{item.name}</p>
+          <div key={item.id} className={`${flexAlignCenter} ${borderRadius0_5} ${cursorPointer} ${suggestedHashtagCardStyle}`} onClick={() => onClick(item.name)}>
+            <p>#</p>
+            <p>{item.name}</p>
           </div>
         ))
       }
