@@ -1,8 +1,10 @@
 import { ChangeEvent, HTMLInputTypeAttribute } from 'react';
-import './InputFormField.css'
+import { flexColumn, fullWidth, gap0_5 } from '../../styles/index.css';
+import { errorBottomBorder, inputFormFieldInputStyle } from './InputFormFiled.css';
 
 type InputFormFieldProps = {
-    id?: string
+    id?: string;
+    fieldClassName?:string;
     label?: string;
     inputType?: HTMLInputTypeAttribute;
     placeholder?: string;
@@ -16,17 +18,17 @@ type InputFormFieldProps = {
 }
 
 
-const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur,name, hasError = false}: InputFormFieldProps) => {
+const InputFormField = ({id,fieldClassName ,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur,name, hasError = false}: InputFormFieldProps) => {
   return (
-    <div className='input-form-field'>
+    <div className={`${fullWidth} ${flexColumn} ${gap0_5} ${fieldClassName}`}>
       {
         label &&
-        <label className='input-form-field__label' htmlFor={id}>
+        <label htmlFor={id}>
             {label}
         </label>
       }
         <input 
-          className={`input-form-field__input ${hasError && 'red-border-bottom'} ${className}`} 
+          className={`${fullWidth} ${inputFormFieldInputStyle} ${hasError && errorBottomBorder} ${className}`} 
           id={id} type={inputType} name={name} 
           placeholder={placeholder} 
           value={value} 

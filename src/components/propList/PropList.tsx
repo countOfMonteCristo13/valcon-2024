@@ -1,6 +1,6 @@
 import { PropModel } from '../../models/PropsData'
+import { directionColumn, flexAlignCenter, fullWidth, gap1 } from '../../styles/index.css'
 import Prop from '../prop/Prop'
-import './PropList.css'
 
 type propListProps = {
   propList: PropModel[]
@@ -8,7 +8,7 @@ type propListProps = {
 
 const PropList = ({propList}:propListProps) => {
   return (
-    <div className='prop-list'>
+    <div className={`${fullWidth} ${flexAlignCenter} ${directionColumn} ${gap1}`}>
       {
         propList.map(propItem => (
             <Prop key={propItem.id} prop={propItem}/>

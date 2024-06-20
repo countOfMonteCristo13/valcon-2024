@@ -1,13 +1,15 @@
 import { ReactNode } from 'react'
 import { LuX } from 'react-icons/lu';
-import './Modal.css'
+import { backgroundTertiary, cursorPointer, flex, flexCenter, fullScreen, textColor } from '../../styles/index.css';
+import { modalBodyStyle, modalCloseButton, modalStyle } from './ModalStyle.css';
 
 type ModalProps = {
     children?: ReactNode;
     closeModal: () => void;
+    className?:string
 }
 
-const Modal = ({ children, closeModal }: ModalProps) => {
+const Modal = ({ children, closeModal,className }: ModalProps) => {
 
   const handleCloseModal = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -15,9 +17,9 @@ const Modal = ({ children, closeModal }: ModalProps) => {
   };
 
   return (
-    <div className='modal' onClick={handleCloseModal}>
-      <div className='modal__body' onClick={(e) => e.stopPropagation()}>
-          <div className='modal__body__close-button' onClick={handleCloseModal}>
+    <div className={`${flexCenter} ${fullScreen} ${modalStyle}`} onClick={handleCloseModal}>
+      <div className={`${fullScreen} ${backgroundTertiary} ${flex} ${modalBodyStyle} ${className}`} onClick={(e) => e.stopPropagation()}>
+          <div className={`${modalCloseButton} ${cursorPointer} ${textColor}`} onClick={handleCloseModal}>
             <LuX size={40}/>
           </div>
           {children}

@@ -1,9 +1,11 @@
+import { useTheme } from "../../../context/ThemeContext";
 import { BiCoin } from "react-icons/bi";
 import { Reward } from "../../../models/RewardsData";
 import Button from "../../../components/button/Button";
-import ElementContainer from "../../../components/elementContainer/ElementContainer";
-import "./RewardCard.css";
 import { buildRewardImageURL } from "../../../utils/imageBuilder";
+import { backgroundSecondary, borderRadius0_5, borderRadius1, box, flex, flex1, flexAlignCenter, fullHeight, fullWidth, gap0_3, justifyBetween, lineHeight1_2, padding0_5, padding1, textColor } from "../../../styles/index.css";
+import { cardContainer, cardDescription, cardImages } from "../RewardsCardStyle.css";
+import { rewardCardDescriptionHeaderTitleStyle, rewardCardPointsIcon, rewardCardPointsNumber, rewardCardRedeemButton, rewardCardStyle } from "./RewardCardStyle.css";
 
 type RewardCardProps = {
   reward: Reward;
@@ -12,36 +14,37 @@ type RewardCardProps = {
 };
 
 const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps) => {
+  const {theme} = useTheme();
 
   return (
-    <ElementContainer className="reward-card">
-      <div className="reward-card__img__container">
-      <img src={buildRewardImageURL(reward.imageReference)} alt="reward-image" className="reward-card__img" />
+    <div className={`${box} ${padding1} ${borderRadius1} ${cardContainer} ${rewardCardStyle}`}>
+      <div className={flex1}>
+      <img src={buildRewardImageURL(theme, reward.imageReference)} alt="reward-image" className={cardImages} />
       </div>
 
-      <div className="reward-card__description">
-        <div className="reward-card__description__header">
-          <h2 className="reward-card__description__header__title">
+      <div className={`${cardDescription} ${justifyBetween} ${fullHeight}`}>
+        <div className={`${flexAlignCenter} ${justifyBetween} ${fullWidth} ${padding1} ${backgroundSecondary} ${borderRadius0_5}`}>
+          <h2 className={rewardCardDescriptionHeaderTitleStyle}>
             {reward.name}
           </h2>
         </div>
-        <p className="reward-card__description__text">{reward.description}</p>
-        <div className="reward-card__footer">
-          <div className="reward-card__description__footer__points">
-            <h2 className="reward-card__description__footer__points__number">
+        <p className={`${padding1} ${backgroundSecondary} ${borderRadius0_5}`}>{reward.description}</p>
+        <div className={`${flex} ${justifyBetween}`}>
+          <div className={`${flexAlignCenter} ${lineHeight1_2} ${backgroundSecondary} ${padding0_5} ${borderRadius0_5} ${textColor} ${gap0_3}`}>
+            <h2 className={rewardCardPointsNumber}>
               {reward.points}
             </h2>
-            <BiCoin size={32} className="reward-card__description__footer__points__icon"/>
+            <BiCoin size={32} className={rewardCardPointsIcon}/>
           </div>
           <Button
             title="Redeem"
-            className="reward-card__footer__redeem-button"
+            className={rewardCardRedeemButton}
             onClick={() => redeemReward(reward.id)}
             disabled={reedmeablePoints! < reward.points}
           />
         </div>
       </div>
-    </ElementContainer>
+    </div>
   );
 };
 

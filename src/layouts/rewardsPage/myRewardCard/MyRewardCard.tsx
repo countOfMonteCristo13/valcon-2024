@@ -1,16 +1,20 @@
 import { useState } from "react";
+import { useTheme } from "../../../context/ThemeContext";
 import { MyReward } from "../../../models/RewardsData";
 import { LuInfo } from "react-icons/lu";
 import Modal from "../../../components/modal/Modal";
 import MyRewardInfoCard from "../myRewardInfoCard/MyRewardInfoCard";
 import { buildRewardImageURL } from "../../../utils/imageBuilder";
-import "./MyRewardCard.css";
+import { backgroundSecondary, borderRadius0_5, borderRadius1, cursorPointer, flexCenter, fullHeight, fullSize, fullWidth, textColor } from "../../../styles/index.css";
+import { myRewardCardImageStyle, myRewardCardOverlayStyle, myRewardCardStyle } from "./MyRewardCard.css";
+
 
 type MyRewardCardProps = {
   myReward: MyReward;
 };
 
 const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
+  const {theme} = useTheme();
   const [showMyRewardModal, setShowMyRewardModal] = useState<boolean>(false);
 
   const closeModal = () => {
@@ -22,15 +26,19 @@ const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
   }
 
   return (
-    <div className="my-reward-card" onClick={openModal}>
+    <div className={`${borderRadius1} ${cursorPointer} ${myRewardCardStyle}`} onClick={openModal}>
       {
         showMyRewardModal && 
         <Modal closeModal={closeModal}>
           <MyRewardInfoCard reward={myReward}/>
         </Modal>
       }
-      <img src={buildRewardImageURL(myReward.reward.imageReference)} alt="reward-img" className="my-reward-card__img"/>
-      <div className="my-reward-card__overlay">
+      <img 
+        src={buildRewardImageURL(theme,myReward.reward.imageReference)} 
+        alt="reward-image" 
+        className={`${borderRadius0_5} ${fullWidth} ${backgroundSecondary} ${fullHeight} ${myRewardCardImageStyle}`}
+      />
+      <div className={`${fullSize} ${flexCenter} ${textColor} ${myRewardCardOverlayStyle}`}>
         <LuInfo size={48}/>
       </div>
     </div>

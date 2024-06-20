@@ -1,5 +1,6 @@
 import { LuTrash2 } from "react-icons/lu";
-import "./HashtagCard.css";
+import { backgroundSecondary, borderRadius0_5, cursorPointer, flexAlignCenter, gap0_5, textColor, textError } from "../../../styles/index.css";
+import { hashtagCardNameStyle, hashtagCardStyle } from "./HashtagCard.css";
 
 type HashtagCardProps = {
   name: string;
@@ -8,16 +9,15 @@ type HashtagCardProps = {
 
 const HashtagCard = ({ name, onClick }: HashtagCardProps) => {
   return (
-    <div className="hashtag-card">
-        <div className="hashtag-card__name">
-            <p className="hashtag-card__name__hashtag-sign">#</p>
+    <div className={`${flexAlignCenter} ${gap0_5} ${backgroundSecondary} ${borderRadius0_5} ${hashtagCardStyle}`}>
+        <div className={`${flexAlignCenter} ${hashtagCardNameStyle}`}>
+            <p className={textColor}>#</p>
             <p>{name}</p>
         </div>
         <LuTrash2
-            color="#ff0000"
             size={20}
             onClick={() => onClick(name)}
-            className="hashtag-card__button"
+            className={`${cursorPointer} ${textError}`}
         />
     </div>
   );

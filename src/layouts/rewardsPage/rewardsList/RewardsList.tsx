@@ -1,6 +1,5 @@
 import { Reward } from "../../../models/RewardsData";
 import RewardCard from "../rewardCard/RewardCard";
-import "./RewardsList.css";
 
 type RewardsListProps = {
   list: Reward[];
@@ -13,7 +12,7 @@ const RewardsList = ({
   list,
   className,
   redeemablePoints,
-  rewardCardRedeemReward
+  rewardCardRedeemReward,
 }: RewardsListProps) => {
   return (
     <div className={className}>

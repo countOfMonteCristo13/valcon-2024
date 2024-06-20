@@ -2,19 +2,20 @@ import { useEffect, useState } from 'react';
 import MenuBarLink from '../../../components/menuBarLink/MenuBarLink';
 import logo from '../../../assets/propsLogo1.png'
 import { LAPTOP_WIDTH_SIZE } from '../../../utils/constants';
-import { LuArrowRight, LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu';
-import './SideMenuBar.css'
+import { LuArrowLeft, LuArrowRight, LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu';
+import { logoImageStyle, logoTitleStyle, showLogoTitle, sideMenuBarActiveLinkStyle, sideMenuBarLinkStyle, sideMenuBarStyle, toggleExpansionButton } from './SideMenuBarStyle.css';
+import { cursorPointer, flexCenter, flexColumn, gap0_5, gap1, textColor } from '../../../styles/index.css';
 
 const SideMenuBar = () => {
 
-    const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(window.innerWidth > LAPTOP_WIDTH_SIZE);
+    const [isMenuBarExpanded, setIsMenuBarExpanded] = useState<boolean>(window.innerWidth >= LAPTOP_WIDTH_SIZE);
     const [showToggleExpandButton, setShowToggleExpandButton] = useState<boolean>(window.innerWidth < LAPTOP_WIDTH_SIZE);
 
 
     useEffect(() => {
 
         const handleResize = () => {
-            if(window.innerWidth > LAPTOP_WIDTH_SIZE){
+            if(window.innerWidth >= LAPTOP_WIDTH_SIZE){
                 setIsMenuBarExpanded(true);
                 setShowToggleExpandButton(false);
             }else{
@@ -31,47 +32,61 @@ const SideMenuBar = () => {
     }, []);
 
     return (
-        <div className={`side-menu-bar ${isMenuBarExpanded && 'side-menu-bar-expanded'}`}>
-            <div className='side-menu-bar__logo'>
-                <img className='side-menu-bar__logo__image' src={logo} alt="logo" />
-                <h2 className={`side-menu-bar__logo__title ${isMenuBarExpanded && 'show'}`}>Props</h2>
+        <div className={`${sideMenuBarStyle}`}>
+            <div className={`${flexColumn} ${gap1}`}>
+                <div className={`${flexCenter} ${gap0_5}`}>
+                    <img className={logoImageStyle} src={logo} alt="logo" />
+                    <h2 className={`${logoTitleStyle} ${textColor} ${isMenuBarExpanded && showLogoTitle}`}>Props</h2>
+                </div>
+                {
+                    showToggleExpandButton && (
+                        isMenuBarExpanded ?
+                        <div 
+                            onClick={() => setIsMenuBarExpanded(!isMenuBarExpanded)} 
+                            className={`${sideMenuBarLinkStyle} ${cursorPointer}`}
+                        >
+                            <LuArrowLeft size={32} className={toggleExpansionButton}/>
+                            <p className={`${textColor}`}>Shrink</p>
+                        </div>
+                        :
+                        <div 
+                            onClick={() => setIsMenuBarExpanded(!isMenuBarExpanded)} 
+                            className={`${sideMenuBarLinkStyle} ${cursorPointer}`}
+                        >
+                            <LuArrowRight size={32} className={toggleExpansionButton}/>
+                        </div>
+                    )
+                }
             </div>
-            <div className='side-menu-bar__links'>
+            <div className={`${flexColumn} ${gap0_5}`}>
                 <MenuBarLink 
                     to='/' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle}
+                    activeLinkClassName={sideMenuBarActiveLinkStyle}
                     iconSize={32} icon={LuHome} 
-                    linkTitleClassName='side-menu-bar__links__link__title' 
                     {...(isMenuBarExpanded && { linkTitle: 'Home' })}
                 />
                 <MenuBarLink 
                     to='/rewards' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle}
+                    activeLinkClassName={sideMenuBarActiveLinkStyle}
                     iconSize={32} icon={LuGift} 
-                    linkTitleClassName='side-menu-bar__links__link__title'
                     {...(isMenuBarExpanded && { linkTitle: 'Rewards' })}
                 />
                 <MenuBarLink 
                     to='/profile' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle}
+                    activeLinkClassName={sideMenuBarActiveLinkStyle}
                     iconSize={32} icon={LuUserCircle2} 
                     {...(isMenuBarExpanded && { linkTitle: 'Profile' })}
-                    linkTitleClassName='side-menu-bar__links__link__title' 
                 />
             </div>
             <div className='side-menu-bar__logout'>
-                {
-                    showToggleExpandButton && 
-                        <div onClick={() => setIsMenuBarExpanded(!isMenuBarExpanded)}>
-                            <LuArrowRight size={32}/>
-                        </div>
-                }
                 <MenuBarLink 
                     to='/logout' 
-                    linkClassName='side-menu-bar__links__link' 
+                    linkClassName={sideMenuBarLinkStyle} 
                     iconSize={32} icon={LuLogOut} 
                     {...(isMenuBarExpanded && { linkTitle: 'Logout' })}
-                    linkTitleClassName='side-menu-bar__links__link__title' 
                 />
             </div>
         </div>
