@@ -12,13 +12,11 @@ import { allPropsStyle, landingPageStyle } from './LandingPageStyle.css';
 import { LuPlus } from 'react-icons/lu';
 import { allRewardsHeaderStyle, rewardsHeaderTitleStyle } from '../rewardsPage/RewardsPageStyle.css';
 import ToggleThemeButton from '../../components/toggleThemeButton/ToggleThemeButton';
+import { useTheme } from '../../context/ThemeContext';
 
-type LandingPageProps = {
-  theme: boolean,
-  toggleTheme: () => void
-}
 
-const LandingPage = ({ theme, toggleTheme }: LandingPageProps) => {
+const LandingPage = () => {
+  const {theme, toggleTheme} = useTheme();
   const [showAddPropModal, setShowAddPropModal] = useState<boolean>(false);
   const [page, setPage] = useState(0);
   const sort = 'asc'
@@ -69,7 +67,7 @@ const LandingPage = ({ theme, toggleTheme }: LandingPageProps) => {
             <p style={{ textAlign: 'center', paddingBottom: '1rem' }}>&#8593; Release to refresh</p>
           }
         >
-          <PropList propList={propsList} theme={theme} />
+          <PropList propList={propsList} />
         </InfiniteScroll>
       </div>
       <LandingPageSideBar />

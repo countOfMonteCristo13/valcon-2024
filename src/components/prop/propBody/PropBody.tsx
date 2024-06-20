@@ -5,14 +5,15 @@ import { buildImageURL } from "../../../utils/imageBuilder";
 import { propImageStyle } from "../Prop.css";
 import { gifModal, propBodyHashtagsTitleStyle, propBodyStyle, propGif } from "./PropBodyStyle.css";
 import Modal from "../../modal/Modal";
+import { useTheme } from "../../../context/ThemeContext";
 
 type PropBodyProps = {
     prop: PropModel;
-    theme: boolean
 }
 
-const PropBody = ({ prop, theme }: PropBodyProps) => {
+const PropBody = ({ prop }: PropBodyProps) => {
     const [showGifModal, setShowGifModal] = useState<boolean>(false);
+    const {theme} = useTheme();
 
     return (
         <div className={`${flexColumn} ${propBodyStyle} ${gap0_5}`}>

@@ -5,15 +5,16 @@ import { buildRewardImageURL } from "../../../utils/imageBuilder";
 import { backgroundSecondary, borderRadius0_5, borderRadius1, box, flex, flex1, flexAlignCenter, fullHeight, fullWidth, gap0_3, justifyBetween, lineHeight1_2, padding0_5, padding1, textColor } from "../../../styles/index.css";
 import { cardContainer, cardDescription, cardImages } from "../RewardsCardStyle.css";
 import { rewardCardDescriptionHeaderTitleStyle, rewardCardPointsIcon, rewardCardPointsNumber, rewardCardRedeemButton, rewardCardStyle } from "./RewardCardStyle.css";
+import { useTheme } from "../../../context/ThemeContext";
 
 type RewardCardProps = {
   reward: Reward;
   reedmeablePoints?: number;
   redeemReward: (id:number) => void;
-  theme: boolean,
 };
 
-const RewardCard = ({ reward, reedmeablePoints, redeemReward, theme }: RewardCardProps) => {
+const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps) => {
+  const {theme} = useTheme();
 
   return (
     <div className={`${box} ${padding1} ${borderRadius1} ${cardContainer} ${rewardCardStyle}`}>

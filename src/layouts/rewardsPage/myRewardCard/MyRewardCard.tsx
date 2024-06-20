@@ -6,14 +6,15 @@ import MyRewardInfoCard from "../myRewardInfoCard/MyRewardInfoCard";
 import { buildRewardImageURL } from "../../../utils/imageBuilder";
 import { backgroundSecondary, borderRadius0_5, borderRadius1, cursorPointer, flexCenter, fullHeight, fullSize, fullWidth, textColor } from "../../../styles/index.css";
 import { myRewardCardImageStyle, myRewardCardOverlayStyle, myRewardCardStyle } from "./MyRewardCard.css";
+import { useTheme } from "../../../context/ThemeContext";
 
 
 type MyRewardCardProps = {
   myReward: MyReward;
-  theme:boolean
 };
 
-const MyRewardCard = ({ myReward,theme }: MyRewardCardProps) => {
+const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
+  const {theme} = useTheme();
   const [showMyRewardModal, setShowMyRewardModal] = useState<boolean>(false);
 
   const closeModal = () => {

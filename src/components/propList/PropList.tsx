@@ -4,15 +4,14 @@ import Prop from '../prop/Prop'
 
 type propListProps = {
   propList: PropModel[]
-  theme:boolean
 }
 
-const PropList = ({propList, theme}:propListProps) => {
+const PropList = ({propList}:propListProps) => {
   return (
     <div className={`${fullWidth} ${flexAlignCenter} ${directionColumn} ${gap1}`}>
       {
         propList.map(propItem => (
-            <Prop key={propItem.id} prop={propItem} theme={theme}/>
+            <Prop key={propItem.id} prop={propItem}/>
         ))
       }
     </div>

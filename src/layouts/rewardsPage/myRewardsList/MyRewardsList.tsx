@@ -4,14 +4,13 @@ import MyRewardCard from "../myRewardCard/MyRewardCard";
 type MyRewardsListProps = {
   list: MyReward[];
   className?: string;
-  theme:boolean;
 };
 
-const MyRewardsList = ({ list, className, theme }: MyRewardsListProps) => {
+const MyRewardsList = ({ list, className }: MyRewardsListProps) => {
   return (
     <div className={className}>
       {list.map((card) => (
-        <MyRewardCard myReward={card} key={card.id} theme={theme}/>
+        <MyRewardCard myReward={card} key={card.id}/>
       ))}
     </div>
   );
