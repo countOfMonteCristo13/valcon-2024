@@ -5,7 +5,8 @@ import { login } from "../../../services/AuthService";
 import { LoginFormData } from "../../../models/LoginFormData";
 import InputFormField from "../../../components/inputFormField/InputFormField";
 import Button from "../../../components/button/Button";
-import './LoginForm.css'
+import { loginFormSubmitButton, loginFormStyle, loginFormTitle } from "./LoginFormStyle.css";
+import { directionColumn, flexAlignCenter, fullWidth, gap1, padding0_5, textColor, textError } from "../../../styles/index.css";
 
 
 const LoginForm = () => {
@@ -68,9 +69,9 @@ const LoginForm = () => {
 
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h1 className="login-form__title">Login</h1>
-      <div className="login-form__inputs">
+    <form className={loginFormStyle} onSubmit={handleSubmit}>
+      <h1 className={`${textColor} ${loginFormTitle}`}>Login</h1>
+      <div className={`${flexAlignCenter} ${directionColumn} ${gap1} ${fullWidth}`}>
         <InputFormField 
           label="Username" 
           hasError={hasUsernameError || hasIncorrectCredentials} 
@@ -82,6 +83,8 @@ const LoginForm = () => {
           onChange={(e) => setUsername(e.target.value)} 
           onFocus={() => setHasUsernameError(false)} 
           onBlur={handleUsernameOnBlur}
+          fieldClassName={textColor}
+          className={`${textColor} ${padding0_5}`}
         />
         <InputFormField 
           label="Password" 
@@ -94,17 +97,19 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)} 
           onFocus={() => setHasPasswordError(false)} 
           onBlur={handlePasswordOnBlur}
+          fieldClassName={textColor}
+          className={`${textColor} ${padding0_5}`}
         />
         {
           (hasUsernameError || hasPasswordError) && 
-          <p className="login-form__error">All fields are required</p>
+          <p className={textError}>All fields are required</p>
         }
         {
           hasIncorrectCredentials && 
-          <p className="login-form__error">Wrong credentials</p>
+          <p className={textError}>Wrong credentials</p>
         }
       </div>
-      <Button title="Login" type="submit" className="login-form__button"/>
+      <Button title="Login" type="submit" className={loginFormSubmitButton}/>
     </form>
   )
 }
