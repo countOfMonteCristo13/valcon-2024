@@ -4,7 +4,7 @@ import { LuInfo } from "react-icons/lu";
 import Modal from "../../../components/modal/Modal";
 import MyRewardInfoCard from "../myRewardInfoCard/MyRewardInfoCard";
 import { buildRewardImageURL } from "../../../utils/imageBuilder";
-import { backgroundSecondary, borderRadius0_5, borderRadius1, flexCenter, fullSize, fullWidth, textColor } from "../../../styles/index.css";
+import { backgroundSecondary, borderRadius0_5, borderRadius1, cursorPointer, flexCenter, fullHeight, fullSize, fullWidth, textColor } from "../../../styles/index.css";
 import { myRewardCardImageStyle, myRewardCardOverlayStyle, myRewardCardStyle } from "./MyRewardCard.css";
 
 
@@ -24,7 +24,7 @@ const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
   }
 
   return (
-    <div className={`${borderRadius1} ${myRewardCardStyle}`} onClick={openModal}>
+    <div className={`${borderRadius1} ${cursorPointer} ${myRewardCardStyle}`} onClick={openModal}>
       {
         showMyRewardModal && 
         <Modal closeModal={closeModal}>
@@ -34,7 +34,7 @@ const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
       <img 
         src={buildRewardImageURL(myReward.reward.imageReference)} 
         alt="reward-image" 
-        className={`${borderRadius0_5} ${fullWidth} ${backgroundSecondary} ${myRewardCardImageStyle}`}
+        className={`${borderRadius0_5} ${fullWidth} ${backgroundSecondary} ${fullHeight} ${myRewardCardImageStyle}`}
       />
       <div className={`${fullSize} ${flexCenter} ${textColor} ${myRewardCardOverlayStyle}`}>
         <LuInfo size={48}/>

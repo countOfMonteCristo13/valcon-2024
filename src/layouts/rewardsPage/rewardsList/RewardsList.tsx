@@ -1,6 +1,5 @@
 import { Reward } from "../../../models/RewardsData";
 import RewardCard from "../rewardCard/RewardCard";
-import "./RewardsList.css";
 
 type RewardsListProps = {
   list: Reward[];
