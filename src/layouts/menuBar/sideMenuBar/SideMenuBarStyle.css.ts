@@ -59,4 +59,8 @@ export const sideMenuBarActiveLinkStyle = style({
     border: `2px solid ${vars.colors.primary}`,
 })
 
+export const toggleExpansionButton = style({
+    color:vars.colors.primary
+})
+
 
