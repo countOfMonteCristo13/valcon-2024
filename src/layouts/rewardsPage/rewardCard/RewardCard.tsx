@@ -10,14 +10,15 @@ type RewardCardProps = {
   reward: Reward;
   reedmeablePoints?: number;
   redeemReward: (id:number) => void;
+  theme: boolean,
 };
 
-const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps) => {
+const RewardCard = ({ reward, reedmeablePoints, redeemReward, theme }: RewardCardProps) => {
 
   return (
     <div className={`${box} ${padding1} ${borderRadius1} ${cardContainer} ${rewardCardStyle}`}>
       <div className={flex1}>
-      <img src={buildRewardImageURL(reward.imageReference)} alt="reward-image" className={cardImages} />
+      <img src={buildRewardImageURL(theme, reward.imageReference)} alt="reward-image" className={cardImages} />
       </div>
 
       <div className={`${cardDescription} ${justifyBetween} ${fullHeight}`}>

@@ -6,13 +6,15 @@ type RewardsListProps = {
   className?: string;
   redeemablePoints?: number;
   rewardCardRedeemReward: (id:number) => void;
+  theme:boolean,
 };
 
 const RewardsList = ({
   list,
   className,
   redeemablePoints,
-  rewardCardRedeemReward
+  rewardCardRedeemReward,
+  theme
 }: RewardsListProps) => {
   return (
     <div className={className}>
@@ -22,6 +24,7 @@ const RewardsList = ({
           key={card.id}
           reedmeablePoints={redeemablePoints}
           redeemReward={rewardCardRedeemReward}
+          theme={theme}
         />
       ))}
     </div>

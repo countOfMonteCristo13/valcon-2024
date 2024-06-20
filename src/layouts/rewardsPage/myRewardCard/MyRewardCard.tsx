@@ -10,9 +10,10 @@ import { myRewardCardImageStyle, myRewardCardOverlayStyle, myRewardCardStyle } f
 
 type MyRewardCardProps = {
   myReward: MyReward;
+  theme:boolean
 };
 
-const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
+const MyRewardCard = ({ myReward,theme }: MyRewardCardProps) => {
   const [showMyRewardModal, setShowMyRewardModal] = useState<boolean>(false);
 
   const closeModal = () => {
@@ -32,7 +33,7 @@ const MyRewardCard = ({ myReward }: MyRewardCardProps) => {
         </Modal>
       }
       <img 
-        src={buildRewardImageURL(myReward.reward.imageReference)} 
+        src={buildRewardImageURL(theme,myReward.reward.imageReference)} 
         alt="reward-image" 
         className={`${borderRadius0_5} ${fullWidth} ${backgroundSecondary} ${fullHeight} ${myRewardCardImageStyle}`}
       />

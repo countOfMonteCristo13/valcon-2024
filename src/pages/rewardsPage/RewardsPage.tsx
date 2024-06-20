@@ -13,8 +13,14 @@ import { Toaster } from "react-hot-toast";
 import { ToastType, handleToast } from "../../services/ToastService";
 import { allRewardsHeaderButtonStyle, allRewardsHeaderStyle, rewardsHeaderTitleStyle, allRewardsListStyle, allRewardsStyle, headerButtonStyle, myRewardsHeaderStyle, myRewardsListStyle, myRewardsMobileStyle, myRewardsStyle, rewardsPageStyle } from "./RewardsPageStyle.css";
 import { backgroundSecondary, backgroundTertiary, borderRadius1, box, directionColumn, flex, flex1, flexAlignCenter, flexWrap, gap0_3, gap0_5, gap1, heightScreen, hideScrollBar, justifyBetween, padding0_5_1, padding1, textColor, zIndex950 } from "../../styles/index.css";
+import ToggleThemeButton from "../../components/toggleThemeButton/ToggleThemeButton";
 
-const RewardsPage = () => {
+type RewardsPageProps = {
+  theme: boolean;
+  toggleTheme: () => void
+}
+
+const RewardsPage = ({ theme, toggleTheme }: RewardsPageProps) => {
   const { rewards, isLoading: areRewardsLoading } = UseRewards(["points"]);
   const { userStats } = useUserStats();
   const { myRewards, isLoading: areMyRewardsLoading, setFetchAgain } = UseMyRewards();
@@ -41,6 +47,7 @@ const RewardsPage = () => {
             Rewards
           </h2>
           <div className={`${flexAlignCenter} ${gap0_5}`}>
+            <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />
             <div
               className={`${box} ${headerButtonStyle} ${allRewardsHeaderButtonStyle}`}
               onClick={() => setShowMyRewardsOnMobile(true)}
@@ -64,12 +71,12 @@ const RewardsPage = () => {
               <div className={`${backgroundSecondary} ${zIndex950} ${myRewardsMobileStyle}`}>
                 <Header className={`${flexAlignCenter} ${padding1} ${justifyBetween}`}>
                   <h2 className={rewardsHeaderTitleStyle}>My Rewards</h2>
-                  <div
-                    className={`${box} ${headerButtonStyle}`}
-                    onClick={() => setShowMyRewardsOnMobile(false)}
-                  >
-                    <LuX size={32} />
-                  </div>
+                    <div
+                      className={`${box} ${headerButtonStyle}`}
+                      onClick={() => setShowMyRewardsOnMobile(false)}
+                    >
+                      <LuX size={32} />
+                    </div>
                 </Header>
                 {areMyRewardsLoading ? (
                   <Loader />
@@ -77,6 +84,7 @@ const RewardsPage = () => {
                   <MyRewardsList
                     list={myRewards}
                     className={`${flex} ${flexWrap} ${gap1} ${padding1} ${backgroundTertiary}`}
+                    theme={theme}
                   />
                 )}
               </div>
@@ -86,6 +94,7 @@ const RewardsPage = () => {
               className={`${flex} ${directionColumn} ${gap1} ${allRewardsListStyle} ${backgroundSecondary}`}
               rewardCardRedeemReward={handleRedeem}
               redeemablePoints={userStats?.redeemablePoints}
+              theme={theme}
             />
           </>
         )}
@@ -101,6 +110,7 @@ const RewardsPage = () => {
             <MyRewardsList
               list={myRewards}
               className={`${flex} ${flexWrap} ${gap1} ${myRewardsListStyle}`}
+              theme = {theme}
             />
         }
       </div>

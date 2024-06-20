@@ -7,13 +7,14 @@ import { propImageStyle } from '../Prop.css';
 
 type PropHeaderProps = {
     prop: PropModel;
+    theme:boolean;
 }
 
-const PropHeader = ({prop}: PropHeaderProps) => {
+const PropHeader = ({prop,theme}: PropHeaderProps) => {
     return (
       <div className={`${flexAlignCenter} ${propHeaderStyle} ${gap0_5}`}>
         <div className={`${flexAlignCenter} ${gap0_5}`}>
-          <img src={buildImageURL(prop.toUser.profileImageReference)} alt="profile-image" className={propImageStyle} />
+          <img src={buildImageURL(theme,prop.toUser.profileImageReference)} alt="profile-image" className={propImageStyle} />
           <p>{prop.toUser.firstName} {prop.toUser.lastName}</p>
         </div>
         <div className={`${flexAlignCenter} ${propHeaderPointsStyle}`}>
