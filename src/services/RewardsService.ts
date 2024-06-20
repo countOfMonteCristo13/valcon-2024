@@ -11,13 +11,12 @@ export const getRandomRewards = async (): Promise<RandomReward[]> => {
   return response.data;
 };
 
-export const getRewards = async (sort:string[]): Promise<PageableResponse<Reward>> => {
-  const spreadedSort = sort.join(',');
+export const getRewards = async (params:GetRequestQuery): Promise<PageableResponse<Reward>> => {
 
   const response = await axiosInterceptor.get<PageableResponse<Reward>>("/rewards",
     {
       params:{
-        sort:spreadedSort,
+        ...params,
         status: 'ACTIVE'
       }
     }

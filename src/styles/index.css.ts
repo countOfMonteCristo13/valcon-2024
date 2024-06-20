@@ -187,10 +187,5 @@ export const ratio1 = style({
     aspectRatio:'1/1'
 })
 
-export const infiniteScrollMessageStyle = style({
-    paddingBottom:'1rem',
-    textAlign:'center',
-    color: vars.colors.primary
-})
 
 

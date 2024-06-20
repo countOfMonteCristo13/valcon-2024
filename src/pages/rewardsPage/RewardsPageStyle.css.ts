@@ -15,6 +15,7 @@ export const rewardsPageStyle = style({
 
 export const allRewardsStyle = style({
     gridArea:'1 / 1 / 2 / 2',
+    minHeight:'100vh',
     '@media':{
         'screen and (min-width: 768px)':{
             gridArea: '1 / 1 / 2 / 3',
