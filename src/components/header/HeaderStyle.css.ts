@@ -6,7 +6,6 @@ export const headerStyle = style({
     top:0,
     width:'100%',
     background: vars.colors.secondary,
-    transition:'all 0.2s ease',
     zIndex:900
 })
 
