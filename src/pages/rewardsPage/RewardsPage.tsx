@@ -1,20 +1,20 @@
 import { useState } from "react";
-import RewardsList from "../../layouts/rewardsPage/rewardsList/RewardsList";
-import MyRewardsList from "../../layouts/rewardsPage/myRewardsList/MyRewardsList";
-import Header from "../../components/header/Header";
+import { useTheme } from "../../context/ThemeContext";
 import UseRewards from "../../hooks/useRewards";
 import UseMyRewards from "../../hooks/useMyRewards";
 import useUserStats from "../../hooks/useUserStats";
+import RewardsList from "../../layouts/rewardsPage/rewardsList/RewardsList";
+import MyRewardsList from "../../layouts/rewardsPage/myRewardsList/MyRewardsList";
+import Header from "../../components/header/Header";
+import Loader from "../../components/loader/Loader";
+import ToggleThemeButton from "../../components/toggleThemeButton/ToggleThemeButton";
+import { Toaster } from "react-hot-toast";
 import { redeemReward } from "../../services/RewardsService";
 import { BiCoin } from "react-icons/bi";
 import { LuGift, LuX } from "react-icons/lu";
-import Loader from "../../components/loader/Loader";
-import { Toaster } from "react-hot-toast";
 import { ToastType, handleToast } from "../../services/ToastService";
 import { allRewardsHeaderButtonStyle, allRewardsHeaderStyle, rewardsHeaderTitleStyle, allRewardsListStyle, allRewardsStyle, headerButtonStyle, myRewardsHeaderStyle, myRewardsListStyle, myRewardsMobileStyle, myRewardsStyle, rewardsPageStyle } from "./RewardsPageStyle.css";
 import { backgroundSecondary, backgroundTertiary, borderRadius1, box, directionColumn, flex, flex1, flexAlignCenter, flexWrap, gap0_3, gap0_5, gap1, heightScreen, hideScrollBar, justifyBetween, padding0_5_1, padding1, textColor, zIndex950 } from "../../styles/index.css";
-import ToggleThemeButton from "../../components/toggleThemeButton/ToggleThemeButton";
-import { useTheme } from "../../context/ThemeContext";
 
 const RewardsPage = () => {
   const {theme, toggleTheme} = useTheme();

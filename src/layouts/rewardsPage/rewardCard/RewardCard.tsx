@@ -1,3 +1,4 @@
+import { useTheme } from "../../../context/ThemeContext";
 import { BiCoin } from "react-icons/bi";
 import { Reward } from "../../../models/RewardsData";
 import Button from "../../../components/button/Button";
@@ -5,7 +6,6 @@ import { buildRewardImageURL } from "../../../utils/imageBuilder";
 import { backgroundSecondary, borderRadius0_5, borderRadius1, box, flex, flex1, flexAlignCenter, fullHeight, fullWidth, gap0_3, justifyBetween, lineHeight1_2, padding0_5, padding1, textColor } from "../../../styles/index.css";
 import { cardContainer, cardDescription, cardImages } from "../RewardsCardStyle.css";
 import { rewardCardDescriptionHeaderTitleStyle, rewardCardPointsIcon, rewardCardPointsNumber, rewardCardRedeemButton, rewardCardStyle } from "./RewardCardStyle.css";
-import { useTheme } from "../../../context/ThemeContext";
 
 type RewardCardProps = {
   reward: Reward;

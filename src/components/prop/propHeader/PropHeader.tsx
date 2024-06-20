@@ -1,10 +1,10 @@
+import { useTheme } from '../../../context/ThemeContext';
 import { BiCoin } from 'react-icons/bi'
 import { PropModel } from '../../../models/PropsData'
 import { buildImageURL } from '../../../utils/imageBuilder'
 import { flexAlignCenter, gap0_5} from '../../../styles/index.css';
 import { propHeaderPointsStyle, propHeaderStyle } from './PropHeader.css';
 import { propImageStyle } from '../Prop.css';
-import { useTheme } from '../../../context/ThemeContext';
 
 type PropHeaderProps = {
     prop: PropModel;

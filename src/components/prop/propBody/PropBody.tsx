@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useTheme } from "../../../context/ThemeContext";
 import { PropModel } from "../../../models/PropsData";
 import { backgroundSecondary, borderRadius0_5, cursorPointer, flexAlignCenter, flexCenter, flexColumn, flexWrap, gap0_5, padding0_5 } from "../../../styles/index.css";
 import { buildImageURL } from "../../../utils/imageBuilder";
 import { propImageStyle } from "../Prop.css";
 import { gifModal, propBodyHashtagsTitleStyle, propBodyStyle, propGif } from "./PropBodyStyle.css";
 import Modal from "../../modal/Modal";
-import { useTheme } from "../../../context/ThemeContext";
 
 type PropBodyProps = {
     prop: PropModel;

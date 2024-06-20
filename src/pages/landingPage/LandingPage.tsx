@@ -1,19 +1,19 @@
 import { useState } from 'react'
-import PropList from '../../components/propList/PropList'
+import { useTheme } from '../../context/ThemeContext';
 import useProps from '../../hooks/useProps';
+import useUserStats from '../../hooks/useUserStats';
+import PropList from '../../components/propList/PropList'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LandingPageSideBar from '../../layouts/landingPage/landingPageSideBar/LandingPageSideBar';
 import Modal from '../../components/modal/Modal';
 import AddPropForm from '../../layouts/addPropForm/AddPropForm';
-import useUserStats from '../../hooks/useUserStats';
 import Header from '../../components/header/Header';
+import Loader from '../../components/loader/Loader';
+import ToggleThemeButton from '../../components/toggleThemeButton/ToggleThemeButton';
 import { backgroundSecondary, borderRadius1, box, cursorPointer, directionColumn, flex1, flexAlignCenter, flexJustifyCenter, fullWidth, gap0_3, gap0_5, gap1, infiniteScrollMessageStyle, justifyBetween, padding0_5, padding1, paddingX1, textColor } from '../../styles/index.css';
 import { allPropsStyle, landingPageStyle } from './LandingPageStyle.css';
 import { LuPlus } from 'react-icons/lu';
 import { allRewardsHeaderStyle, rewardsHeaderTitleStyle } from '../rewardsPage/RewardsPageStyle.css';
-import ToggleThemeButton from '../../components/toggleThemeButton/ToggleThemeButton';
-import { useTheme } from '../../context/ThemeContext';
-import Loader from '../../components/loader/Loader';
 
 
 const LandingPage = () => {
