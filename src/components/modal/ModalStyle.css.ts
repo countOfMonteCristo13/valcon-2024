@@ -8,16 +8,16 @@ export const modalStyle = style({
     left: 0,
     height: '100vh',
     width: '100vw',
-    zIndex: 900,
+    zIndex: 999,
     backdropFilter: 'blur(8.2px)',
-    WebkitBackdropFilter: 'blur(8.2px)'
+    WebkitBackdropFilter: 'blur(8.2px)',
 })
 
 export const modalBodyStyle = style({
     position: 'relative',
     background: vars.colors.tertiary,
     width: '100vw',
-    height: 'calc(100vh - 4rem)',
+    height: '100vh',
     alignSelf:'flex-start',
     border: 'none',
     padding: '4rem 1rem 1rem 1rem',
