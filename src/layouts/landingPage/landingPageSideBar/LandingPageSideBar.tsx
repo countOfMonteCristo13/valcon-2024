@@ -1,22 +1,9 @@
-import Button from '../../../components/button/Button'
-import RandomRewards from '../randomRewards/RandomRewards'
-import TrandingHashtags from '../trandingHashtags/TrandingHashtags'
-import TrandingReceivers from '../trandingReceivers/TrandingReceivers'
-import UserPoints from '../userPoints/UserPoints'
+import { backgroundTertiary } from '../../../styles/index.css'
 import './LandingPageSideBar.css'
 
-type LandingPageSideBarProps = {
-  onClick: (toggle:boolean) => void
-}
-
-const LandingPageSideBar = ({onClick} : LandingPageSideBarProps) => {
+const LandingPageSideBar = () => {
   return (
-    <section className='side-bar'>
-        <Button title='Add Prop' className='side-bar__add-prop-button' onClick={() => onClick(true)}/>
-        <UserPoints/>
-        <RandomRewards/>
-        <TrandingHashtags/>
-        <TrandingReceivers/>
+    <section className={backgroundTertiary}>
     </section>
   )
 }
