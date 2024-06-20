@@ -165,3 +165,7 @@ export const hideScrollBar = style({
     }
 })
 
+export const ratio1 = style({
+    aspectRatio:'1/1'
+})
+
