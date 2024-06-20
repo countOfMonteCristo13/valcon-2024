@@ -4,7 +4,7 @@ import { headerStyle } from "./HeaderStyle.css";
 
 type HeaderProps = {
   children: ReactNode;
-  className: string;
+  className?: string;
 };
 
 const Header = ({ children, className }: HeaderProps) => {
