@@ -14,7 +14,6 @@ import { addPropFormBodyStyle, addPropFormFooter, addPropFormHashtagAddButton, a
 import { backgroundPrimary, borderRadius0_5, directionColumn, flexAlignCenter, flexCenter, flexColumn, flexWrap, fullHeight, fullWidth, gap0_5, justifyBetween, padding0_5, textColor, textColorTertiary } from "../../styles/index.css";
 
 type AddPropFormProps = {
-  hideModal: (toggle: boolean) => void;
   giveablePoints: number;
   userId:number;
 };
@@ -41,7 +40,7 @@ const initialFormData = {
   gifUrl: "",
 };
 
-const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) => {
+const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
   const [formData, setFormData] = useState<PostPropRequest>(initialFormData);
   const [toUser, setToUser] = useState<string>("");
   const [isUserSelected, setIsUserSelected] = useState<boolean>(false);
@@ -180,7 +179,6 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
       addProp(formData).then(() => {
         setFormData(initialFormData);
         setToUser("");
-        hideModal(true);
       }).catch((err) => {
         setError(err.response.data[0]?.message || err.response.data?.message || 'Something went wrong');
       })
