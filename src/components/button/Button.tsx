@@ -1,4 +1,4 @@
-import { borderRadius0_5 } from '../../styles/index.css';
+import { borderRadius0_5, cursorPointer, padding0_5_1 } from '../../styles/index.css';
 import { buttonStyle } from './ButtonStyle.css'
 
 type ButtonProps = {
@@ -11,7 +11,7 @@ type ButtonProps = {
 
 const Button = ({title, type = 'button', onClick,className='', disabled=false}:ButtonProps) => {
   return (
-    <button className={`${buttonStyle} ${borderRadius0_5} ${className}`} type={type} onClick={onClick} disabled={disabled}>
+    <button className={`${buttonStyle} ${borderRadius0_5} ${cursorPointer} ${padding0_5_1} ${className}`} type={type} onClick={onClick} disabled={disabled}>
       {title}
     </button>
   )

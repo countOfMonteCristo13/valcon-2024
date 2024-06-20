@@ -11,7 +11,7 @@ import SuggestedHashtags from "./suggestedHashtags/SuggestedHashtags";
 import { addProp } from "../../services/PropsService";
 import ErrorMessage from "./errorMessage/ErrorMessage";
 import { addPropFormBodyStyle, addPropFormFooter, addPropFormHashtagAddButton, addPropFormHashtagInput, addPropFormHashtagSign, addPropFormHashtags, addPropFormHashtagsCount, addPropFormMessageTextarea, addPropFormPointsField, addPropFormPointsInput, addPropFormStyle, addPropFormSubmitButton, addPropFormUpperBodyStyle, errorAddPropFormMessageTextarea } from "./AddPropFormStyle.css";
-import { backgroundPrimary, borderRadius0_5, directionColumn, flexAlignCenter, flexCenter, flexColumn, flexWrap, fullHeight, fullWidth, gap0_5, justifyBetween, padding0_5, textColor, textColorTertiary } from "../../styles/index.css";
+import { backgroundPrimary, backgroundSecondary, borderRadius0_5, borderRadius1, directionColumn, flexAlignCenter, flexCenter, flexColumn, flexJustifyCenter, flexWrap, fullHeight, fullSize, fullWidth, gap0_5, gap1, justifyBetween, padding0_5, padding1, textColor, textColorTertiary } from "../../styles/index.css";
 
 type AddPropFormProps = {
   giveablePoints: number;
@@ -188,9 +188,9 @@ const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
 
 
   return (
-    <form className={addPropFormStyle} onSubmit={handleSubmit}>
-      <div className={addPropFormBodyStyle}>
-        <div className={addPropFormUpperBodyStyle}>
+    <form className={`${borderRadius1} ${flexJustifyCenter} ${directionColumn} ${fullSize} ${addPropFormStyle}`} onSubmit={handleSubmit}>
+      <div className={`${flexColumn} ${gap1} ${addPropFormBodyStyle}`}>
+        <div className={`${flexColumn} ${gap1} ${addPropFormUpperBodyStyle}`}>
           <div className={`${flexColumn} ${textColor} ${gap0_5}`}>
             <InputFormField
               label="To:"
@@ -220,7 +220,7 @@ const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
           <div className={`${flexColumn} ${textColor} ${gap0_5}`}>
             <label htmlFor="message">Message:</label>
             <textarea
-              className={`${fullWidth} ${padding0_5} ${borderRadius0_5} ${textColor} ${addPropFormMessageTextarea}
+              className={`${fullWidth} ${padding0_5} ${borderRadius0_5} ${textColor} ${backgroundSecondary} ${addPropFormMessageTextarea}
               ${errors.messageError && errorAddPropFormMessageTextarea}`}
               name="message"
               value={formData.message}
@@ -294,7 +294,7 @@ const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
             }
         </div>
       </div>
-        <div className={addPropFormFooter}>
+        <div className={`${flexAlignCenter} ${directionColumn} ${gap1} ${padding1} ${addPropFormFooter}`}>
           <Button
             type="submit"
             title="Add Prop"

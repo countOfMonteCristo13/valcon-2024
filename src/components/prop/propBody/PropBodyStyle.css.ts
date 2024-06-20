@@ -16,7 +16,6 @@ export const propGif = style({
     height:'5rem',
     aspectRatio:'1/1',
     objectFit:'cover',
-    borderRadius:'0.5rem',
 })
 
 export const gifModal = style({

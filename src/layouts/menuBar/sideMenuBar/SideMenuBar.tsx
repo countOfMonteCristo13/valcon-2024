@@ -36,7 +36,7 @@ const SideMenuBar = () => {
             <div className={`${flexColumn} ${gap1}`}>
                 <div className={`${flexCenter} ${gap0_5}`}>
                     <img className={logoImageStyle} src={logo} alt="logo" />
-                    <h2 className={`${logoTitleStyle} ${isMenuBarExpanded && showLogoTitle}`}>Props</h2>
+                    <h2 className={`${logoTitleStyle} ${textColor} ${isMenuBarExpanded && showLogoTitle}`}>Props</h2>
                 </div>
                 {
                     showToggleExpandButton && (

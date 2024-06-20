@@ -24,14 +24,12 @@ export const sideMenuBarStyle = style({
 })
 
 export const logoImageStyle = style({
-    aspectRatio: '1/1',
     width: '3rem'
 })
 
 
 export const logoTitleStyle = style({
     display:'none',
-    color:vars.colors.primary
 })
 
 export const showLogoTitle = style({

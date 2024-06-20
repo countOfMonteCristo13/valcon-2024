@@ -44,7 +44,7 @@ const PropBody = ({ prop }: PropBodyProps) => {
             </div>
             {
                 prop.gifUrl &&
-                <img className={`${propGif} ${cursorPointer}`} src={prop.gifUrl} alt="gif" onClick={() => setShowGifModal(true)} />
+                <img className={`${propGif} ${cursorPointer} ${borderRadius0_5}`} src={prop.gifUrl} alt="gif" onClick={() => setShowGifModal(true)} />
 
             }
         </div>

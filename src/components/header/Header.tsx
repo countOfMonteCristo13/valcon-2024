@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { headerStyle } from "./HeaderStyle.css";
+import { backgroundSecondary, fullWidth } from "../../styles/index.css";
 
 type HeaderProps = {
   children: ReactNode;
@@ -9,7 +10,7 @@ type HeaderProps = {
 const Header = ({ children, className }: HeaderProps) => {
   return (
     <div
-      className={`${headerStyle} ${className}`}
+      className={`${headerStyle} ${fullWidth} ${backgroundSecondary} ${className}`}
     >
       {children}
     </div>

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { LuX } from 'react-icons/lu';
-import { cursorPointer, flexCenter } from '../../styles/index.css';
+import { backgroundTertiary, cursorPointer, flex, flexCenter, fullScreen, textColor } from '../../styles/index.css';
 import { modalBodyStyle, modalCloseButton, modalStyle } from './ModalStyle.css';
 
 type ModalProps = {
@@ -17,9 +17,9 @@ const Modal = ({ children, closeModal,className }: ModalProps) => {
   };
 
   return (
-    <div className={`${flexCenter} ${modalStyle}`} onClick={handleCloseModal}>
-      <div className={`${modalBodyStyle} ${className}`} onClick={(e) => e.stopPropagation()}>
-          <div className={`${modalCloseButton} ${cursorPointer}`} onClick={handleCloseModal}>
+    <div className={`${flexCenter} ${fullScreen} ${modalStyle}`} onClick={handleCloseModal}>
+      <div className={`${fullScreen} ${backgroundTertiary} ${flex} ${modalBodyStyle} ${className}`} onClick={(e) => e.stopPropagation()}>
+          <div className={`${modalCloseButton} ${cursorPointer} ${textColor}`} onClick={handleCloseModal}>
             <LuX size={40}/>
           </div>
           {children}

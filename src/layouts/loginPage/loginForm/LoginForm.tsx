@@ -6,7 +6,7 @@ import { LoginFormData } from "../../../models/LoginFormData";
 import InputFormField from "../../../components/inputFormField/InputFormField";
 import Button from "../../../components/button/Button";
 import { loginFormSubmitButton, loginFormStyle, loginFormTitle } from "./LoginFormStyle.css";
-import { directionColumn, flexAlignCenter, fullWidth, gap1, padding0_5, textColor, textError } from "../../../styles/index.css";
+import { backgroundSecondary, borderRadius0_5, directionColumn, flexAlignCenter, fullWidth, gap1, padding0_5, padding2, textColor, textError } from "../../../styles/index.css";
 
 
 const LoginForm = () => {
@@ -69,7 +69,7 @@ const LoginForm = () => {
 
 
   return (
-    <form className={loginFormStyle} onSubmit={handleSubmit}>
+    <form className={`${flexAlignCenter} ${directionColumn} ${padding2} ${borderRadius0_5} ${backgroundSecondary} ${loginFormStyle}`} onSubmit={handleSubmit}>
       <h1 className={`${textColor} ${loginFormTitle}`}>Login</h1>
       <div className={`${flexAlignCenter} ${directionColumn} ${gap1} ${fullWidth}`}>
         <InputFormField 

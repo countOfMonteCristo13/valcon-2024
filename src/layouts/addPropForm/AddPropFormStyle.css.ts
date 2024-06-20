@@ -3,13 +3,7 @@ import { vars } from '../../styles/vars.css'
 
 export const addPropFormStyle = style({
     position: 'relative',
-    borderRadius: '1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent:'center',
     gap: '2rem',
-    height: '100%',
-    width: '100%',
     '@media':{
         'screen and (min-width: 768px)':{
             justifyContent: 'space-between',
@@ -20,9 +14,6 @@ export const addPropFormStyle = style({
 })
 
 export const addPropFormBodyStyle = style({
-    display:'flex',
-    flexDirection: 'column',
-    gap:'1rem',
     '@media':{
         'screen and (min-width: 768px)':{
             flexDirection:'row',
@@ -32,9 +23,6 @@ export const addPropFormBodyStyle = style({
 })
 
 export const addPropFormUpperBodyStyle = style({
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
     '@media':{
         'screen and (min-width: 768px)':{
             gap: '2rem',
@@ -47,8 +35,8 @@ export const addPropFormMessageTextarea = style({
     maxWidth: '100%',
     maxHeight: '200px',
     border: `3px solid ${vars.colors.secondary}`,
-    background: vars.colors.secondary,
-    fontSize: '1rem'
+    fontSize: '1rem',
+    outline:'none'
 })
 
 export const errorAddPropFormMessageTextarea = style({
@@ -95,11 +83,6 @@ export const addPropFormPointsInput = style({
 })
 
 export const addPropFormFooter = style({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '1rem',
-    padding: '1rem',
     '@media':{
         'screen and (min-width: 768px)':{
             flexDirection:'row'

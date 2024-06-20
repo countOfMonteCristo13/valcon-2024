@@ -1,10 +1,11 @@
-import './NotFoundPage.css'
+import { backgroundSecondary, flexCenter, fullScreen, textColor } from '../../styles/index.css'
+import { notFoundPageHeadingStyle } from './NotFoundPageStyle.css'
 
 const NotFoundPage = () => {
   return (
-    <main className='not-found-page'>
-      <h1 className='not-found-page__heading'>Page not found</h1>
-    </main>
+    <div className={`${backgroundSecondary} ${flexCenter} ${fullScreen}`}>
+      <h1 className={`${notFoundPageHeadingStyle} ${textColor}`}>Page not found</h1>
+    </div>
   )
 }
 
