@@ -10,3 +10,16 @@ export const propBodyHashtagsTitleStyle = style({
     display:'flex',
     gap:'0.1rem',
 })
+
+export const propGif = style({
+    width:'5rem',
+    height:'5rem',
+    aspectRatio:'1/1',
+    objectFit:'cover',
+    borderRadius:'0.5rem',
+})
+
+export const gifModal = style({
+    maxWidth:'350px',
+    maxHeight:'350px',
+})
