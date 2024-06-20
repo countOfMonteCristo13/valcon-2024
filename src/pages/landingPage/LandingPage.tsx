@@ -7,12 +7,13 @@ import Modal from '../../components/modal/Modal';
 import AddPropForm from '../../layouts/addPropForm/AddPropForm';
 import useUserStats from '../../hooks/useUserStats';
 import Header from '../../components/header/Header';
-import { backgroundSecondary, borderRadius1, box, cursorPointer, directionColumn, flex1, flexAlignCenter, flexJustifyCenter, fullWidth, gap0_3, gap0_5, gap1, justifyBetween, padding0_5, padding1, paddingX1, textColor } from '../../styles/index.css';
+import { backgroundSecondary, borderRadius1, box, cursorPointer, directionColumn, flex1, flexAlignCenter, flexJustifyCenter, fullWidth, gap0_3, gap0_5, gap1, infiniteScrollMessageStyle, justifyBetween, padding0_5, padding1, paddingX1, textColor } from '../../styles/index.css';
 import { allPropsStyle, landingPageStyle } from './LandingPageStyle.css';
 import { LuPlus } from 'react-icons/lu';
 import { allRewardsHeaderStyle, rewardsHeaderTitleStyle } from '../rewardsPage/RewardsPageStyle.css';
 import ToggleThemeButton from '../../components/toggleThemeButton/ToggleThemeButton';
 import { useTheme } from '../../context/ThemeContext';
+import Loader from '../../components/loader/Loader';
 
 
 const LandingPage = () => {
@@ -22,8 +23,8 @@ const LandingPage = () => {
   const sort = 'asc'
   const size = 10;
 
-  const { propsList, isLoading: arePropsLoading, hasError: hasPropsError, totalPages } = useProps(page, size, sort);
-  const { userStats, isLoading: areStatsLoading, hasError: hasUserStatsError } = useUserStats();
+  const { propsList, isLoading: arePropsLoading, totalPages } = useProps(page, size, sort);
+  const { userStats } = useUserStats();
 
 
 
@@ -49,9 +50,10 @@ const LandingPage = () => {
           dataLength={propsList.length}
           next={() => setPage(prevPage => prevPage + 1)}
           hasMore={page < totalPages}
-          loader={<h4 style={{ textAlign: 'center', paddingBottom: '1rem' }}>Loading...</h4>}
+          loader={<h4 className={infiniteScrollMessageStyle}>Loading...</h4>}
           endMessage={
-            <p style={{ textAlign: 'center', paddingBottom: '1rem' }}>
+            arePropsLoading ? <Loader/> :
+            <p className={infiniteScrollMessageStyle}>
               <b>Yay! You have seen it all</b>
             </p>
 
@@ -61,10 +63,10 @@ const LandingPage = () => {
           pullDownToRefresh
           pullDownToRefreshThreshold={50}
           pullDownToRefreshContent={
-            <h3 style={{ textAlign: 'center', paddingBottom: '1rem' }}>&#8595; Pull down to refresh</h3>
+            <h3 className={infiniteScrollMessageStyle}>&#8595; Pull down to refresh</h3>
           }
           releaseToRefreshContent={
-            <p style={{ textAlign: 'center', paddingBottom: '1rem' }}>&#8593; Release to refresh</p>
+            <p className={infiniteScrollMessageStyle}>&#8593; Release to refresh</p>
           }
         >
           <PropList propList={propsList} />
