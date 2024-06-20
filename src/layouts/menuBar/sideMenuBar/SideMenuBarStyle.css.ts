@@ -11,7 +11,7 @@ export const sideMenuBarStyle = style({
             height: '100vh',
             maxWidth: 'fit-content',
             flexDirection: 'column',
-            borderRight: '2px solid #ffae0073',
+            borderRight: `2px solid ${vars.colors.primary100}`,
             background: vars.colors.tertiary,
             justifyContent: 'space-between',
             alignItems: 'center',

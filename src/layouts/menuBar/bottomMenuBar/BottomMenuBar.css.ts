@@ -10,7 +10,7 @@ export const bottomMenuBarStyle = style({
     bottom: 0,
     height: 'fit-content',
     width: '100%',
-    background: '#2b2b2b',
+    background: vars.colors.tertiary,
     '@media':{
         'screen and (min-width:768px)':{
             display:'none'
