@@ -37,9 +37,18 @@ export const heightScreen = style({
     height:'100vh'
 })
 
+export const screenWidth = style({
+    width:'100vw',
+})
+
 export const fullSize = style({
     width:'100%',
     height:'100%'
+})
+
+export const fullScreen = style({
+    width:'100vw',
+    height:'100vh'
 })
 
 export const flex = style({
@@ -183,6 +192,5 @@ export const infiniteScrollMessageStyle = style({
     textAlign:'center',
     color: vars.colors.primary
 })
-
 
 
