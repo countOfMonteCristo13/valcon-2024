@@ -1,9 +1,10 @@
 import { ChangeEvent, HTMLInputTypeAttribute } from 'react';
-import { flexColumn, gap0_5 } from '../../styles/index.css';
+import { flexColumn, fullWidth, gap0_5 } from '../../styles/index.css';
 import { errorBottomBorder, inputFormFieldInputStyle } from './InputFormFiled.css';
 
 type InputFormFieldProps = {
-    id?: string
+    id?: string;
+    fieldClassName?:string;
     label?: string;
     inputType?: HTMLInputTypeAttribute;
     placeholder?: string;
@@ -17,9 +18,9 @@ type InputFormFieldProps = {
 }
 
 
-const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur,name, hasError = false}: InputFormFieldProps) => {
+const InputFormField = ({id,fieldClassName ,label,inputType = 'text',placeholder,value,onChange,className, onFocus, onBlur,name, hasError = false}: InputFormFieldProps) => {
   return (
-    <div className={`${flexColumn} ${gap0_5}`}>
+    <div className={`${fullWidth} ${flexColumn} ${gap0_5} ${fieldClassName}`}>
       {
         label &&
         <label htmlFor={id}>
@@ -27,7 +28,7 @@ const InputFormField = ({id,label,inputType = 'text',placeholder,value,onChange,
         </label>
       }
         <input 
-          className={`${inputFormFieldInputStyle} ${hasError && errorBottomBorder} ${className}`} 
+          className={`${fullWidth} ${inputFormFieldInputStyle} ${hasError && errorBottomBorder} ${className}`} 
           id={id} type={inputType} name={name} 
           placeholder={placeholder} 
           value={value} 
