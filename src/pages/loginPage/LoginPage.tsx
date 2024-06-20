@@ -1,11 +1,12 @@
 import LoginForm from "../../layouts/loginPage/loginForm/LoginForm"
-import './LoginPage.css'
+import { backgroundTertiary, directionColumn, flexCenter, gap0_5, heightScreen, textColor } from "../../styles/index.css"
+import { loginPageHeadingStyle } from "./LoginPageStyle.css"
 
 
 const LoginPage = () => {
   return (
-    <div className="login-page">
-        <h1 className="login-page__heading">Welcome to Props</h1>
+    <div className={`${heightScreen} ${flexCenter} ${directionColumn} ${gap0_5} ${backgroundTertiary}`}>
+        <h1 className={`${textColor} ${loginPageHeadingStyle}`}>Welcome to Props</h1>
       <LoginForm/>
     </div>
   )
