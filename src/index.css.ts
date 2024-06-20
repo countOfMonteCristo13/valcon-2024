@@ -9,9 +9,7 @@ globalStyle('*',{
 })
 
 globalStyle('body', {
-  display:'flex',
   minHeight:'100vh',
-  backgroundColor:'#3a3a3a',
 });
 
 globalStyle('a', {
@@ -19,4 +17,3 @@ globalStyle('a', {
   textDecoration: 'none',
   fontWeight:400,
 });
-
