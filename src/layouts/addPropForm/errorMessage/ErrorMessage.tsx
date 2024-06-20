@@ -1,4 +1,4 @@
-import './ErrorMessage.css'
+import { textError } from '../../../styles/index.css';
 
 type ErrorMessageProps = {
     name:string;
@@ -6,7 +6,7 @@ type ErrorMessageProps = {
 
 const ErrorMessage = ({name}:ErrorMessageProps) => {
   return (
-    <p className='add-prop-form__input-error'>
+    <p className={textError}>
       {name}
     </p>
   )
