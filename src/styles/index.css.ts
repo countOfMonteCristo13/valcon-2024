@@ -61,6 +61,10 @@ export const flexAlignCenter = style({
     alignItems:'center',
 })
 
+export const flexJustifyCenter = style({
+    display:'flex',
+    justifyContent:'center'
+})
 
 export const flexColumn = style({
     display: 'flex',
@@ -86,6 +90,7 @@ export const justifyAround = style({
 export const justifyBetween = style({
     justifyContent: 'space-between'
 })
+
 
 export const gap0_3 = style({
     gap:'0.3rem'
@@ -132,6 +137,10 @@ export const padding0_5_1 = style({
     padding: '0.5rem 1rem'
 })
 
+export const paddingX1= style({
+    paddingInline:'1rem',
+})
+
 export const zIndex800 = style({
     zIndex:800
 })
@@ -168,4 +177,6 @@ export const hideScrollBar = style({
 export const ratio1 = style({
     aspectRatio:'1/1'
 })
+
+
 
