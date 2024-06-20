@@ -10,9 +10,8 @@ import useActiveHashtags from "../../hooks/useActiveHashtags";
 import SuggestedHashtags from "./suggestedHashtags/SuggestedHashtags";
 import { addProp } from "../../services/PropsService";
 import ErrorMessage from "./errorMessage/ErrorMessage";
-import { addPropFormBodyStyle, addPropFormHashtagSign, addPropFormHashtags, addPropFormHashtagsCount, addPropFormMessageTextarea, addPropFormStyle, addPropFormUpperBodyStyle, errorAddPropFormMessageTextarea } from "./AddPropFormStyle.css";
-import { borderRadius0_5, flexAlignCenter, flexColumn, fullWidth, gap0_5, justifyBetween, padding0_5, textColor } from "../../styles/index.css";
-import "./AddPropForms.css";
+import { addPropFormBodyStyle, addPropFormFooter, addPropFormHashtagAddButton, addPropFormHashtagInput, addPropFormHashtagSign, addPropFormHashtags, addPropFormHashtagsCount, addPropFormMessageTextarea, addPropFormPointsField, addPropFormPointsInput, addPropFormStyle, addPropFormSubmitButton, addPropFormUpperBodyStyle, errorAddPropFormMessageTextarea } from "./AddPropFormStyle.css";
+import { backgroundPrimary, borderRadius0_5, directionColumn, flexAlignCenter, flexCenter, flexColumn, flexWrap, fullHeight, fullWidth, gap0_5, justifyBetween, padding0_5, textColor, textColorTertiary } from "../../styles/index.css";
 
 type AddPropFormProps = {
   hideModal: (toggle: boolean) => void;
@@ -223,7 +222,8 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
           <div className={`${flexColumn} ${textColor} ${gap0_5}`}>
             <label htmlFor="message">Message:</label>
             <textarea
-              className={`${fullWidth} ${padding0_5} ${borderRadius0_5} ${textColor} ${addPropFormMessageTextarea} ${errors.messageError && errorAddPropFormMessageTextarea}`}
+              className={`${fullWidth} ${padding0_5} ${borderRadius0_5} ${textColor} ${addPropFormMessageTextarea}
+              ${errors.messageError && errorAddPropFormMessageTextarea}`}
               name="message"
               value={formData.message}
               maxLength={150}
@@ -245,20 +245,20 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
                 name="hashtag"
                 value={hashtag}
                 onChange={(e) => setHashtag(e.target.value)}
-                className="add-prop-form__body__hashtags__input"
+                className={`${fullWidth} ${textColor} ${addPropFormHashtagInput}`}
                 hasError={errors.hashtagsError !== ''}
               />
               <Button
                 title="Add"
                 onClick={handleAddHashtag}
-                className="add-prop-form__body__hashtags__add-button"
+                className={`${fullHeight} ${textColorTertiary} ${backgroundPrimary} ${borderRadius0_5} ${addPropFormHashtagAddButton}`}
               />
             </div>
             {
               activeHashtagsList.length > 0 && <SuggestedHashtags list={activeHashtagsList} onClick={handleSelectSuggestedHashtag}/>
             }
             {formData.hashtags.length > 0 && (
-              <div className="add-prop-form__body__selected__hashtags">
+              <div className={`${flexAlignCenter} ${flexWrap} ${gap0_5}`}>
                 {formData.hashtags.map((hashtag) => (
                   <HashtagCard key={hashtag} name={hashtag} onClick={handleDeleteHashtag} />
                 ))}
@@ -270,8 +270,8 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
             }
           </div>
         </div>
-        <div className="add-prop-form__body__container-2">
-          <div className="add-prop-form__body__points">
+        <div className={`${flexCenter} ${directionColumn} ${gap0_5}`}>
+          <div className={`${flexCenter} ${gap0_5} ${textColor}`}>
             <LuMinusCircle
               size={32}
               onClick={handleDecreasePoints}
@@ -282,7 +282,8 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
               inputType="number"
               value={formData.points}
               onChange={handlePointsChange}
-              className="add-prop-form__body__points__input"
+              className={`${flexCenter} ${addPropFormPointsInput}`}
+              fieldClassName={addPropFormPointsField}
             />
             <LuPlusCircle
               size={32}
@@ -295,19 +296,17 @@ const AddPropForm = ({ hideModal, giveablePoints, userId }: AddPropFormProps) =>
             }
         </div>
       </div>
-      <div className="add-prop-form__footer">
-        <div className="add-prop-form__footer__buttons">
+        <div className={addPropFormFooter}>
           <Button
             type="submit"
             title="Add Prop"
-            className="add-prop-form__buttons__footer__button"
+            className={addPropFormSubmitButton}
           />
           {
             error && 
             <ErrorMessage name={error}/>
           }
         </div>
-      </div>
     </form>
   );
 };

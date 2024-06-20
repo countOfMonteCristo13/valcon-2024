@@ -70,3 +70,51 @@ export const addPropFormHashtagSign = style({
     fontSize:'2rem',
     height:'2.5rem',
 })
+
+
+export const addPropFormHashtagInput = style({
+    height:'2.5rem'
+})
+
+export const addPropFormHashtagAddButton = style({
+    borderBottomLeftRadius: 0,
+})
+
+export const addPropFormPointsField = style({
+    width:'fit-content'
+})
+
+export const addPropFormPointsInput = style({
+    width:'70px',
+    aspectRatio:'1/1',
+    borderRadius:'50%',
+    textAlign:'center',
+    fontSize:'2rem',
+    border:'none',
+    background: vars.colors.primary
+})
+
+export const addPropFormFooter = style({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '1rem',
+    padding: '1rem',
+    '@media':{
+        'screen and (min-width: 768px)':{
+            flexDirection:'row'
+        }
+    }
+})
+
+export const addPropFormSubmitButton = style({
+    color: vars.colors.tertiary,
+    background: vars.colors.primary,
+    border: `2px solid ${vars.colors.primary}`,
+    transition: 'all 0.2s ease',
+    fontSize: '1.3rem',
+    ':hover':{
+        background:vars.colors.tertiary,
+        color:vars.colors.primary,
+    }
+})
