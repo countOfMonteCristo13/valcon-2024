@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ElementContainer from "../../components/elementContainer/ElementContainer";
 import RewardsList from "../../layouts/rewardsPage/rewardsList/RewardsList";
 import MyRewardsList from "../../layouts/rewardsPage/myRewardsList/MyRewardsList";
 import Header from "../../components/header/Header";
@@ -12,7 +11,8 @@ import { LuGift, LuX } from "react-icons/lu";
 import Loader from "../../components/loader/Loader";
 import { Toaster } from "react-hot-toast";
 import { ToastType, handleToast } from "../../services/ToastService";
-import "./RewardsPage.css";
+import { allRewardsHeaderButtonStyle, allRewardsHeaderStyle, rewardsHeaderTitleStyle, allRewardsListStyle, allRewardsStyle, headerButtonStyle, myRewardsHeaderStyle, myRewardsListStyle, myRewardsMobileStyle, myRewardsStyle, rewardsPageStyle } from "./RewardsPageStyle.css";
+import { backgroundSecondary, backgroundTertiary, borderRadius1, box, directionColumn, flex, flex1, flexAlignCenter, flexWrap, gap0_3, gap0_5, gap1, heightScreen, hideScrollBar, justifyBetween, padding0_5_1, padding1, textColor, zIndex950 } from "../../styles/index.css";
 
 const RewardsPage = () => {
   const { rewards, isLoading: areRewardsLoading } = UseRewards(["points"]);
@@ -32,27 +32,27 @@ const RewardsPage = () => {
   };
 
   return (
-    <div className="rewards-page">
+    <div className={`${flex1} ${rewardsPageStyle} ${textColor}`}>
       <Toaster position="top-center" reverseOrder={false} />
 
-      <div className="rewards-page__all-rewards">
-        <Header className="rewards-page__all-rewards__header">
-          <h2 className="rewards-page__all-rewards__header__title">
+      <div className={`${heightScreen} ${hideScrollBar} ${allRewardsStyle} ${backgroundSecondary}`}>
+        <Header className={`${flexAlignCenter} ${justifyBetween} ${padding1} ${allRewardsHeaderStyle}`}>
+          <h2 className={rewardsHeaderTitleStyle}>
             Rewards
           </h2>
-          <div className="rewards-page__all-rewards__header__container">
-            <ElementContainer
-              className="rewards-page__all-rewards__header__container__my-rewards-button"
+          <div className={`${flexAlignCenter} ${gap0_5}`}>
+            <div
+              className={`${box} ${headerButtonStyle} ${allRewardsHeaderButtonStyle}`}
               onClick={() => setShowMyRewardsOnMobile(true)}
             >
               <LuGift size={32} />
-            </ElementContainer>
-            <ElementContainer className="rewards-page__all-rewards__header__container__redeem-points">
-              <h2 className="rewards-page__all-rewards__header__container__redeem-points__count">
+            </div>
+            <div className={`${box} ${padding0_5_1} ${borderRadius1} ${flexAlignCenter} ${gap0_3}`}>
+              <h2>
                 {userStats?.redeemablePoints}
               </h2>
               <BiCoin size={32} />
-            </ElementContainer>
+            </div>
           </div>
         </Header>
 
@@ -61,46 +61,46 @@ const RewardsPage = () => {
         ) : (
           <>
             {showMyRewardsOnMobile && (
-              <div className="rewards-page__my-rewards__mobile">
-                <Header className="rewards-page__my-rewards__mobile__header">
-                  <h2 className="rewards-page__my-rewards__mobile__header__title">My Rewards</h2>
-                  <ElementContainer
-                    className="rewards-page__my-rewards__mobile__header__close-button"
+              <div className={`${backgroundSecondary} ${zIndex950} ${myRewardsMobileStyle}`}>
+                <Header className={`${flexAlignCenter} ${padding1} ${justifyBetween}`}>
+                  <h2 className={rewardsHeaderTitleStyle}>My Rewards</h2>
+                  <div
+                    className={`${box} ${headerButtonStyle}`}
                     onClick={() => setShowMyRewardsOnMobile(false)}
                   >
                     <LuX size={32} />
-                  </ElementContainer>
+                  </div>
                 </Header>
                 {areMyRewardsLoading ? (
                   <Loader />
                 ) : (
                   <MyRewardsList
                     list={myRewards}
-                    className="rewards-page__my-rewards__list__mobile"
+                    className={`${flex} ${flexWrap} ${gap1} ${padding1} ${backgroundTertiary}`}
                   />
                 )}
               </div>
             )}
             <RewardsList
               list={rewards}
-              className="rewards-page__all-rewards__list"
+              className={`${flex} ${directionColumn} ${gap1} ${allRewardsListStyle} ${backgroundSecondary}`}
               rewardCardRedeemReward={handleRedeem}
               redeemablePoints={userStats?.redeemablePoints}
             />
           </>
         )}
       </div>
-      <div className="rewards-page__my-rewards">
-        <ElementContainer className="rewards-page__my-rewards__header">
+      <div className={`${hideScrollBar} ${heightScreen} ${myRewardsStyle}`}>
+        <div className={myRewardsHeaderStyle}>
           <h2>My Rewards</h2>
-        </ElementContainer>
+        </div>
         {
           areMyRewardsLoading ?
             <Loader />
             :
             <MyRewardsList
               list={myRewards}
-              className="rewards-page__my-rewards__list"
+              className={`${flex} ${flexWrap} ${gap1} ${myRewardsListStyle}`}
             />
         }
       </div>
