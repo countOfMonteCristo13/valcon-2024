@@ -146,8 +146,12 @@ export const padding0_5_1 = style({
     padding: '0.5rem 1rem'
 })
 
-export const paddingX1= style({
+export const paddingX1 = style({
     paddingInline:'1rem',
+})
+
+export const paddingTop0_5 = style({
+    paddingTop: '0.5rem',
 })
 
 export const zIndex800 = style({
