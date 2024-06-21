@@ -1,6 +1,6 @@
 import MenuBarLink from '../../../components/menuBarLink/MenuBarLink'
 import useScrollDown from '../../../hooks/useScrollDown'
-import { LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu'
+import { LuGift, LuHome, LuLogOut } from 'react-icons/lu'
 import { bottomMenuBarActiveLinkStyle, bottomMenuBarLinkStyle, bottomMenuBarStyle, hideBottomMenuBar } from './BottomMenuBar.css'
 import { flexAlignCenter, fullWidth, justifyAround } from '../../../styles/index.css'
 
@@ -24,17 +24,10 @@ return (
                 linkTitle='Rewards' 
             />
             <MenuBarLink 
-                to='/profile' 
-                linkClassName={bottomMenuBarLinkStyle}
-                activeLinkClassName={bottomMenuBarActiveLinkStyle} 
-                iconSize={32} icon={LuUserCircle2} 
-                linkTitle='Profile' 
-            />
-            <MenuBarLink 
-                to='/logout' 
+                to='/login' 
                 linkClassName={bottomMenuBarLinkStyle}
                 iconSize={32} icon={LuLogOut} 
-                linkTitle='Logout' 
+                linkTitle='Logout'
             />
         </div>
     </div>

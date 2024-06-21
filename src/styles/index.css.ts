@@ -5,6 +5,10 @@ export const textColor = style({
     color:vars.colors.primary
 })
 
+export const textColorSecondary = style({
+    color: vars.colors.secondary
+})
+
 export const textColorTertiary = style({
     color: vars.colors.tertiary
 })
@@ -197,4 +201,11 @@ export const infiniteScrollMessageStyle = style({
     color: vars.colors.primary
 })
 
+export const overflowHidden = style({
+    overflow:'hidden',
+})
+
+export const displayNone = style({
+    display:'none',
+})
 

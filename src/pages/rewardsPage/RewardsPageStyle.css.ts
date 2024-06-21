@@ -14,6 +14,7 @@ export const rewardsPageStyle = style({
 })
 
 export const allRewardsStyle = style({
+    height:'auto',
     gridArea:'1 / 1 / 2 / 2',
     '@media':{
         'screen and (min-width: 768px)':{
@@ -21,6 +22,7 @@ export const allRewardsStyle = style({
             borderRight: `2px solid ${vars.colors.primary100}`,
             display: 'flex',
             flexDirection: 'column',
+            height:'100vh'
         }
     }
 })
@@ -61,6 +63,8 @@ export const allRewardsHeaderButtonStyle = style({
 })
 
 export const allRewardsListStyle = style({
+    overflow:'auto',
+    alignItems:'center',
     padding: '0 1rem 1rem 1rem',
     '@media':{
         'screen and (min-width: 1024px)':{
@@ -74,6 +78,9 @@ export const myRewardsStyle = style({
     display:'none',
     '@media':{
         'screen and (min-width: 768px)':{
+            position:'sticky',
+            top:0,
+            right:0,
             background: vars.colors.tertiary,
             gridArea: '1 / 3 / 2 / 4',
             display: 'flex',
@@ -105,6 +112,7 @@ export const myRewardsHeaderStyle = style({
 })
 
 export const myRewardsListStyle = style({
+    maxWidth:'500px',
     '@media':{
         'screen and (min-width: 1024px)':{
             gap: '2rem'

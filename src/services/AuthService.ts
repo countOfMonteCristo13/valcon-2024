@@ -2,7 +2,7 @@ import axios from "axios";
 import { LoginFormData } from "../models/LoginFormData";
 import { AuthRequestData } from "../models/AuthData";
 import { TokenResponseData } from "../models/LocalStorageData";
-import { getDataFromLocalStorage } from "./LocalStorageService";
+import { clearStorage, getDataFromLocalStorage } from "./LocalStorageService";
 
 const authUrl = '/auth/token'
 const refreshTokenUrl = '/auth/refresh-token'
@@ -18,6 +18,10 @@ export const login = async (formData: LoginFormData) => {
         return response.data;
     });
 
+}
+
+export const logout = () => {
+    clearStorage();
 }
 
 export const refreshToken = async () => {

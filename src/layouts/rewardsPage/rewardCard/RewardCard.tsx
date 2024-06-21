@@ -17,7 +17,7 @@ const RewardCard = ({ reward, reedmeablePoints, redeemReward }: RewardCardProps)
   const {theme} = useTheme();
 
   return (
-    <div className={`${box} ${padding1} ${borderRadius1} ${cardContainer} ${rewardCardStyle}`}>
+    <div className={`${box} ${padding1} ${borderRadius1} ${cardContainer} ${rewardCardStyle} ${fullWidth}`}>
       <div className={flex1}>
       <img src={buildRewardImageURL(theme, reward.imageReference)} alt="reward-image" className={cardImages} />
       </div>

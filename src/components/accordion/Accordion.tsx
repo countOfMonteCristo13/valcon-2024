@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react"
 import { LuChevronDown } from "react-icons/lu";
-import { backgroundSecondary, borderPrimary, borderRadius1, cursorPointer, flexCenter, flexColumn, gap0_5, padding0_5, textColor } from "../../styles/index.css";
-import { accordionBodyStyle, accordionButtonStyle, rotateAccordionButton } from "./AccordionStyle.css";
+import { backgroundSecondary, borderPrimary, borderRadius1, cursorPointer, flexAlignCenter, flexCenter, flexColumn, fullWidth, gap0_5, justifyBetween, padding0_5, textColor } from "../../styles/index.css";
+import { accordionBodyStyle, accordionButtonStyle, accordionTitleStyle, rotateAccordionButton } from "./AccordionStyle.css";
 
 type AccordionProps = {
     children:ReactNode;
@@ -21,9 +21,9 @@ const Accordion = ({title,children}:AccordionProps) => {
     },[toggleAccordion])
 
   return (
-    <div className={`${borderPrimary} ${borderRadius1} ${backgroundSecondary} ${textColor} ${flexColumn} ${padding0_5}`}>
-      <div className={`${flexCenter} ${gap0_5} ${cursorPointer}`} onClick={() => setToggleAccordion(!toggleAccordion)}>
-        <h3>{title}</h3>
+    <div className={`${borderPrimary} ${borderRadius1} ${backgroundSecondary} ${textColor} ${flexColumn} ${padding0_5} ${fullWidth}`}>
+      <div className={`${flexAlignCenter} ${justifyBetween} ${gap0_5} ${cursorPointer}`} onClick={() => setToggleAccordion(!toggleAccordion)}>
+        <h4 className={accordionTitleStyle}>{title}</h4>
         <LuChevronDown 
             size={24} 
             strokeWidth={4} 

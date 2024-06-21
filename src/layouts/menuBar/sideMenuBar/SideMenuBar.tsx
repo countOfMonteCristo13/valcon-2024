@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import MenuBarLink from '../../../components/menuBarLink/MenuBarLink';
 import logo from '../../../assets/propsLogo1.png'
 import { LAPTOP_WIDTH_SIZE } from '../../../utils/constants';
-import { LuArrowLeft, LuArrowRight, LuGift, LuHome, LuLogOut, LuUserCircle2 } from 'react-icons/lu';
+import { LuArrowLeft, LuArrowRight, LuGift, LuHome, LuLogOut } from 'react-icons/lu';
 import { logoImageStyle, logoTitleStyle, showLogoTitle, sideMenuBarActiveLinkStyle, sideMenuBarLinkStyle, sideMenuBarStyle, toggleExpansionButton } from './SideMenuBarStyle.css';
-import { cursorPointer, flexCenter, flexColumn, gap0_5, gap1, textColor } from '../../../styles/index.css';
+import { cursorPointer, flexCenter, flexColumn, fullWidth, gap0_5, gap1, textColor } from '../../../styles/index.css';
 
 const SideMenuBar = () => {
 
@@ -73,17 +73,10 @@ const SideMenuBar = () => {
                     iconSize={32} icon={LuGift} 
                     {...(isMenuBarExpanded && { linkTitle: 'Rewards' })}
                 />
-                <MenuBarLink 
-                    to='/profile' 
-                    linkClassName={sideMenuBarLinkStyle}
-                    activeLinkClassName={sideMenuBarActiveLinkStyle}
-                    iconSize={32} icon={LuUserCircle2} 
-                    {...(isMenuBarExpanded && { linkTitle: 'Profile' })}
-                />
             </div>
-            <div className='side-menu-bar__logout'>
+            <div className={fullWidth}>
                 <MenuBarLink 
-                    to='/logout' 
+                    to='/login' 
                     linkClassName={sideMenuBarLinkStyle} 
                     iconSize={32} icon={LuLogOut} 
                     {...(isMenuBarExpanded && { linkTitle: 'Logout' })}

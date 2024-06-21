@@ -10,7 +10,7 @@ export const bottomMenuBarStyle = style({
     bottom: 0,
     height: 'fit-content',
     width: '100%',
-    background: vars.colors.tertiary,
+    background: vars.colors.secondary,
     '@media':{
         'screen and (min-width:768px)':{
             display:'none'
@@ -28,7 +28,7 @@ export const bottomMenuBarLinkStyle = style({
     gap: '0.2rem',
     alignItems: 'center',
     padding: '0.5rem',
-    borderTop: `3px solid ${vars.colors.tertiary}`,
+    borderTop: `3px solid ${vars.colors.secondary}`,
     color: vars.colors.primary
 })
 

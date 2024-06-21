@@ -13,7 +13,7 @@ const TrendingHashtags = () => {
         <div className={`${flex} ${flexWrap} ${gap0_5} ${paddingTop0_5}`}>
         {
             trendingHashtagsList.map(hashtag => (
-                <TrendingHashtagCard hashtag={hashtag}/>
+                <TrendingHashtagCard hashtag={hashtag} key={hashtag.id}/>
             )) 
         }
         </div>

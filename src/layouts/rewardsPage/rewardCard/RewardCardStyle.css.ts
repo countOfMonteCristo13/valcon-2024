@@ -2,10 +2,8 @@ import {style} from '@vanilla-extract/css'
 import { vars } from '../../../styles/vars.css'
 
 export const rewardCardStyle = style({
+    maxWidth:'800px',
     '@media':{
-        'screen and (min-width: 600px)':{
-            flexDirection:'row'
-        },
         'screen and (min-width: 1024px)':{
             padding:'2rem'
         }
