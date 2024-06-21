@@ -1,4 +1,5 @@
 import toast from "react-hot-toast"
+import { vars } from "../styles/vars.css";
 
 export enum ToastType {
     Success = 'success',
@@ -6,9 +7,9 @@ export enum ToastType {
   }
 
 const toastStyle = {
-    background: '#3a3a3a',
-    border: '2px solid #ffae00',
-    color: '#ffae00',
+    background: vars.colors.secondary,
+    border: `2px solid ${vars.colors.primary}`,
+    color: vars.colors.primary,
     padding: '1rem'
   }
 
