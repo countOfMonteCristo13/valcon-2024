@@ -14,7 +14,7 @@ import { BiCoin } from "react-icons/bi";
 import { LuGift, LuX } from "react-icons/lu";
 import { ToastType, handleToast } from "../../services/ToastService";
 import { allRewardsHeaderButtonStyle, allRewardsHeaderStyle, rewardsHeaderTitleStyle, allRewardsListStyle, allRewardsStyle, headerButtonStyle, myRewardsHeaderStyle, myRewardsListStyle, myRewardsMobileStyle, myRewardsStyle, rewardsPageStyle } from "./RewardsPageStyle.css";
-import { backgroundSecondary, backgroundTertiary, borderRadius1, box, directionColumn, flex, flex1, flexAlignCenter, flexWrap, gap0_3, gap0_5, gap1, heightScreen, hideScrollBar, justifyBetween, padding0_5_1, padding1, textColor, zIndex950 } from "../../styles/index.css";
+import { backgroundSecondary, backgroundTertiary, borderRadius1, box, directionColumn, displayNone, flex, flex1, flexAlignCenter, flexWrap, fullHeight, gap0_3, gap0_5, gap1, heightScreen, hideScrollBar, justifyBetween, overflowHidden, padding0_5_1, padding1, textColor, zIndex950 } from "../../styles/index.css";
 
 const RewardsPage = () => {
   const {theme, toggleTheme} = useTheme();
@@ -37,8 +37,7 @@ const RewardsPage = () => {
   return (
     <div className={`${flex1} ${rewardsPageStyle} ${textColor}`}>
       <Toaster position="top-center" reverseOrder={false} />
-
-      <div className={`${heightScreen} ${hideScrollBar} ${allRewardsStyle} ${backgroundSecondary}`}>
+      <div className={`${allRewardsStyle} ${backgroundSecondary}`}>
         <Header className={`${flexAlignCenter} ${justifyBetween} ${padding1} ${allRewardsHeaderStyle}`}>
           <h2 className={rewardsHeaderTitleStyle}>
             Rewards
@@ -80,33 +79,35 @@ const RewardsPage = () => {
                 ) : (
                   <MyRewardsList
                     list={myRewards}
-                    className={`${flex} ${flexWrap} ${gap1} ${padding1} ${backgroundTertiary}`}
+                    className={`${flex} ${flexWrap} ${gap1} ${padding1} ${backgroundTertiary} ${fullHeight} ${overflowHidden}`}
                   />
                 )}
               </div>
             )}
             <RewardsList
               list={rewards}
-              className={`${flex} ${directionColumn} ${gap1} ${allRewardsListStyle} ${backgroundSecondary}`}
+              className={`${flex} ${directionColumn} ${gap1} ${allRewardsListStyle} ${backgroundSecondary} ${fullHeight} ${hideScrollBar} ${showMyRewardsOnMobile && displayNone}`}
               rewardCardRedeemReward={handleRedeem}
               redeemablePoints={userStats?.redeemablePoints}
             />
           </>
         )}
       </div>
-      <div className={`${hideScrollBar} ${heightScreen} ${myRewardsStyle}`}>
-        <div className={myRewardsHeaderStyle}>
-          <h2>My Rewards</h2>
+      <div className={`${heightScreen}  ${myRewardsStyle}`}>
+        <div className={`${fullHeight} ${flexAlignCenter} ${directionColumn} ${gap1}`}>
+          <div className={myRewardsHeaderStyle}> 
+            <h2>My Rewards</h2>
+          </div>
+          {
+            areMyRewardsLoading ?
+              <Loader />
+              :
+              <MyRewardsList
+                list={myRewards}
+                className={`${flex} ${flexWrap} ${gap1} ${myRewardsListStyle} ${heightScreen} ${hideScrollBar}`}
+              />
+          }
         </div>
-        {
-          areMyRewardsLoading ?
-            <Loader />
-            :
-            <MyRewardsList
-              list={myRewards}
-              className={`${flex} ${flexWrap} ${gap1} ${myRewardsListStyle}`}
-            />
-        }
       </div>
     </div>
   );

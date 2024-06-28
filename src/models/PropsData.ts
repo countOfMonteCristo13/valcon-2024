@@ -44,6 +44,12 @@ export type Hashtag = {
     creationTime: Date;
 }
 
+export type TrendingHashtag = {
+    name:string,
+    id:number,
+    count:number,
+}
+
 export type PropModel = {
     id: number;
     fromUser: PropsUser;

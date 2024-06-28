@@ -24,3 +24,55 @@ export const allPropsStyle = style({
         }
     }
 })
+
+export const landingPageSidebarStyle = style({
+    display:'none',
+    '@media':{
+        'screen and (min-width: 768px)':{
+            position:'sticky',
+            top:0,
+            right:0,
+            height:'100vh',
+            background: vars.colors.tertiary,
+            gridArea: '1 / 3 / 2 / 4',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems:'center',
+            padding: '1rem',
+            gap: '1rem',
+        },
+        'screen and (min-width: 1024px)':{
+            padding: '2rem',
+            gap: '2rem'
+        }
+    },
+})
+
+export const landingPageSideBarMobileStyle = style({
+    position:'absolute',
+    top:0,
+    minHeight:'100vh',
+    width:'100vw',
+    background:vars.colors.tertiary,
+    '@media':{
+        'screen and (min-width: 768px)':{
+            display:'none'
+        },
+    },
+})
+
+export const landingPageHeaderButtonStyle = style({
+    '@media':{
+        'screen and (min-width: 768px)':{
+            display:'none'
+        }
+    }
+})
+
+export const landingPageSideBarMoreStyle = style({
+    padding:'1rem',
+    gap:'1rem',
+    display:'flex',
+    flexDirection:'column',
+    background: vars.colors.tertiary,
+})

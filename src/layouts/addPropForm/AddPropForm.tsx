@@ -12,10 +12,13 @@ import { addProp } from "../../services/PropsService";
 import ErrorMessage from "./errorMessage/ErrorMessage";
 import { addPropFormBodyStyle, addPropFormFooter, addPropFormHashtagAddButton, addPropFormHashtagInput, addPropFormHashtagSign, addPropFormHashtags, addPropFormHashtagsCount, addPropFormMessageTextarea, addPropFormPointsField, addPropFormPointsInput, addPropFormStyle, addPropFormSubmitButton, addPropFormUpperBodyStyle, errorAddPropFormMessageTextarea } from "./AddPropFormStyle.css";
 import { backgroundPrimary, backgroundSecondary, borderRadius0_5, borderRadius1, directionColumn, flexAlignCenter, flexCenter, flexColumn, flexJustifyCenter, flexWrap, fullHeight, fullSize, fullWidth, gap0_5, gap1, justifyBetween, padding0_5, padding1, textColor, textColorTertiary } from "../../styles/index.css";
+import useUserStats from "../../hooks/useUserStats";
+import { ToastType, handleToast } from "../../services/ToastService";
 
 type AddPropFormProps = {
   giveablePoints: number;
   userId:number;
+  closeModal: () => void;
 };
 
 type AddPropFormErrors = {
@@ -40,7 +43,7 @@ const initialFormData = {
   gifUrl: "",
 };
 
-const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
+const AddPropForm = ({  giveablePoints, userId, closeModal }: AddPropFormProps) => {
   const [formData, setFormData] = useState<PostPropRequest>(initialFormData);
   const [toUser, setToUser] = useState<string>("");
   const [isUserSelected, setIsUserSelected] = useState<boolean>(false);
@@ -48,9 +51,15 @@ const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
   const [hashtagsCount, setHashtagsCount] = useState<number>(0);
   const [errors, setErrors] = useState<AddPropFormErrors>(initialAddPropFormErrosState);
   const [error,setError] = useState('');
-
+  const {userStats} = useUserStats();
   const { usersList } = useActiveUsers(0,3,"asc",toUser);
   const { activeHashtagsList } = useActiveHashtags(0,5,"asc",hashtag);
+
+  const filteredUsersList = usersList.filter(user => {
+    const userName = user.firstName + ' ' + user.lastName;
+    const currentUser = userStats?.user.firstName + ' ' + userStats?.user.lastName;
+    return userName !== currentUser
+  })
 
   const handleInputsOnChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -179,6 +188,8 @@ const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
       addProp(formData).then(() => {
         setFormData(initialFormData);
         setToUser("");
+        closeModal();
+        handleToast(ToastType.Success,'Prop successfully posted!', 2000)
       }).catch((err) => {
         setError(err.response.data[0]?.message || err.response.data?.message || 'Something went wrong');
       })
@@ -203,7 +214,7 @@ const AddPropForm = ({  giveablePoints, userId }: AddPropFormProps) => {
             />
             {usersList.length > 0 && !isUserSelected && (
               <div className={`${flexColumn} ${gap0_5}`}>
-                {usersList.map((user) => (
+                {filteredUsersList.map((user) => (
                   <UserSuggestionCard
                     key={user.id}
                     user={user}

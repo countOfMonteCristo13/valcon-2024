@@ -9,6 +9,10 @@ export const getDataFromLocalStorage = (key: string) => {
     return data ? JSON.parse(data) : null;
 };
 
+export const clearStorage = () => {
+    localStorage.clear();
+}
+
 export const addTokensToLocalStorage = (tokens: Tokens) => {
     addDataToLocalStorage('refreshToken',tokens.refreshToken);
     addDataToLocalStorage('accessToken',tokens.accessToken);

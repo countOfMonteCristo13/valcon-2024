@@ -4,17 +4,19 @@ import { buildRewardImageURL } from '../../../utils/imageBuilder';
 import { flex1, flexAlignCenter, fullHeight, gap0_3, justifyBetween, textColor } from '../../../styles/index.css';
 import { cardContainer, cardDescription, cardImages, cardTextContainer } from '../RewardsCardStyle.css';
 import { myRewardInfoCardDescriptionStyle, myRewardInfoCardImageStyle } from './MyRewardInfoCardStyle.css';
+import { useTheme } from '../../../context/ThemeContext';
 
 type MyRewardInfoCard = {
   reward: MyReward;
 }
 
 const MyRewardInfoCard = ({reward} : MyRewardInfoCard) => {
+  const {theme} = useTheme();
 
   return (
     <div className={cardContainer}>
       <div className={`${flex1} ${fullHeight}`}>
-        <img src={buildRewardImageURL(reward.reward.imageReference)} alt="reward-image" className={`${cardImages} ${myRewardInfoCardImageStyle}`}/>
+        <img src={buildRewardImageURL(theme,reward.reward.imageReference)} alt="reward-image" className={`${cardImages} ${myRewardInfoCardImageStyle}`}/>
       </div>
 
       <div className={`${cardDescription} ${myRewardInfoCardDescriptionStyle}`}>

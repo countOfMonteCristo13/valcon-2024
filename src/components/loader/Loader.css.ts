@@ -1,6 +1,7 @@
 import {style, keyframes} from '@vanilla-extract/css'
 import { vars } from '../../styles/vars.css'
 
+
 const loading = keyframes({
     '100%':{transform:'rotate(1turn)'}
 })

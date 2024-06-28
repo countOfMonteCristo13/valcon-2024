@@ -5,6 +5,10 @@ export const textColor = style({
     color:vars.colors.primary
 })
 
+export const textColorSecondary = style({
+    color: vars.colors.secondary
+})
+
 export const textColorTertiary = style({
     color: vars.colors.tertiary
 })
@@ -146,8 +150,12 @@ export const padding0_5_1 = style({
     padding: '0.5rem 1rem'
 })
 
-export const paddingX1= style({
+export const paddingX1 = style({
     paddingInline:'1rem',
+})
+
+export const paddingTop0_5 = style({
+    paddingTop: '0.5rem',
 })
 
 export const zIndex800 = style({
@@ -193,4 +201,11 @@ export const infiniteScrollMessageStyle = style({
     color: vars.colors.primary
 })
 
+export const overflowHidden = style({
+    overflow:'hidden',
+})
+
+export const displayNone = style({
+    display:'none',
+})
 
